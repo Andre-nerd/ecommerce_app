@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ecommerce_app</string>
+    <string name="select_category">Select Category</string>
+    <string name="view_all">view all</string>
+    <string name="phones">Phones</string>
+    <string name="computer">Computer</string>
+    <string name="health">Health</string>
+    <string name="books">Books</string>
+</resources>
