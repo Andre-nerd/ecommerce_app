@@ -3,13 +3,12 @@ package com.zoom_machine.ecommerce_app.presentation.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.zoom_machine.ecommerce_app.R
 import com.zoom_machine.ecommerce_app.databinding.ItemTopMenuBinding
-import com.zoom_machine.ecommerce_app.presentation.data.TopMenuItem
+import com.zoom_machine.ecommerce_app.presentation.ui.ui_components.TopMenuItem
 
 class TopMenuAdapter(
     private val context: Context,
@@ -17,8 +16,7 @@ class TopMenuAdapter(
 ) : RecyclerView.Adapter<TopMenuAdapter.ViewHolder>() {
     private var items: List<TopMenuItem> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
-            ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             ItemTopMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(context, itemBinding, onItemClick)
@@ -41,13 +39,13 @@ class TopMenuAdapter(
         private val binding: ItemTopMenuBinding,
         onItemClick: (position: Int) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
-
         init {
             binding.root.setOnClickListener {
-                onItemClick(adapterPosition)
+                onItemClick(absoluteAdapterPosition)
             }
         }
 
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(item: TopMenuItem) {
             binding.run {
                 if (item.isSelected) {

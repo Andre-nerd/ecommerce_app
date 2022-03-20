@@ -1,9 +1,15 @@
 package com.zoom_machine.ecommerce_app.data
 
 import com.zoom_machine.ecommerce_app.R
-import com.zoom_machine.ecommerce_app.presentation.data.TopMenuItem
+import com.zoom_machine.ecommerce_app.data.networking.RetrofitApi
+import com.zoom_machine.ecommerce_app.presentation.ui.ui_components.TopMenuItem
 
 class MainScreenRepository {
+    private val api = RetrofitApi().apiMainScreen
+
+    suspend fun getContent(): MainScreenResponse {
+        return api.getContentForMainScreen()[0]
+    }
 
     fun getItemsTopMenu(): List<TopMenuItem> {
         return listOf(
