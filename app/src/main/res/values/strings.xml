@@ -13,4 +13,7 @@
     <string name="category">Category</string>
     <string name="best_seller">Best Seller</string>
     <string name="see_more">see more</string>
+    <string name="price_discount">1045$</string>
+    <string name="price_normal">1200$</string>
+    <string name="samsung_note_20_ultra">Samsung Note 20 Ultra</string>
 </resources>

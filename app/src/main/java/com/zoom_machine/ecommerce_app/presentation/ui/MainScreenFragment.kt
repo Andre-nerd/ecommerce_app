@@ -6,8 +6,11 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zoom_machine.ecommerce_app.R
 import com.zoom_machine.ecommerce_app.databinding.FragmentMainScreenBinding
+import com.zoom_machine.ecommerce_app.presentation.adapters.BestSellerAdapter
 import com.zoom_machine.ecommerce_app.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.ecommerce_app.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.ecommerce_app.presentation.utils.MessageViewModel
@@ -18,6 +21,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     private lateinit var binding: FragmentMainScreenBinding
     private lateinit var topMenuAdapter: TopMenuAdapter
     private lateinit var hotSaleAdapter: HotSaleAdapter
+    private lateinit var bestSellerAdapter: BestSellerAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,6 +29,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         binding = FragmentMainScreenBinding.bind(view)
         createTopMenuAdapter()
         createHotSaleAdapter()
+        createBestSellerAdapter()
         observeViewModel()
     }
 
@@ -33,13 +38,16 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             itemTopMenu.observe(viewLifecycleOwner) { listItems ->
                 topMenuAdapter.update(listItems)
             }
-            hotSales.observe(viewLifecycleOwner){listHotSale ->
+            hotSales.observe(viewLifecycleOwner) { listHotSale ->
                 hotSaleAdapter.update(listHotSale)
+            }
+            bestSeller.observe(viewLifecycleOwner){listBestSeller ->
+                bestSellerAdapter.update(listBestSeller)
             }
             throwableMessage.observe(viewLifecycleOwner) { message ->
                 handlingThrowableMessage(message)
             }
-            showProgressBar.observe(viewLifecycleOwner){
+            showProgressBar.observe(viewLifecycleOwner) {
                 binding.progressBarPhones.isVisible = it
             }
         }
@@ -60,6 +68,17 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
         with(binding.hotSaleRecyclerView) {
             adapter = hotSaleAdapter
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun createBestSellerAdapter() {
+        bestSellerAdapter = BestSellerAdapter(requireContext()) {
+        }
+        with(binding.bestSellerRecyclerView) {
+            adapter = bestSellerAdapter
+            layoutManager =
+                GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
             setHasFixedSize(true)
         }
     }
