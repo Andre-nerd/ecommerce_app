@@ -16,4 +16,31 @@
     <string name="price_discount">1045$</string>
     <string name="price_normal">1200$</string>
     <string name="samsung_note_20_ultra">Samsung Note 20 Ultra</string>
+    <string name="plus">+</string>
+    <string name="close">X</string>
+    <string name="done">Done</string>
+    <string name="filter_options">Filter options</string>
+    <string name="brand_filter">Brand</string>
+    <string name="price_filter">Price</string>
+
+    <string-array name="brandNames">
+        <item>Samsung</item>
+        <item>Iphone</item>
+        <item>Xiaomi</item>
+        <item>Motorola</item>
+    </string-array>
+
+    <string-array name="priceRange">
+        <item>$0–$100</item>
+        <item>$101-$300</item>
+        <item>$301-$600</item>
+        <item>$601-$1000</item>
+    </string-array>
+
+    <string-array name="sizeRange">
+        <item>4.5 to 5.5 inches</item>
+        <item>5.5 to 5.8 inches</item>
+        <item>5.8 to 6.2 inches</item>
+    </string-array>
+
 </resources>

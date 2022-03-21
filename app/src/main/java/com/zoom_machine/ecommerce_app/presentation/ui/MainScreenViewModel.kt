@@ -26,6 +26,9 @@ class MainScreenViewModel : ViewModel() {
     private val mutableBestSeller = MutableLiveData<List<BestSeller>>(emptyList())
     val bestSeller: LiveData<List<BestSeller>> = mutableBestSeller
 
+    private val mutableStatusFilter = MutableLiveData<Boolean>(false)
+    val statusFilter: LiveData<Boolean> = mutableStatusFilter
+
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
@@ -83,5 +86,10 @@ class MainScreenViewModel : ViewModel() {
 
     private fun getItemsTopMenu(): List<TopMenuItem> {
         return repository.getItemsTopMenu()
+    }
+
+    fun changeFilterVisible(){
+        val status = !statusFilter.value!!
+        mutableStatusFilter.value = status
     }
 }

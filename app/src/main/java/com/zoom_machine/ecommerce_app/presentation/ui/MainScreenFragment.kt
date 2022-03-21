@@ -2,7 +2,9 @@ package com.zoom_machine.ecommerce_app.presentation.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ScrollView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,6 +33,14 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         createHotSaleAdapter()
         createBestSellerAdapter()
         observeViewModel()
+        binding.run {
+            buttonOpenFilter.setOnClickListener {
+                viewModel.changeFilterVisible()
+            }
+            buttonDoneFilter.setOnClickListener {
+                viewModel.changeFilterVisible()
+            }
+        }
     }
 
     private fun observeViewModel() {
@@ -41,7 +51,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             hotSales.observe(viewLifecycleOwner) { listHotSale ->
                 hotSaleAdapter.update(listHotSale)
             }
-            bestSeller.observe(viewLifecycleOwner){listBestSeller ->
+            bestSeller.observe(viewLifecycleOwner) { listBestSeller ->
                 bestSellerAdapter.update(listBestSeller)
             }
             throwableMessage.observe(viewLifecycleOwner) { message ->
@@ -49,6 +59,10 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             }
             showProgressBar.observe(viewLifecycleOwner) {
                 binding.progressBarPhones.isVisible = it
+            }
+            statusFilter.observe(viewLifecycleOwner) { status ->
+                visibleFilterSetting(status)
+                binding.scrollMainScreen.fullScroll(ScrollView.FOCUS_DOWN)
             }
         }
     }
@@ -91,6 +105,23 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 Toast.LENGTH_LONG
             ).show()
             else -> {}
+        }
+    }
+
+    private fun visibleFilterSetting(value: Boolean) {
+        binding.run {
+            textBrand.isVisible = value
+            spinnerBrandFilter.isVisible = value
+            textPriceFilter.isVisible = value
+            spinnerPrice.isVisible = value
+            textSizeFilter.isVisible = value
+            spinnerSize.isVisible = value
+            buttonDoneFilter.isVisible = value
+            if(value){
+                buttonOpenFilter.setText(resources.getString(R.string.close))
+            }  else {
+                buttonOpenFilter.setText(resources.getString(R.string.plus))
+            }
         }
     }
 }
