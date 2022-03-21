@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="6dp"
+    android:background="@color/light_grey"
+    android:layout_centerHorizontal="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageTopSale"
+        android:layout_width="181dp"
+        android:layout_height="227dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bestSellerBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/imageCircle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:src="@drawable/ic_white_circle" />
+
+            <TextView
+                android:id="@+id/textNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/mark_pro_bold"
+                android:text="@string/new_text"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="68dp"
+                android:fontFamily="@font/mark_pro_bold"
+                android:hint="@string/samsung"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textBrandDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textBrand"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/mark_pro_bold"
+                android:hint="@string/samsung"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonHotSale"
+                style="@style/ButtonHotSale"
+                android:layout_width="98dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/textBrandDescription"
+                android:layout_marginStart="34dp"
+                android:layout_marginTop="31dp"
+                android:elevation="8dp"
+                android:fontFamily="@font/mark_pro_bold"
+                android:text="@string/buy_now"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

@@ -6,4 +6,11 @@
     <string name="computer">Computer</string>
     <string name="health">Health</string>
     <string name="books">Books</string>
+    <string name="server_connection_error">Server connection error</string>
+    <string name="buy_now">Buy now!</string>
+    <string name="samsung">Samsung</string>
+    <string name="new_text">New</string>
+    <string name="category">Category</string>
+    <string name="best_seller">Best Seller</string>
+    <string name="see_more">see more</string>
 </resources>
