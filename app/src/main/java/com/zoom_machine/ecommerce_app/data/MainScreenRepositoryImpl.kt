@@ -3,12 +3,12 @@ package com.zoom_machine.ecommerce_app.data
 import com.zoom_machine.ecommerce_app.R
 import com.zoom_machine.ecommerce_app.data.networking.RetrofitApi
 import com.zoom_machine.ecommerce_app.presentation.ui.ui_components.TopMenuItem
+import javax.inject.Inject
 
-class MainScreenRepository {
-    private val api = RetrofitApi().apiMainScreen
+class MainScreenRepository @Inject constructor(private val api:RetrofitApi) {
 
     suspend fun getContentPhones(): MainScreenResponse {
-        return api.getContentForMainScreen()[0]
+        return api.apiMainScreen.getContentForMainScreen()[0]
     }
 
     fun getItemsTopMenu(): List<TopMenuItem> {
