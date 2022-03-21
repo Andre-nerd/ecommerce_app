@@ -1,13 +1,13 @@
 package com.zoom_machine.ecommerce_app.presentation.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ScrollView
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zoom_machine.ecommerce_app.R
@@ -15,15 +15,28 @@ import com.zoom_machine.ecommerce_app.databinding.FragmentMainScreenBinding
 import com.zoom_machine.ecommerce_app.presentation.adapters.BestSellerAdapter
 import com.zoom_machine.ecommerce_app.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.ecommerce_app.presentation.adapters.TopMenuAdapter
+import com.zoom_machine.ecommerce_app.presentation.di.ViewModelAssistedFactory
 import com.zoom_machine.ecommerce_app.presentation.utils.MessageViewModel
+import com.zoom_machine.ecommerce_app.presentation.utils.appComponent
+import javax.inject.Inject
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
-    private val viewModel: MainScreenViewModel by viewModels()
+    @Inject
+    lateinit var viewModelAssistedFactory: ViewModelAssistedFactory
+    private val viewModel: MainScreenViewModel by activityViewModels {
+        viewModelAssistedFactory.create()
+    }
+
     private lateinit var binding: FragmentMainScreenBinding
     private lateinit var topMenuAdapter: TopMenuAdapter
     private lateinit var hotSaleAdapter: HotSaleAdapter
     private lateinit var bestSellerAdapter: BestSellerAdapter
+
+    override fun onAttach(context: Context) {
+        requireContext().appComponent.injectMainScreenFragment(this)
+        super.onAttach(context)
+    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -117,9 +130,9 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             textSizeFilter.isVisible = value
             spinnerSize.isVisible = value
             buttonDoneFilter.isVisible = value
-            if(value){
+            if (value) {
                 buttonOpenFilter.setText(resources.getString(R.string.close))
-            }  else {
+            } else {
                 buttonOpenFilter.setText(resources.getString(R.string.plus))
             }
         }

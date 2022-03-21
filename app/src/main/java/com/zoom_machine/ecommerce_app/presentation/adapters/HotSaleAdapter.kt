@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.zoom_machine.ecommerce_app.R
-import com.zoom_machine.ecommerce_app.data.HotSales
+import com.zoom_machine.ecommerce_app.domain.HotSales
 import com.zoom_machine.ecommerce_app.databinding.ItemHotSaleBinding
 
 
@@ -49,7 +49,6 @@ class HotSaleAdapter(
             binding.run {
                 if(item.is_new == null || !item.is_new){
                     imageNew.visibility = View.GONE
-                    textNew.visibility =View.GONE
                 }
                 textBrand.text = item.title
                 textBrandDescription.text = item.subtitle

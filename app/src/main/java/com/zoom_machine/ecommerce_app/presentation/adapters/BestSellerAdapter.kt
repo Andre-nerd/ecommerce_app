@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.zoom_machine.ecommerce_app.R
-import com.zoom_machine.ecommerce_app.data.BestSeller
+import com.zoom_machine.ecommerce_app.domain.BestSeller
 import com.zoom_machine.ecommerce_app.databinding.ItemBestSellerBinding
 
 class BestSellerAdapter(

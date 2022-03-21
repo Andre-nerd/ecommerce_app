@@ -1,4 +1,4 @@
-package com.zoom_machine.ecommerce_app.data
+package com.zoom_machine.ecommerce_app.domain
 
 import com.squareup.moshi.JsonClass
 

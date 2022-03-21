@@ -2,16 +2,19 @@ package com.zoom_machine.ecommerce_app.data
 
 import com.zoom_machine.ecommerce_app.R
 import com.zoom_machine.ecommerce_app.data.networking.RetrofitApi
+import com.zoom_machine.ecommerce_app.domain.MainScreenRepository
 import com.zoom_machine.ecommerce_app.presentation.ui.ui_components.TopMenuItem
 import javax.inject.Inject
 
-class MainScreenRepository @Inject constructor(private val api:RetrofitApi) {
+class MainScreenRepositoryImpl @Inject constructor(
+    private val api: RetrofitApi
+) : MainScreenRepository {
 
-    suspend fun getContentPhones(): MainScreenResponse {
+    override suspend fun getContentPhones(): MainScreenResponse {
         return api.apiMainScreen.getContentForMainScreen()[0]
     }
 
-    fun getItemsTopMenu(): List<TopMenuItem> {
+    override fun getItemsTopMenu(): List<TopMenuItem> {
         return listOf(
             TopMenuItem(R.drawable.ic_phone, R.string.phones, true),
             TopMenuItem(R.drawable.ic_computer, R.string.computer),

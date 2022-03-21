@@ -4,18 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zoom_machine.ecommerce_app.data.BestSeller
-import com.zoom_machine.ecommerce_app.data.HotSales
-import com.zoom_machine.ecommerce_app.data.MainScreenRepository
+import com.zoom_machine.ecommerce_app.domain.BestSeller
+import com.zoom_machine.ecommerce_app.domain.HotSales
+import com.zoom_machine.ecommerce_app.domain.MainScreenRepository
 import com.zoom_machine.ecommerce_app.presentation.ui.ui_components.TopMenuItem
 import com.zoom_machine.ecommerce_app.presentation.utils.MessageViewModel
 import com.zoom_machine.ecommerce_app.presentation.utils.PHONES
 import com.zoom_machine.ecommerce_app.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainScreenViewModel : ViewModel() {
-    private val repository = MainScreenRepository()
+class MainScreenViewModel @Inject constructor(
+    private val repositoryImpl: MainScreenRepository
+) : ViewModel() {
 
     private val mutableItemTopMenu = MutableLiveData<List<TopMenuItem>>(emptyList())
     val itemTopMenu: LiveData<List<TopMenuItem>> = mutableItemTopMenu
@@ -46,7 +48,7 @@ class MainScreenViewModel : ViewModel() {
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repository.getContentPhones()
+                val response = repositoryImpl.getContentPhones()
                 listOfHotSales = response.hotSales
                 listOfBestSeller = response.bestSeller
             } catch (t: Throwable) {
@@ -85,10 +87,10 @@ class MainScreenViewModel : ViewModel() {
     }
 
     private fun getItemsTopMenu(): List<TopMenuItem> {
-        return repository.getItemsTopMenu()
+        return repositoryImpl.getItemsTopMenu()
     }
 
-    fun changeFilterVisible(){
+    fun changeFilterVisible() {
         val status = !statusFilter.value!!
         mutableStatusFilter.value = status
     }

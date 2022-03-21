@@ -5,11 +5,13 @@
     android:id="@+id/scrollMainScreen"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
     android:background="@color/light_grey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:id="@+id/textViewSelectCategory"
@@ -105,8 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
             android:background="@drawable/filter_box"
+            android:paddingBottom="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bestSellerRecyclerView">

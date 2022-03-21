@@ -1,4 +1,4 @@
-package com.zoom_machine.l_tech_app.di
+package com.zoom_machine.ecommerce_app.presentation.di
 
 import dagger.assisted.AssistedFactory
 
