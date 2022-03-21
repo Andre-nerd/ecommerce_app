@@ -3,7 +3,9 @@ package com.zoom_machine.ecommerce_app.data.networking
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RetrofitApi @Inject constructor(okHttpClient: OkHttpClient) {
 
     private val retrofit = Retrofit.Builder()
