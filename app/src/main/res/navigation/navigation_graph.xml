@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
     app:startDestination="@id/mainScreenFragment">
-
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.zoom_machine.ecommerce_app.presentation.ui.MainScreenFragment"
+        android:name="com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment"
         android:label="MainScreenFragment" />
 </navigation>
