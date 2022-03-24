@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zoom_machine.feature_mainscreen.R
-
-import com.zoom_machine.feature_mainscreen.databinding.ItemHotSaleBinding
 import com.zoom_machine.api.services.data.HotSales
+import com.zoom_machine.feature_mainscreen.R
+import com.zoom_machine.feature_mainscreen.databinding.ItemHotSaleBinding
 
 
 class HotSaleAdapter(
@@ -18,8 +17,9 @@ class HotSaleAdapter(
     private var items: List<HotSales> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding =
-            ItemHotSaleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemBinding = ItemHotSaleBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
         return ViewHolder(itemBinding, onItemClick)
     }
 
@@ -47,7 +47,7 @@ class HotSaleAdapter(
 
         fun bind(item: HotSales) {
             binding.run {
-                if(item.is_new == null || item.is_new ==false){
+                if (item.is_new == null || item.is_new == false) {
                     imageNew.visibility = View.GONE
                 }
                 textBrand.text = item.title

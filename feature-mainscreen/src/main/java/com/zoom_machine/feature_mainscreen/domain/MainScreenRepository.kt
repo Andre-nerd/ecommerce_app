@@ -7,5 +7,4 @@ interface MainScreenRepository {
 
     suspend fun getContentPhones(): MainScreenResponse
 
-    fun getItemsTopMenu(): List<TopMenuItem>
 }

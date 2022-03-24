@@ -3,8 +3,8 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
+import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
-import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.presentation.utils.PHONES
@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class MainScreenViewModel(
-    private val repository: MainScreenRepository,
     private val getPhonesUseCase: GetPhonesUseCase
 ) : ViewModel() {
 
@@ -88,22 +87,28 @@ internal class MainScreenViewModel(
         }
     }
 
-    private fun getItemsTopMenu(): List<TopMenuItem> {
-        return repository.getItemsTopMenu()
-    }
-
     fun changeFilterVisible() {
         val status = !statusFilter.value!!
         mutableStatusFilter.value = status
     }
 
     class Factory @Inject constructor(
-        private val repository: MainScreenRepository,
         private val getPhonesUseCase: GetPhonesUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(repository, getPhonesUseCase) as T
+            return MainScreenViewModel(getPhonesUseCase) as T
         }
+    }
+
+    private fun getItemsTopMenu(): List<TopMenuItem> {
+        return listOf(
+            TopMenuItem(R.drawable.ic_phone, R.string.phones, true),
+            TopMenuItem(R.drawable.ic_computer, R.string.computer),
+            TopMenuItem(R.drawable.ic_health, R.string.health),
+            TopMenuItem(R.drawable.ic_book, R.string.books),
+            TopMenuItem(R.drawable.ic_phone, R.string.phones),
+            TopMenuItem(R.drawable.ic_health, R.string.health)
+        )
     }
 }
