@@ -7,12 +7,14 @@
     <dimen name="small_padding">8dp</dimen>
     <dimen name="mini_plus_padding">6dp</dimen>
     <dimen name="small_plus_padding">12dp</dimen>
+    <dimen name="padding_15">15dp</dimen>
     <dimen name="start_medium_padding">22dp</dimen>
     <dimen name="end_medium_padding">22dp</dimen>
     <dimen name="padding_48">48dp</dimen>
     <dimen name="end_normal_padding">15dp</dimen>
     <dimen name="padding_24">24dp</dimen>
     <dimen name="medium_padding">32dp</dimen>
+    <dimen name="padding_34">34dp</dimen>
     <dimen name="large_padding">68dp</dimen>
     <dimen name="max_padding">194dp</dimen>
     <dimen name="favorite_width">10dp</dimen>
