@@ -19,10 +19,10 @@ import com.zoom_machine.feature_mainscreen.presentation.adapters.BestSellerAdapt
 import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenComponentViewModel
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.ColorSettingTopMenu
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.getListResources
+import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
+import com.zoom_machine.feature_mainscreen.data.TopMenuItem
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
+import com.zoom_machine.feature_mainscreen.presentation.utils.getListResources
 import dagger.Lazy
 import javax.inject.Inject
 

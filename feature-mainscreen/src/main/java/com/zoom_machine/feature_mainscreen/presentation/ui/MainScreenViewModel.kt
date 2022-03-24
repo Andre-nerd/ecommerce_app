@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
+import com.zoom_machine.feature_mainscreen.data.TopMenuItem
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.presentation.utils.PHONES
 import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
@@ -34,8 +34,8 @@ internal class MainScreenViewModel(
     val showProgressBar = SingleLiveEvent<Boolean>()
 
     private suspend fun getContentPhones() {
-        var listOfHotSales: List<HotSales> = emptyList()
-        var listOfBestSeller: List<BestSeller> = emptyList()
+        var listOfHotSales = getEmptyHotSalesList()
+        var listOfBestSeller = getEmptyBestSeller()
         viewModelScope.launch(Dispatchers.Main) {
             showProgressBar.value = true
         }
@@ -96,5 +96,21 @@ internal class MainScreenViewModel(
     fun setItemsTopMenu(list: List<TopMenuItem>) {
         mutableItemTopMenu.value = list
         handlingClickOnTopMenu(PHONES)
+    }
+
+    private fun getEmptyHotSalesList(): List<HotSales> {
+        return listOf(
+            HotSales(1L, true, "No image", " ", " ", false),
+            HotSales(2L, true, "No image", " ", " ", false)
+        )
+    }
+
+    private fun getEmptyBestSeller(): List<BestSeller> {
+        return listOf(
+            BestSeller(1L, true, "No image", 0, 0, ""),
+            BestSeller(2L, false, "No image", 0, 0, ""),
+            BestSeller(3L, true, "No image", 0, 0, ""),
+            BestSeller(4L, false, "No image", 0, 0, ""),
+        )
     }
 }

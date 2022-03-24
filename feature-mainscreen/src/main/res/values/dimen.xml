@@ -9,7 +9,9 @@
     <dimen name="small_plus_padding">12dp</dimen>
     <dimen name="start_medium_padding">22dp</dimen>
     <dimen name="end_medium_padding">22dp</dimen>
+    <dimen name="padding_48">48dp</dimen>
     <dimen name="end_normal_padding">15dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
     <dimen name="medium_padding">32dp</dimen>
     <dimen name="large_padding">68dp</dimen>
     <dimen name="max_padding">194dp</dimen>
@@ -23,7 +25,14 @@
     <dimen name="large_font">25sp</dimen>
     <dimen name="font_medium">16sp</dimen>
     <dimen name="padding_16">16sp</dimen>
+    <dimen name="padding_42">42dp</dimen>
+    <dimen name="top_menu_hight">120dp</dimen>
     <dimen name="font_micro">10sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <dimen name="padding_first_spinner">132dp</dimen>
+    <dimen name="padding_80">80dp</dimen>
+    <dimen name="padding_142">142dp</dimen>
+    <dimen name="padding_204">204dp</dimen>
     <dimen name="small_white_circle_size">25dp</dimen>
     <dimen name="normal_corner_radius">8dp</dimen>
     <dimen name="hot_sale_banner_height">221dp</dimen>
@@ -34,5 +43,7 @@
     <dimen name="label_new_size">27dp</dimen>
     <dimen name="button_hotsale_width">98dp</dimen>
     <dimen name="button_hotsale_height">24dp</dimen>
+    <dimen name="button_open_filter">37dp</dimen>
+    <dimen name="button_done_filter">37dp</dimen>
 
 </resources>

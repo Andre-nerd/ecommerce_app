@@ -5,45 +5,45 @@
     android:id="@+id/scrollMainScreen"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
-    android:background="@color/light_grey">
+    android:background="@color/light_grey"
+    android:paddingBottom="@dimen/small_padding">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="@dimen/small_padding">
 
         <TextView
             android:id="@+id/textViewSelectCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginStart="@dimen/padding_16"
+            android:layout_marginTop="@dimen/mini_plus_padding"
             android:fontFamily="@font/mark_pro_bold"
             android:text="@string/select_category"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="@dimen/large_font"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="329dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="@dimen/small_plus_padding"
+            android:layout_marginEnd="@dimen/padding_16"
             android:text="@string/view_all"
             android:textColor="@color/ocher"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/font_medium"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topMenuRecyclerView"
             android:layout_width="wrap_content"
-            android:layout_height="120dp"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="42dp"
-            android:layout_marginEnd="27dp"
+            android:layout_height="@dimen/top_menu_hight"
+            android:layout_marginStart="@dimen/medium_padding"
+            android:layout_marginTop="@dimen/padding_42"
+            android:layout_marginEnd="@dimen/medium_padding"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +56,10 @@
             android:id="@+id/hotSaleRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/padding_24"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topMenuRecyclerView"
             tools:itemCount="5"
@@ -70,12 +69,12 @@
             android:id="@+id/textViewBestSeller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/padding_16"
+            android:layout_marginTop="@dimen/small_padding"
             android:fontFamily="@font/mark_pro_bold"
             android:text="@string/best_seller"
             android:textColor="@color/black"
-            android:textSize="25sp"
+            android:textSize="@dimen/large_font"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotSaleRecyclerView" />
 
@@ -83,21 +82,20 @@
             android:id="@+id/textSeeMore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="316dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/small_plus_padding"
+            android:layout_marginEnd="@dimen/padding_16"
             android:text="@string/see_more"
             android:textColor="@color/ocher"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/font_medium"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotSaleRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bestSellerRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="@dimen/padding_48"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.407"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotSaleRecyclerView"
             tools:itemCount="5"
@@ -106,9 +104,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/mini_plus_padding"
             android:background="@drawable/filter_box"
-            android:paddingBottom="6dp"
+            android:paddingBottom="@dimen/mini_plus_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bestSellerRecyclerView">
@@ -116,17 +114,17 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonOpenFilter"
                 style="@style/ButtonRound"
-                android:layout_width="37dp"
-                android:layout_height="37dp"
+                android:layout_width="@dimen/button_open_filter"
+                android:layout_height="@dimen/button_open_filter"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/padding_24"
+                android:layout_marginBottom="@dimen/padding_16"
                 android:backgroundTint="@color/black"
                 android:text="@string/plus"
                 android:textColor="@color/white"
-                android:textSize="18sp">
+                android:textSize="@dimen/font_18">
 
             </androidx.appcompat.widget.AppCompatButton>
 
@@ -134,16 +132,16 @@
                 android:id="@+id/buttonDoneFilter"
                 style="@style/ButtonRound"
                 android:layout_width="wrap_content"
-                android:layout_height="37dp"
+                android:layout_height="@dimen/button_open_filter"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="@dimen/padding_24"
+                android:layout_marginEnd="@dimen/padding_24"
+                android:layout_marginBottom="@dimen/padding_16"
                 android:backgroundTint="@color/ocher"
                 android:text="@string/done"
                 android:textColor="@color/white"
-                android:textSize="18sp">
+                android:textSize="@dimen/font_18">
 
             </androidx.appcompat.widget.AppCompatButton>
 
@@ -153,14 +151,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="132dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="94dp"
+                android:layout_marginStart="@dimen/padding_first_spinner"
+                android:layout_marginTop="@dimen/medium_padding"
                 android:fontFamily="@font/marc_pro_medium"
                 android:text="@string/filter_options"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="@dimen/font_18" />
 
             <TextView
                 android:id="@+id/textBrand"
@@ -168,22 +165,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/padding_80"
                 android:fontFamily="@font/marc_pro_medium"
                 android:text="@string/brand_filter"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="@dimen/font_18" />
 
             <Spinner
                 android:id="@+id/spinnerBrandFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textBrand"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/padding_24"
                 android:entries="@array/brandNames" />
 
             <TextView
@@ -192,22 +189,22 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="142dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/padding_142"
                 android:fontFamily="@font/marc_pro_medium"
                 android:text="@string/price_filter"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="@dimen/font_18" />
 
             <Spinner
                 android:id="@+id/spinnerPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textPriceFilter"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/padding_24"
                 android:entries="@array/priceRange" />
 
             <TextView
@@ -216,23 +213,23 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="204dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/padding_204"
                 android:fontFamily="@font/marc_pro_medium"
                 android:text="@string/price_filter"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="@dimen/font_18" />
 
             <Spinner
                 android:id="@+id/spinnerSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textSizeFilter"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="@dimen/padding_24"
+                android:layout_marginTop="@dimen/micro_padding"
+                android:layout_marginEnd="@dimen/padding_24"
+                android:layout_marginBottom="@dimen/padding_16"
                 android:entries="@array/sizeRange" />
         </RelativeLayout>
 

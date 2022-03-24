@@ -54,7 +54,7 @@ class HotSaleAdapter(
                 textBrandDescription.text = item.subtitle
                 Glide.with(itemView)
                     .load(item.picture)
-                    .error(R.drawable.no_image)
+                    .error(R.drawable.connect_error)
                     .into(topSaleBanner)
             }
         }

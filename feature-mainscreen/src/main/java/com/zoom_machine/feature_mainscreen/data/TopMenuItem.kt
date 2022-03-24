@@ -1,4 +1,4 @@
-package com.zoom_machine.feature_mainscreen.presentation.ui.ui_components
+package com.zoom_machine.feature_mainscreen.data
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes

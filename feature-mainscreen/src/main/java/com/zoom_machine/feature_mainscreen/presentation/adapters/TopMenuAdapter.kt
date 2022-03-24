@@ -1,13 +1,12 @@
 package com.zoom_machine.feature_mainscreen.presentation.adapters
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zoom_machine.feature_mainscreen.databinding.ItemTopMenuBinding
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.ColorSettingTopMenu
-import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
+import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
+import com.zoom_machine.feature_mainscreen.data.TopMenuItem
 
 
 class TopMenuAdapter(
