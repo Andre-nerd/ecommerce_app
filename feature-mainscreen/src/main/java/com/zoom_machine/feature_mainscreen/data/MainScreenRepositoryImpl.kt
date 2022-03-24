@@ -2,7 +2,7 @@ package com.zoom_machine.feature_mainscreen.data
 
 
 import com.zoom_machine.api.services.MainScreenService
-import com.zoom_machine.api.services.domain.MainScreenResponse
+import com.zoom_machine.api.services.data.MainScreenResponse
 import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem

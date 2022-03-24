@@ -5,16 +5,13 @@ package com.zoom_machine.feature_mainscreen.presentation.di
 import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.zoom_machine.api.services.MainScreenService
-import com.zoom_machine.api.services.domain.MainScreenResponse
 import com.zoom_machine.core.Feature
 import com.zoom_machine.feature_mainscreen.data.MainScreenRepositoryImpl
-import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment
 import dagger.Binds
 import dagger.Component
 import dagger.Module
-import dagger.Provides
 import kotlin.properties.Delegates.notNull
 
 

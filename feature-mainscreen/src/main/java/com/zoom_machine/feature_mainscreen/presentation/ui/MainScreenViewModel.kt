@@ -1,8 +1,8 @@
 package com.zoom_machine.feature_mainscreen.presentation.ui
 
 import androidx.lifecycle.*
-import com.zoom_machine.api.services.domain.BestSeller
-import com.zoom_machine.api.services.domain.HotSales
+import com.zoom_machine.api.services.data.BestSeller
+import com.zoom_machine.api.services.data.HotSales
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem

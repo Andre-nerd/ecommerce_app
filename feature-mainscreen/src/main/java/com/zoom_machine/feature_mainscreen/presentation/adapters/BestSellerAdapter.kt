@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zoom_machine.api.services.domain.BestSeller
+import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.databinding.ItemBestSellerBinding
 

@@ -1,8 +1,6 @@
 package com.zoom_machine.api.services
 
-import com.zoom_machine.api.services.domain.MainScreenResponse
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.zoom_machine.api.services.data.MainScreenResponse
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET

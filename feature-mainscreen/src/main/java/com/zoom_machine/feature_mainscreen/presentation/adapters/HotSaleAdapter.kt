@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.zoom_machine.feature_mainscreen.R
 
 import com.zoom_machine.feature_mainscreen.databinding.ItemHotSaleBinding
-import com.zoom_machine.api.services.domain.HotSales
+import com.zoom_machine.api.services.data.HotSales
 
 
 class HotSaleAdapter(

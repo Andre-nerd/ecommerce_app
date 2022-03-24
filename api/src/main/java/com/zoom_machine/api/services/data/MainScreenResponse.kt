@@ -1,4 +1,4 @@
-package com.zoom_machine.api.services.domain
+package com.zoom_machine.api.services.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
