@@ -4,15 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.databinding.ItemTopMenuBinding
+import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.ColorSettingTopMenu
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
 
 
 class TopMenuAdapter(
-    private val context: Context,
+    private val colors: ColorSettingTopMenu,
     private val onItemClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<TopMenuAdapter.ViewHolder>() {
     private var items: List<TopMenuItem> = emptyList()
@@ -20,7 +19,7 @@ class TopMenuAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             ItemTopMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(context, itemBinding, onItemClick)
+        return ViewHolder(itemBinding, onItemClick, colors)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,9 +35,9 @@ class TopMenuAdapter(
     }
 
     class ViewHolder(
-        private val context: Context,
         private val binding: ItemTopMenuBinding,
         onItemClick: (position: Int) -> Unit,
+        private val colors: ColorSettingTopMenu
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
@@ -50,14 +49,14 @@ class TopMenuAdapter(
         fun bind(item: TopMenuItem) {
             binding.run {
                 if (item.isSelected) {
-                    topMenuCircle.setColorFilter(ContextCompat.getColor(context, R.color.ocher))
-                    topMenuIcon.setColorFilter(ContextCompat.getColor(context, R.color.white))
+                    topMenuCircle.setColorFilter(colors.backgroundSelected)
+                    topMenuIcon.setColorFilter(colors.icoSelected)
                 } else {
-                    topMenuCircle.setColorFilter(ContextCompat.getColor(context, R.color.white))
-                    topMenuIcon.setColorFilter(ContextCompat.getColor(context, R.color.light_grey))
+                    topMenuCircle.setColorFilter(colors.backgroundUnSelected)
+                    topMenuIcon.setColorFilter(colors.icoUnSelected)
                 }
-                topMenuIcon.setImageDrawable(context.getDrawable(item.icon))
-                topMenuTitle.text = context.resources.getString(item.title)
+                topMenuIcon.setImageDrawable(item.icon)
+                topMenuTitle.text = item.title
             }
         }
     }

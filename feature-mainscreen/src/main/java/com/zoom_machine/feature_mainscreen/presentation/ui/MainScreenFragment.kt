@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,6 +19,9 @@ import com.zoom_machine.feature_mainscreen.presentation.adapters.BestSellerAdapt
 import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenComponentViewModel
+import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.ColorSettingTopMenu
+import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
+import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.getListResources
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
 import dagger.Lazy
 import javax.inject.Inject
@@ -32,7 +36,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     }
     private lateinit var binding: FragmentMainScreenBinding
     private val topMenuAdapter by lazy {
-        TopMenuAdapter(requireContext()) { position ->
+        TopMenuAdapter( getColorsTopMenu()) { position ->
             viewModel.handlingClickOnTopMenu(position)
         }.apply {
             binding.topMenuRecyclerView.adapter = this
@@ -67,6 +71,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainScreenBinding.bind(view)
+        viewModel.setItemsTopMenu(getItemsTopMenu())
         observeViewModel()
         binding.run {
             buttonOpenFilter.setOnClickListener {
@@ -128,6 +133,29 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 buttonOpenFilter.setText(resources.getString(R.string.plus))
             }
         }
+    }
+
+    private fun getColorsTopMenu(): ColorSettingTopMenu {
+        return ColorSettingTopMenu(
+            backgroundSelected = ContextCompat.getColor(requireContext(), R.color.ocher),
+            icoSelected = ContextCompat.getColor(requireContext(), R.color.white),
+            backgroundUnSelected = ContextCompat.getColor(requireContext(), R.color.white),
+            icoUnSelected = ContextCompat.getColor(requireContext(), R.color.light_grey)
+        )
+    }
+
+    private fun getItemsTopMenu(): List<TopMenuItem> {
+        val listItem = emptyList<TopMenuItem>().toMutableList()
+        val listResources = getListResources()
+        val context = requireContext()
+        listResources.forEach {
+            val item = TopMenuItem(
+                ContextCompat.getDrawable(context, it.first),
+                resources.getString(it.second)
+            )
+            listItem += item
+        }
+        return listItem
     }
 }
 

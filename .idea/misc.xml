@@ -23,6 +23,9 @@
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/app/src/main/res/layout/item_best_seller.xml" value="0.536" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/app/src/main/res/layout/item_hot_sale.xml" value="0.264" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/app/src/main/res/layout/item_top_menu.xml" value="0.536" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/drawable/ic_computer.xml" value="0.1" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/drawable/ic_phone.xml" value="0.169" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/layout/item_top_menu.xml" value="0.536" />
       </map>
     </option>
   </component>

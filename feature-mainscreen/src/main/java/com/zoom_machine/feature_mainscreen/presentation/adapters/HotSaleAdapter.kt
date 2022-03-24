@@ -12,7 +12,7 @@ import com.zoom_machine.feature_mainscreen.databinding.ItemHotSaleBinding
 
 
 class HotSaleAdapter(
-    private val onItemClick: (position: Int) -> Unit
+    private val onItemClick: (position: Int) -> Unit,
 ) : RecyclerView.Adapter<HotSaleAdapter.ViewHolder>() {
     private var items: List<HotSales> = emptyList()
 

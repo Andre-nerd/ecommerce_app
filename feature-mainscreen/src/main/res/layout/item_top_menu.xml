@@ -22,14 +22,14 @@
 
     <ImageView
         android:id="@+id/topMenuIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:elevation="9dp"
         android:src="@drawable/ic_phone"
         app:layout_constraintBottom_toBottomOf="@+id/topMenuCircle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topMenuCircle"
         app:tint="@color/light_grey" />
 
     <TextView

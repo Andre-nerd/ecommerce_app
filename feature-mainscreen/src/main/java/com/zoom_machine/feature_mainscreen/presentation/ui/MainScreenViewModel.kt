@@ -35,11 +35,11 @@ internal class MainScreenViewModel(
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
-    init {
-        val list = getItemsTopMenu()
-        mutableItemTopMenu.value = list
-        handlingClickOnTopMenu(PHONES)
-    }
+//    init {
+//        val list = getItemsTopMenu()
+//        mutableItemTopMenu.value = list
+//        handlingClickOnTopMenu(PHONES)
+//    }
 
     private suspend fun getContentPhones() {
         var listOfHotSales: List<HotSales> = emptyList()
@@ -101,14 +101,19 @@ internal class MainScreenViewModel(
         }
     }
 
-    private fun getItemsTopMenu(): List<TopMenuItem> {
-        return listOf(
-            TopMenuItem(R.drawable.ic_phone, R.string.phones, true),
-            TopMenuItem(R.drawable.ic_computer, R.string.computer),
-            TopMenuItem(R.drawable.ic_health, R.string.health),
-            TopMenuItem(R.drawable.ic_book, R.string.books),
-            TopMenuItem(R.drawable.ic_phone, R.string.phones),
-            TopMenuItem(R.drawable.ic_health, R.string.health)
-        )
+    fun setItemsTopMenu(list:List<TopMenuItem>){
+        mutableItemTopMenu.value = list
+        handlingClickOnTopMenu(PHONES)
     }
+
+//    private fun getItemsTopMenu(): List<TopMenuItem> {
+//        return listOf(
+//            TopMenuItem(R.drawable.ic_phone, R.string.phones, true),
+//            TopMenuItem(R.drawable.ic_computer, R.string.computer),
+//            TopMenuItem(R.drawable.ic_health, R.string.health),
+//            TopMenuItem(R.drawable.ic_book, R.string.books),
+//            TopMenuItem(R.drawable.ic_phone, R.string.phones),
+//            TopMenuItem(R.drawable.ic_health, R.string.health)
+//        )
+//    }
 }
