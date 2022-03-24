@@ -2,6 +2,7 @@ package com.zoom_machine.feature_mainscreen.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import com.zoom_machine.feature_mainscreen.databinding.ItemBestSellerBinding
 
 
 class BestSellerAdapter(
-    private val context: Context,
+    private val labelFavorite:Drawable?,
     private val onItemClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<BestSellerAdapter.ViewHolder>() {
     private var items: List<BestSeller> = emptyList()
@@ -21,7 +22,7 @@ class BestSellerAdapter(
         val itemBinding = ItemBestSellerBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return ViewHolder(context, itemBinding, onItemClick)
+        return ViewHolder(labelFavorite, itemBinding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -37,7 +38,7 @@ class BestSellerAdapter(
     }
 
     class ViewHolder(
-        private val context: Context,
+        private val labelFavorite:Drawable?,
         private val binding: ItemBestSellerBinding,
         onItemClick: (position: Int) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -50,7 +51,7 @@ class BestSellerAdapter(
         fun bind(item: BestSeller) {
             binding.run {
                 if (item.is_favorites != null && item.is_favorites == true) {
-                    imageFavorite.setImageDrawable(context.resources.getDrawable(R.drawable.ic_full_heart))
+                    imageFavorite.setImageDrawable(labelFavorite)
                 }
                 textDiscountPrice.text = item.discount_price.toString() + "$"
                 textNormalPrice.text = item.price_without_discount.toString() + "$"

@@ -3,7 +3,6 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
-import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
@@ -16,7 +15,6 @@ import javax.inject.Inject
 internal class MainScreenViewModel(
     private val getPhonesUseCase: GetPhonesUseCase
 ) : ViewModel() {
-
 
     private val mutableItemTopMenu = MutableLiveData<List<TopMenuItem>>(emptyList())
     val itemTopMenu: LiveData<List<TopMenuItem>> = mutableItemTopMenu
@@ -34,12 +32,6 @@ internal class MainScreenViewModel(
 
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
-
-//    init {
-//        val list = getItemsTopMenu()
-//        mutableItemTopMenu.value = list
-//        handlingClickOnTopMenu(PHONES)
-//    }
 
     private suspend fun getContentPhones() {
         var listOfHotSales: List<HotSales> = emptyList()
@@ -101,19 +93,8 @@ internal class MainScreenViewModel(
         }
     }
 
-    fun setItemsTopMenu(list:List<TopMenuItem>){
+    fun setItemsTopMenu(list: List<TopMenuItem>) {
         mutableItemTopMenu.value = list
         handlingClickOnTopMenu(PHONES)
     }
-
-//    private fun getItemsTopMenu(): List<TopMenuItem> {
-//        return listOf(
-//            TopMenuItem(R.drawable.ic_phone, R.string.phones, true),
-//            TopMenuItem(R.drawable.ic_computer, R.string.computer),
-//            TopMenuItem(R.drawable.ic_health, R.string.health),
-//            TopMenuItem(R.drawable.ic_book, R.string.books),
-//            TopMenuItem(R.drawable.ic_phone, R.string.phones),
-//            TopMenuItem(R.drawable.ic_health, R.string.health)
-//        )
-//    }
 }

@@ -52,7 +52,8 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     }
 
     private val bestSellerAdapter by lazy {
-        BestSellerAdapter(requireContext()) {
+        BestSellerAdapter(
+            ContextCompat.getDrawable(requireContext(),R.drawable.ic_full_heart)) {
         }.apply {
             binding.bestSellerRecyclerView.adapter = this
             binding.bestSellerRecyclerView.layoutManager = GridLayoutManager(
