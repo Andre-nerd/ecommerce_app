@@ -8,6 +8,7 @@
     <dimen name="mini_plus_padding">6dp</dimen>
     <dimen name="small_plus_padding">12dp</dimen>
     <dimen name="padding_15">15dp</dimen>
+    <dimen name="padding_13">13dp</dimen>
     <dimen name="start_medium_padding">22dp</dimen>
     <dimen name="end_medium_padding">22dp</dimen>
     <dimen name="padding_48">48dp</dimen>

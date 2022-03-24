@@ -36,7 +36,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/medium_padding"
-                android:layout_marginTop="@dimen/small_plus_padding"
+                android:layout_marginTop="@dimen/padding_13"
                 android:layout_marginEnd="@dimen/end_medium_padding"
                 android:layout_marginBottom="@dimen/medium_padding"
                 android:elevation="@dimen/max_elevation"
