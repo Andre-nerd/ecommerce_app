@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginStart="@dimen/small_padding"
+    android:layout_marginEnd="@dimen/small_padding"
     android:background="@color/light_grey">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/imageTopSale"
         android:layout_width="match_parent"
-        android:layout_height="221dp"
+        android:layout_height="@dimen/hot_sale_banner_height"
         android:layout_gravity="center_vertical|center_horizontal"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="@dimen/normal_corner_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,14 +27,14 @@
 
             <ImageView
                 android:id="@+id/imageNew"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
+                android:layout_width="@dimen/label_new_size"
+                android:layout_height="@dimen/label_new_size"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:layout_marginBottom="@dimen/medium_padding"
                 android:src="@drawable/eclipse_new_png" />
 
             <TextView
@@ -43,12 +43,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginStart="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/large_padding"
                 android:fontFamily="@font/mark_pro_bold"
                 android:hint="@string/samsung"
                 android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textSize="@dimen/large_font" />
 
             <TextView
                 android:id="@+id/textBrandDescription"
@@ -56,25 +56,25 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textBrand"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/mini_padding"
                 android:fontFamily="@font/mark_pro_bold"
                 android:hint="@string/samsung"
                 android:textColor="@color/white"
-                android:textSize="11sp" />
+                android:textSize="@dimen/normal_font" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonHotSale"
                 style="@style/ButtonHotSale"
-                android:layout_width="98dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/button_hotsale_width"
+                android:layout_height="@dimen/button_hotsale_height"
                 android:layout_below="@+id/textBrandDescription"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="31dp"
-                android:elevation="8dp"
+                android:layout_marginStart="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:elevation="@dimen/medium_elevation"
                 android:fontFamily="@font/mark_pro_bold"
                 android:text="@string/buy_now"
-                android:textSize="11sp"
+                android:textSize="@dimen/normal_font"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

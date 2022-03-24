@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="corner_radius">5dp</dimen>
+    <dimen name="ico_padding">30dp</dimen>
+    <dimen name="micro_padding">4dp</dimen>
+    <dimen name="mini_padding">5dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="mini_plus_padding">6dp</dimen>
+    <dimen name="small_plus_padding">12dp</dimen>
+    <dimen name="start_medium_padding">22dp</dimen>
+    <dimen name="end_medium_padding">22dp</dimen>
+    <dimen name="end_normal_padding">15dp</dimen>
+    <dimen name="medium_padding">32dp</dimen>
+    <dimen name="large_padding">68dp</dimen>
+    <dimen name="max_padding">194dp</dimen>
+    <dimen name="favorite_width">10dp</dimen>
+    <dimen name="favorite_height">11dp</dimen>
+    <dimen name="medium_elevation">8dp</dimen>
+    <dimen name="max_elevation">24dp</dimen>
+    <dimen name="top_menu_width">90dp</dimen>
+    <dimen name="top_menu_height">120dp</dimen>
+    <dimen name="normal_font">12sp</dimen>
+    <dimen name="large_font">25sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="padding_16">16sp</dimen>
+    <dimen name="font_micro">10sp</dimen>
+    <dimen name="small_white_circle_size">25dp</dimen>
+    <dimen name="normal_corner_radius">8dp</dimen>
+    <dimen name="hot_sale_banner_height">221dp</dimen>
+    <dimen name="best_seller_banner_width">181dp</dimen>
+    <dimen name="best_seller_banner_height">227dp</dimen>
+    <dimen name="best_seller_image_width">187dp</dimen>
+    <dimen name="best_seller_image_height">168dp</dimen>
+    <dimen name="label_new_size">27dp</dimen>
+    <dimen name="button_hotsale_width">98dp</dimen>
+    <dimen name="button_hotsale_height">24dp</dimen>
+
 </resources>
