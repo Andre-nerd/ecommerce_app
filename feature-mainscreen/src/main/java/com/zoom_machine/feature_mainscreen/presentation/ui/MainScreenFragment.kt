@@ -27,15 +27,36 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     @Inject
     internal lateinit var mainScreenViewModelFactory: Lazy<MainScreenViewModel.Factory>
-
     private val viewModel: MainScreenViewModel by viewModels {
         mainScreenViewModelFactory.get()
     }
-
     private lateinit var binding: FragmentMainScreenBinding
-    private lateinit var topMenuAdapter: TopMenuAdapter
-    private lateinit var hotSaleAdapter: HotSaleAdapter
-    private lateinit var bestSellerAdapter: BestSellerAdapter
+    private val topMenuAdapter by lazy {
+        TopMenuAdapter(requireContext()) { position ->
+            viewModel.handlingClickOnTopMenu(position)
+        }.apply {
+            binding.topMenuRecyclerView.adapter = this
+            binding.topMenuRecyclerView.setHasFixedSize(true)
+        }
+    }
+    private val hotSaleAdapter by lazy {
+        HotSaleAdapter {
+        }.apply {
+            binding.hotSaleRecyclerView.adapter = this
+            binding.hotSaleRecyclerView.setHasFixedSize(true)
+        }
+    }
+
+    private val bestSellerAdapter by lazy {
+        BestSellerAdapter(requireContext()) {
+        }.apply {
+            binding.bestSellerRecyclerView.adapter = this
+            binding.bestSellerRecyclerView.layoutManager = GridLayoutManager(
+                requireContext(), 2, LinearLayoutManager.VERTICAL, false
+            )
+            binding.bestSellerRecyclerView.setHasFixedSize(true)
+        }
+    }
 
     override fun onAttach(context: Context) {
         ViewModelProvider(this).get<MainScreenComponentViewModel>()
@@ -46,9 +67,6 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMainScreenBinding.bind(view)
-        createTopMenuAdapter()
-        createHotSaleAdapter()
-        createBestSellerAdapter()
         observeViewModel()
         binding.run {
             buttonOpenFilter.setOnClickListener {
@@ -81,36 +99,6 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 visibleFilterSetting(status)
                 binding.scrollMainScreen.fullScroll(ScrollView.FOCUS_DOWN)
             }
-        }
-    }
-
-    private fun createTopMenuAdapter() {
-        topMenuAdapter = TopMenuAdapter(requireContext()) { position ->
-            viewModel.handlingClickOnTopMenu(position)
-        }
-        with(binding.topMenuRecyclerView) {
-            adapter = topMenuAdapter
-            setHasFixedSize(true)
-        }
-    }
-
-    private fun createHotSaleAdapter() {
-        hotSaleAdapter = HotSaleAdapter {
-        }
-        with(binding.hotSaleRecyclerView) {
-            adapter = hotSaleAdapter
-            setHasFixedSize(true)
-        }
-    }
-
-    private fun createBestSellerAdapter() {
-        bestSellerAdapter = BestSellerAdapter(requireContext()) {
-        }
-        with(binding.bestSellerRecyclerView) {
-            adapter = bestSellerAdapter
-            layoutManager =
-                GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
-            setHasFixedSize(true)
         }
     }
 
