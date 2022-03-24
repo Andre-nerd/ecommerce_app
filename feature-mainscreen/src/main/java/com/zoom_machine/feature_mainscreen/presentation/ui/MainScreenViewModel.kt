@@ -1,7 +1,6 @@
 package com.zoom_machine.feature_mainscreen.presentation.ui
 
 import androidx.lifecycle.*
-import com.zoom_machine.api.services.MainScreenService
 import com.zoom_machine.api.services.domain.BestSeller
 import com.zoom_machine.api.services.domain.HotSales
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
@@ -13,12 +12,10 @@ import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import javax.inject.Provider
 
 internal class MainScreenViewModel(
     private val repository: MainScreenRepository,
-    mainScreenService: MainScreenService,
-    private val getPhonesUseCase: GetPhonesUseCase,
+    private val getPhonesUseCase: GetPhonesUseCase
 ) : ViewModel() {
 
 
@@ -102,12 +99,11 @@ internal class MainScreenViewModel(
 
     class Factory @Inject constructor(
         private val repository: MainScreenRepository,
-        private val mainScreenService: Provider<MainScreenService>,
         private val getPhonesUseCase: GetPhonesUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(repository, mainScreenService.get(),getPhonesUseCase) as T
+            return MainScreenViewModel(repository, getPhonesUseCase) as T
         }
     }
 }

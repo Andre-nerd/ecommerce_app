@@ -15,12 +15,7 @@ interface MainScreenService {
 }
 
 fun mainScreenService(): MainScreenService {
-    val okHttpClient = OkHttpClient.Builder()
-        .addNetworkInterceptor(
-            HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)
-        ).build()
-
+    val okHttpClient = OkHttp.client
     val retrofit = Retrofit.Builder()
         .baseUrl("https://shopapi-0575.restdb.io")
         .addConverterFactory(MoshiConverterFactory.create())
