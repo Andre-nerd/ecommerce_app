@@ -8,10 +8,12 @@ import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
 import javax.inject.Inject
 
-class MainScreenRepositoryImpl @Inject constructor() : MainScreenRepository {
+class MainScreenRepositoryImpl @Inject constructor(
+    private val mainScreenService: MainScreenService
+) : MainScreenRepository {
 
 
-    override suspend fun getContentPhones(mainScreenService: MainScreenService): MainScreenResponse {
+    override suspend fun getContentPhones(): MainScreenResponse {
         return mainScreenService.getContentForMainScreen()[0]
     }
 

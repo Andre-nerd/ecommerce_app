@@ -6,7 +6,7 @@ import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenu
 
 interface MainScreenRepository {
 
-    suspend fun getContentPhones(mainScreenService: MainScreenService): MainScreenResponse
+    suspend fun getContentPhones(): MainScreenResponse
 
     fun getItemsTopMenu(): List<TopMenuItem>
 }

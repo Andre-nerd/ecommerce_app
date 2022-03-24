@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.zoom_machine.api.services.MainScreenService
 import com.zoom_machine.api.services.domain.BestSeller
 import com.zoom_machine.api.services.domain.HotSales
+import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.ui_components.TopMenuItem
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
@@ -16,7 +17,8 @@ import javax.inject.Provider
 
 internal class MainScreenViewModel(
     private val repository: MainScreenRepository,
-    private val mainScreenService: MainScreenService
+    mainScreenService: MainScreenService,
+    private val getPhonesUseCase: GetPhonesUseCase,
 ) : ViewModel() {
 
 
@@ -51,7 +53,7 @@ internal class MainScreenViewModel(
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = repository.getContentPhones(mainScreenService)
+                val response = getPhonesUseCase.getContentPhones()
                 listOfHotSales = response.hotSales
                 listOfBestSeller = response.bestSeller
             } catch (t: Throwable) {
@@ -100,11 +102,12 @@ internal class MainScreenViewModel(
 
     class Factory @Inject constructor(
         private val repository: MainScreenRepository,
-        private val mainScreenService: Provider<MainScreenService>
+        private val mainScreenService: Provider<MainScreenService>,
+        private val getPhonesUseCase: GetPhonesUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(repository, mainScreenService.get()) as T
+            return MainScreenViewModel(repository, mainScreenService.get(),getPhonesUseCase) as T
         }
     }
 }
