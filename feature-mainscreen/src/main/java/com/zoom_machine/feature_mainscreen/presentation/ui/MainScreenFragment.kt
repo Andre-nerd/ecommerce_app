@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
 import com.zoom_machine.feature_mainscreen.data.TopMenuItem
-import com.zoom_machine.feature_mainscreen.databinding.FragmentMainScreenCopyBinding
+import com.zoom_machine.feature_mainscreen.databinding.FragmentMainScreenBinding
 import com.zoom_machine.feature_mainscreen.presentation.adapters.BestSellerAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
@@ -26,14 +26,14 @@ import dagger.Lazy
 import javax.inject.Inject
 
 
-class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main_screen_copy) {
+class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main_screen) {
 
     @Inject
     internal lateinit var mainScreenViewModelFactory: Lazy<MainScreenViewModel.Factory>
     private val viewModel: MainScreenViewModel by viewModels {
         mainScreenViewModelFactory.get()
     }
-    private lateinit var binding: FragmentMainScreenCopyBinding
+    private lateinit var binding: FragmentMainScreenBinding
     private val topMenuAdapter by lazy {
         TopMenuAdapter(getColorsTopMenu()) { position ->
             viewModel.handlingClickOnTopMenu(position)
@@ -71,7 +71,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMainScreenCopyBinding.bind(view)
+        binding = FragmentMainScreenBinding.bind(view)
         viewModel.setItemsTopMenu(getItemsTopMenu())
         observeViewModel()
         binding.run {
@@ -112,6 +112,14 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
             statusFilter.observe(viewLifecycleOwner) { status ->
                 visibleFilterSetting(status)
                 binding.scrollMainScreen.fullScroll(ScrollView.FOCUS_DOWN)
+            }
+        }
+        binding.run{
+            selectCategoryBlock.isRightMenuPressed.observe(viewLifecycleOwner){
+                showToastClick()
+            }
+            bestSellerBlock.isRightMenuPressed.observe(viewLifecycleOwner){
+                showToastClick()
             }
         }
     }
@@ -165,6 +173,10 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
             listItem += item
         }
         return listItem
+    }
+
+    private fun showToastClick(){
+       Toast.makeText(requireContext(),"Click",Toast.LENGTH_SHORT).show()
     }
 }
 

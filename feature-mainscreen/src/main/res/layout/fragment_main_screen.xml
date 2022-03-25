@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollMainScreen"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/light_grey"
     android:paddingBottom="@dimen/small_padding">
@@ -13,28 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_padding">
 
-        <TextView
-            android:id="@+id/textViewSelectCategory"
-            android:layout_width="wrap_content"
+        <com.zoom_machine.feature_mainscreen.presentation.ui.CategoryContainer
+            android:layout_width="match_parent"
+            android:id="@+id/selectCategoryBlock"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_16"
-            android:layout_marginTop="@dimen/mini_plus_padding"
-            android:fontFamily="@font/mark_pro_bold"
-            android:text="@string/select_category"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_font"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_plus_padding"
-            android:layout_marginEnd="@dimen/padding_16"
-            android:text="@string/view_all"
-            android:textColor="@color/ocher"
-            android:textSize="@dimen/font_medium"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -65,29 +49,13 @@
             tools:itemCount="5"
             tools:listitem="@layout/item_hot_sale" />
 
-        <TextView
-            android:id="@+id/textViewBestSeller"
-            android:layout_width="wrap_content"
+        <com.zoom_machine.feature_mainscreen.presentation.ui.CategoryContainer
+            android:id="@+id/bestSellerBlock"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding_16"
-            android:layout_marginTop="@dimen/small_padding"
-            android:fontFamily="@font/mark_pro_bold"
-            android:text="@string/best_seller"
-            android:textColor="@color/black"
-            android:textSize="@dimen/large_font"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/hotSaleRecyclerView" />
-
-        <TextView
-            android:id="@+id/textSeeMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_plus_padding"
-            android:layout_marginEnd="@dimen/padding_16"
-            android:text="@string/see_more"
-            android:textColor="@color/ocher"
-            android:textSize="@dimen/font_medium"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/small_plus_padding"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotSaleRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
