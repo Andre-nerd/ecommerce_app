@@ -4,6 +4,10 @@ import com.zoom_machine.feature_mainscreen.R
 
 
 const val PHONES = 0
+const val VIEW_ALL ="view_all"
+const val SELECT_CATEGORY = "Select Category"
+const val SEE_MORE = "see more"
+const val BEST_SELLER = "Best Seller"
 
 fun getListResources() = listOf<Pair<Int, Int>>(
     Pair(R.drawable.ic_phone, R.string.phones),

@@ -14,29 +14,28 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zoom_machine.feature_mainscreen.R
-import com.zoom_machine.feature_mainscreen.databinding.FragmentMainScreenBinding
+import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
+import com.zoom_machine.feature_mainscreen.data.TopMenuItem
+import com.zoom_machine.feature_mainscreen.databinding.FragmentMainScreenCopyBinding
 import com.zoom_machine.feature_mainscreen.presentation.adapters.BestSellerAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenComponentViewModel
-import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
-import com.zoom_machine.feature_mainscreen.data.TopMenuItem
-import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
-import com.zoom_machine.feature_mainscreen.presentation.utils.getListResources
+import com.zoom_machine.feature_mainscreen.presentation.utils.*
 import dagger.Lazy
 import javax.inject.Inject
 
 
-class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main_screen) {
+class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main_screen_copy) {
 
     @Inject
     internal lateinit var mainScreenViewModelFactory: Lazy<MainScreenViewModel.Factory>
     private val viewModel: MainScreenViewModel by viewModels {
         mainScreenViewModelFactory.get()
     }
-    private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var binding: FragmentMainScreenCopyBinding
     private val topMenuAdapter by lazy {
-        TopMenuAdapter( getColorsTopMenu()) { position ->
+        TopMenuAdapter(getColorsTopMenu()) { position ->
             viewModel.handlingClickOnTopMenu(position)
         }.apply {
             binding.topMenuRecyclerView.adapter = this
@@ -53,7 +52,8 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     private val bestSellerAdapter by lazy {
         BestSellerAdapter(
-            ContextCompat.getDrawable(requireContext(),R.drawable.ic_full_heart)) {
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_full_heart)
+        ) {
         }.apply {
             binding.bestSellerRecyclerView.adapter = this
             binding.bestSellerRecyclerView.layoutManager = GridLayoutManager(
@@ -71,10 +71,18 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMainScreenBinding.bind(view)
+        binding = FragmentMainScreenCopyBinding.bind(view)
         viewModel.setItemsTopMenu(getItemsTopMenu())
         observeViewModel()
         binding.run {
+            selectCategoryBlock.apply {
+                setTextToCategory(SELECT_CATEGORY)
+                setTextToRightMenu(VIEW_ALL)
+            }
+            bestSellerBlock.apply {
+                setTextToCategory(BEST_SELLER)
+                setTextToRightMenu(SEE_MORE)
+            }
             buttonOpenFilter.setOnClickListener {
                 viewModel.changeFilterVisible()
             }
