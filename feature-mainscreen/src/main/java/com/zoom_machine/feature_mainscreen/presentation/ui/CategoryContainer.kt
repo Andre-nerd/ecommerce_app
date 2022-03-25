@@ -7,7 +7,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 
 class CategoryContainer @JvmOverloads constructor(
@@ -21,7 +20,6 @@ class CategoryContainer @JvmOverloads constructor(
     val isCategoryPressed = SingleLiveEvent<Boolean>()
     val isRightMenuPressed = SingleLiveEvent<Boolean>()
     private val isCategoryFlowMutable = MutableStateFlow(false)
-    val isCategoryFlow = isCategoryFlowMutable.asStateFlow()
 
     init {
         val root = inflate(context, R.layout.container_category, this)

@@ -3,8 +3,8 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
-import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.data.TopMenuItem
+import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
 import com.zoom_machine.feature_mainscreen.presentation.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.presentation.utils.PHONES
 import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
@@ -32,6 +32,10 @@ internal class MainScreenViewModel(
 
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
+
+    init {
+        mutableStatusFilter.value = false
+    }
 
     private suspend fun getContentPhones() {
         var listOfHotSales = getEmptyHotSalesList()

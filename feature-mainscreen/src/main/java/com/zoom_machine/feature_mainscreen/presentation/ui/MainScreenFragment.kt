@@ -3,7 +3,6 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -83,12 +82,6 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 setTextToCategory(BEST_SELLER)
                 setTextToRightMenu(SEE_MORE)
             }
-            buttonOpenFilter.setOnClickListener {
-                viewModel.changeFilterVisible()
-            }
-            buttonDoneFilter.setOnClickListener {
-                viewModel.changeFilterVisible()
-            }
         }
     }
 
@@ -109,17 +102,19 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
             showProgressBar.observe(viewLifecycleOwner) {
                 binding.progressBarPhones.isVisible = it
             }
-            statusFilter.observe(viewLifecycleOwner) { status ->
-                visibleFilterSetting(status)
-                binding.scrollMainScreen.fullScroll(ScrollView.FOCUS_DOWN)
-            }
         }
-        binding.run{
-            selectCategoryBlock.isRightMenuPressed.observe(viewLifecycleOwner){
+        binding.run {
+            selectCategoryBlock.isRightMenuPressed.observe(viewLifecycleOwner) {
                 showToastClick()
             }
-            bestSellerBlock.isRightMenuPressed.observe(viewLifecycleOwner){
+            bestSellerBlock.isRightMenuPressed.observe(viewLifecycleOwner) {
                 showToastClick()
+            }
+            filterBottom.isOpenFilterPressed.observe(viewLifecycleOwner) {
+                handlingFilterBottom()
+            }
+            filterBottom.isDoneFilterPressed.observe(viewLifecycleOwner) {
+                handlingFilterBottom()
             }
         }
     }
@@ -135,20 +130,12 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         }
     }
 
-    private fun visibleFilterSetting(value: Boolean) {
-        binding.run {
-            textBrand.isVisible = value
-            spinnerBrandFilter.isVisible = value
-            textPriceFilter.isVisible = value
-            spinnerPrice.isVisible = value
-            textSizeFilter.isVisible = value
-            spinnerSize.isVisible = value
-            buttonDoneFilter.isVisible = value
-            if (value) {
-                buttonOpenFilter.setText(resources.getString(R.string.close))
-            } else {
-                buttonOpenFilter.setText(resources.getString(R.string.plus))
-            }
+    private fun handlingFilterBottom() {
+        viewModel.changeFilterVisible()
+        viewModel.statusFilter.value?.let { visible ->
+            binding.filterBottom.visibleFilterSetting(
+                visible
+            )
         }
     }
 
@@ -175,8 +162,8 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         return listItem
     }
 
-    private fun showToastClick(){
-       Toast.makeText(requireContext(),"Click",Toast.LENGTH_SHORT).show()
+    private fun showToastClick() {
+        Toast.makeText(requireContext(), "Click", Toast.LENGTH_SHORT).show()
     }
 }
 

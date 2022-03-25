@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/mini_plus_padding"
+    android:background="@drawable/filter_box"
+    android:paddingBottom="@dimen/padding_34">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonOpenFilter"
+        style="@style/ButtonRound"
+        android:layout_width="@dimen/button_open_filter"
+        android:layout_height="@dimen/button_open_filter"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/padding_24"
+        android:backgroundTint="@color/black"
+        android:text="@string/plus"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDoneFilter"
+        style="@style/ButtonRound"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/button_open_filter"
+        android:layout_marginTop="@dimen/padding_24"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:backgroundTint="@color/ocher"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_18"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:id="@+id/textFilterOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/filter_options"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textBrand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/mini_plus_padding"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/brand_filter"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOpenFilter" />
+
+    <Spinner
+        android:id="@+id/spinnerBrandFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:entries="@array/brandNames"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDoneFilter"
+        app:layout_constraintStart_toStartOf="@+id/textBrand"
+        app:layout_constraintTop_toBottomOf="@+id/textBrand" />
+
+    <TextView
+        android:id="@+id/textPriceFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_padding"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/price_filter"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/textBrand"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBrandFilter" />
+
+    <Spinner
+        android:id="@+id/spinnerPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:entries="@array/priceRange"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textPriceFilter"
+        app:layout_constraintTop_toBottomOf="@+id/textPriceFilter" />
+
+    <TextView
+        android:id="@+id/textSizeFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_padding"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/price_filter"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/textPriceFilter"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPrice" />
+
+    <Spinner
+        android:id="@+id/spinnerSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/small_padding"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:entries="@array/sizeRange"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDoneFilter"
+        app:layout_constraintStart_toStartOf="@+id/spinnerPrice"
+        app:layout_constraintTop_toBottomOf="@+id/textSizeFilter" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
