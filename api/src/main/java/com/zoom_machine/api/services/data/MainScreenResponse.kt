@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 @JsonClass(generateAdapter = true)
 data class MainScreenResponse @Inject constructor(
-    val _id: String,
     @Json(name = "home_store")
     val hotSales: List<HotSales>,
     @Json(name = "best_seller")
