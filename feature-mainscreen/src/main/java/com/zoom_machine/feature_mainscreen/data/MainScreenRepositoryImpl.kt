@@ -12,10 +12,6 @@ class MainScreenRepositoryImpl @Inject constructor(
 ) : MainScreenRepository {
 
     override suspend fun getContentPhones(): MainScreenResponse {
-        Log.d("NEWAPI","HERE getContentPhones()")
-        val list = mainScreenService.getContentForMainScreen()
-        Log.d("NEWAPI","List = $list")
-        return list
+        return mainScreenService.getContentForMainScreen()
     }
-
 }
