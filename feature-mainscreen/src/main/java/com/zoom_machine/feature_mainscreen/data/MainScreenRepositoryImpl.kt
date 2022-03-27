@@ -11,7 +11,7 @@ class MainScreenRepositoryImpl @Inject constructor(
 ) : MainScreenRepository {
 
     override suspend fun getContentPhones(): MainScreenResponse {
-        return mainScreenService.getContentForMainScreen()[0]
+        return mainScreenService.getContentForMainScreen()
     }
 
 }

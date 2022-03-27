@@ -7,15 +7,14 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 
 interface MainScreenService {
-    @GET("/rest/home")
-    @Headers("x-apikey:61ddae2e95cb716ea5ee48e4")
-    suspend fun getContentForMainScreen(): List<MainScreenResponse>
+    @GET("/home")
+    suspend fun getContentForMainScreen(): MainScreenResponse
 }
 
 fun mainScreenService(): MainScreenService {
     val okHttpClient = OkHttp.client
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://shopapi-0575.restdb.io")
+        .baseUrl("https://c7ae1634-c91d-4a58-8aa4-8aef21936a9d.mock.pstmn.io")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okHttpClient)
         .build()
