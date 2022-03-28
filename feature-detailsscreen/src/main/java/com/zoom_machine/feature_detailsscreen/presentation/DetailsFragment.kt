@@ -23,5 +23,6 @@ class DetailsFragment: Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailsBinding.bind(view)
         val f = topGalleryAdapter
+        binding.raiting.setRating(3.5f)
     }
 }
