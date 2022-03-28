@@ -2,4 +2,17 @@
 <resources>
     <dimen name="font_micro">10sp</dimen>
     <dimen name="font_18">18sp</dimen>
+    <dimen name="font_24">24sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="small_button_size">37dp</dimen>
+    <dimen name="margin_28">28dp</dimen>
+    <dimen name="margin_36">36dp</dimen>
+    <dimen name="margin_42">42dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="normal_corner_radius">8dp</dimen>
+    <dimen name="top_banner_height">349dp</dimen>
+    <dimen name="top_banner_width">437dp</dimen>
+    <dimen name="small_elevation">4dp</dimen>
+    <dimen name="large_corner_radius">16dp</dimen>
 </resources>

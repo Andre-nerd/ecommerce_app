@@ -9,6 +9,6 @@
         android:label="MainScreenFragment" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.zoom_machine.feature_detailsscreen.DetailsFragment"
+        android:name="com.zoom_machine.feature_detailsscreen.presentation.DetailsFragment"
         android:label="DetailsFragment" />
 </navigation>
