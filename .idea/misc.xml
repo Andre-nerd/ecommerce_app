@@ -25,11 +25,14 @@
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/app/src/main/res/layout/item_top_menu.xml" value="0.536" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/button_round.xml" value="0.169" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/d.xml" value="0.169" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/ic_batton_favorite.xml" value="0.169" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/ic_batton_favorite_full.xml" value="0.169" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/ic_star_empty.xml" value="0.169" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/ic_star_full.xml" value="0.169" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/ic_star_half.xml" value="0.169" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/drawable/round_box.xml" value="0.169" />
-        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/layout/fragment_details.xml" value="0.22644927536231885" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/layout/container_rating_stars.xml" value="0.536" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/layout/fragment_details.xml" value="0.1" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-detailsscreen/src/main/res/layout/item_top_banner.xml" value="0.1" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/drawable/ic_computer.xml" value="0.1" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/drawable/ic_phone.xml" value="0.169" />

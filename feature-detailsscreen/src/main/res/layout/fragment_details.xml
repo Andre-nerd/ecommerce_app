@@ -1,93 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollMainScreen"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_grey"
-    android:paddingBottom="@dimen/margin_8">
+    android:background="@color/light_grey">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonBackArrow"
+        android:layout_width="@dimen/small_button_size"
+        android:layout_height="@dimen/small_button_size"
+        android:layout_marginStart="@dimen/margin_36"
+        android:layout_marginTop="@dimen/margin_36"
+        android:background="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonBags"
+        android:layout_width="@dimen/small_button_size"
+        android:layout_height="@dimen/small_button_size"
+        android:layout_marginTop="@dimen/margin_36"
+        android:layout_marginEnd="@dimen/margin_36"
+        android:background="@drawable/ic_bags_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_6"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/product_details"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_18"
+        app:layout_constraintEnd_toStartOf="@+id/buttonBags"
+        app:layout_constraintStart_toEndOf="@+id/buttonBackArrow"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackArrow" />
+
+    <ScrollView
+        android:id="@+id/scrollMainScreen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonBackArrow"
-            android:layout_width="@dimen/small_button_size"
-            android:layout_height="@dimen/small_button_size"
-            android:layout_marginStart="@dimen/margin_42"
-            android:layout_marginTop="@dimen/margin_36"
-            android:background="@drawable/ic_back_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonBags"
-            android:layout_width="@dimen/small_button_size"
-            android:layout_height="@dimen/small_button_size"
-            android:layout_marginTop="@dimen/margin_36"
-            android:layout_marginEnd="@dimen/margin_36"
-            android:background="@drawable/ic_bags_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_6"
-            android:fontFamily="@font/marc_pro_medium"
-            android:text="@string/product_details"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_18"
-            app:layout_constraintEnd_toStartOf="@+id/buttonBags"
-            app:layout_constraintStart_toEndOf="@+id/buttonBackArrow"
-            app:layout_constraintTop_toTopOf="@+id/buttonBackArrow" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topGalleryRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_36"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_top_banner" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_28"
+        android:layout_marginTop="@dimen/margin_28"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBags">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="@dimen/margin_8"
-            android:background="@drawable/round_box"
-            app:layout_constraintTop_toBottomOf="@+id/topGalleryRecyclerView">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textTitleModel"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topGalleryRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/marc_pro_medium"
-                android:hint="@string/title"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_22"
-                android:layout_marginTop="@dimen/margin_28"
-                android:layout_marginStart="@dimen/margin_36"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonFavorite"
-                android:layout_marginTop="@dimen/margin_28"
-                android:layout_marginEnd="@dimen/margin_36"
-                android:layout_width="@dimen/small_button_size"
-                android:layout_height="@dimen/small_button_size"
-                android:background="@drawable/ic_bags_button"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_top_banner" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="@dimen/margin_8"
+                android:background="@drawable/round_box"
+                app:layout_constraintTop_toBottomOf="@+id/topGalleryRecyclerView">
+
+                <TextView
+                    android:id="@+id/textTitleModel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_36"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:fontFamily="@font/marc_pro_medium"
+                    android:hint="@string/title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_22"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonFavorite"
+                    android:layout_width="@dimen/small_button_size"
+                    android:layout_height="@dimen/small_button_size"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:layout_marginEnd="@dimen/margin_36"
+                    android:background="@drawable/ic_batton_favorite_full"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
