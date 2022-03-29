@@ -46,7 +46,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 Log.d("NEWAPI", " response = ${it.title}")
             }
             specification.observe(viewLifecycleOwner) {
-                viewPagerAdapter.update(listOf(it, it, it))
+                viewPagerAdapter.update(it)
                 attachTabMediator()
             }
         }

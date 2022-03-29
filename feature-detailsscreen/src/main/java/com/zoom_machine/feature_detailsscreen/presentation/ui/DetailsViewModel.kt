@@ -19,8 +19,8 @@ class DetailsViewModel : ViewModel() {
 
     private val mutableProduct = MutableLiveData<ProductDetails>()
     val product: LiveData<ProductDetails> = mutableProduct
-    private val mutableSpecification = MutableLiveData<ProductSpecification>()
-    val specification: LiveData<ProductSpecification> = mutableSpecification
+    private val mutableSpecification = MutableLiveData<List<ProductSpecification>>()
+    val specification: LiveData<List<ProductSpecification>> = mutableSpecification
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
@@ -54,8 +54,7 @@ class DetailsViewModel : ViewModel() {
         )
     }
 
-    fun ProductDetails.mapSpecification(): ProductSpecification {
-        return ProductSpecification(this.CPU, this.camera, this.ssd, this.sd)
+    fun ProductDetails.mapSpecification(): List<ProductSpecification> {
+        return List(3) { ProductSpecification(this.CPU, this.camera, this.ssd, this.sd) }
     }
-
 }
