@@ -57,4 +57,12 @@ class DetailsViewModel : ViewModel() {
     private fun ProductDetails.mapSpecification(): List<ProductSpecification> {
         return List(3) { ProductSpecification(this.CPU, this.camera, this.ssd, this.sd) }
     }
+
+    fun setFavorite() {
+        val newProduct = product.value
+        if (newProduct != null) {
+            newProduct.isFavorites = !(product.value?.isFavorites ?: false)
+        }
+        mutableProduct.value = newProduct ?: getEmptyProductDetails()
+    }
 }

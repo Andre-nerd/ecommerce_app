@@ -10,7 +10,7 @@ data class ProductDetails(
     val color: List<String>,
     val id: String,
     val images: List<String>,
-    val isFavorites: Boolean?,
+    var isFavorites: Boolean?,
     val price:Int,
     val rating:Float,
     val sd:String,
