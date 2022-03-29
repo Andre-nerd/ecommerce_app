@@ -18,7 +18,6 @@ class CapacityButtonContainer @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
     private val background: ImageView
     private val text: TextView
-    private var isActiveMutable = MutableLiveData(false)
     val isActive = SingleLiveEvent<Boolean>()
 
     init {
@@ -34,12 +33,10 @@ class CapacityButtonContainer @JvmOverloads constructor(
         val active = !(isActive.value ?: false)
         setColorToItems(active)
         isActive.value = true
-//        isActiveMutable.postValue(active)
     }
 
     fun setActiveStatus(value: Boolean) {
         setColorToItems(value)
-//        isActiveMutable.postValue(value)
     }
 
     fun setText(value: String) {

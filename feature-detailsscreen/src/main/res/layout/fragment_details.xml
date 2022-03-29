@@ -128,24 +128,13 @@
                 app:layout_constraintStart_toStartOf="@+id/tabLayout"
                 app:layout_constraintTop_toBottomOf="@+id/viewPagerAdapter" />
 
-            <ImageView
-                android:id="@+id/firstColor"
-                android:layout_width="@dimen/size_45"
-                android:layout_height="@dimen/size_45"
-                android:layout_marginTop="@dimen/margin_16"
-                android:src="@drawable/color_circle"
+            <com.zoom_machine.feature_detailsscreen.presentation.ui.ColorSelectContainer
+                android:id="@+id/selectColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@+id/textColorAndCapacity"
                 app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
 
-            <ImageView
-                android:id="@+id/secondColor"
-                android:layout_width="@dimen/size_45"
-                android:layout_height="@dimen/size_45"
-                android:layout_marginStart="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_16"
-                android:src="@drawable/color_circle"
-                app:layout_constraintStart_toEndOf="@+id/firstColor"
-                app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
 
             <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer
                 android:id="@+id/firstCapacity"
@@ -153,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_60"
                 android:layout_marginTop="@dimen/margin_20"
-                app:layout_constraintStart_toEndOf="@+id/secondColor"
+                app:layout_constraintStart_toEndOf="@+id/selectColor"
                 app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
 
             <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer

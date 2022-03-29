@@ -20,6 +20,7 @@
     <dimen name="margin_60">60dp</dimen>
     <dimen name="stroke_3">3dp</dimen>
     <dimen name="size_45">45dp</dimen>
+    <dimen name="size_18">18dp</dimen>
     <dimen name="capacity_width">70dp</dimen>
     <dimen name="capacity_height">30dp</dimen>
     <dimen name="normal_corner_radius">8dp</dimen>

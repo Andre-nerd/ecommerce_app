@@ -18,11 +18,17 @@ class DetailsViewModel : ViewModel() {
     private val repository = DetailsScreenRepositoryImpl()
 
     private val mutableProduct = MutableLiveData<ProductDetails>()
-    val product: LiveData<ProductDetails> = mutableProduct
+    val product: LiveData<ProductDetails>
+        get() = mutableProduct
     private val mutableSpecification = MutableLiveData<List<ProductSpecification>>()
-    val specification: LiveData<List<ProductSpecification>> = mutableSpecification
+    val specification: LiveData<List<ProductSpecification>>
+        get() = mutableSpecification
     private val mutableCapacity = MutableLiveData<Int>(0)
-    val capacity: LiveData<Int> = mutableCapacity
+    val capacity: LiveData<Int>
+        get() = mutableCapacity
+    private val mutableColorDevice = MutableLiveData(0)
+    val colorDevice: LiveData<Int>
+        get() = mutableColorDevice
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
@@ -52,7 +58,7 @@ class DetailsViewModel : ViewModel() {
 
     private fun getEmptyProductDetails(): ProductDetails {
         return ProductDetails(
-            NO_INFO, NO_INFO, listOf(NO_INFO), listOf(NO_INFO), NO_INFO,
+            NO_INFO, NO_INFO, listOf(NO_INFO, NO_INFO), listOf("#772D03", "#010035"), NO_INFO,
             listOf(NO_INFO), false, 0, 1F, NO_INFO, NO_INFO, NO_INFO
         )
     }
@@ -69,7 +75,11 @@ class DetailsViewModel : ViewModel() {
         mutableProduct.value = newProduct ?: getEmptyProductDetails()
     }
 
-    fun setCapacity(value:Int){
+    fun setCapacity(value: Int) {
         mutableCapacity.postValue(value)
+    }
+
+    fun setColorDevice(value: Int){
+        mutableColorDevice.postValue(value)
     }
 }

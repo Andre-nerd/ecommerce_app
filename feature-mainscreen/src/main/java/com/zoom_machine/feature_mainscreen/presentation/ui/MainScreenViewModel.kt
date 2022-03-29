@@ -17,18 +17,19 @@ internal class MainScreenViewModel(
 ) : ViewModel() {
 
     private val mutableItemTopMenu = MutableLiveData<List<TopMenuItem>>(emptyList())
-    val itemTopMenu: LiveData<List<TopMenuItem>> = mutableItemTopMenu
-
+    val itemTopMenu: LiveData<List<TopMenuItem>>
+        get() = mutableItemTopMenu
     private val mutableHotSales =
         MutableLiveData<List<HotSales>>(emptyList())
-    val hotSales: LiveData<List<HotSales>> = mutableHotSales
-
+    val hotSales: LiveData<List<HotSales>>
+        get() = mutableHotSales
     private val mutableBestSeller =
         MutableLiveData<List<BestSeller>>(emptyList())
-    val bestSeller: LiveData<List<BestSeller>> = mutableBestSeller
-
+    val bestSeller: LiveData<List<BestSeller>>
+        get() = mutableBestSeller
     private val mutableStatusFilter = MutableLiveData<Boolean>(false)
-    val statusFilter: LiveData<Boolean> = mutableStatusFilter
+    val statusFilter: LiveData<Boolean>
+        get() = mutableStatusFilter
 
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()

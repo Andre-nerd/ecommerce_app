@@ -53,14 +53,18 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private fun observeViewModel() {
         viewModel.run {
             product.observe(viewLifecycleOwner) {
+                Log.d("NEWAPI"," product.observe")
                 topGalleryAdapter.update(it.images)
-                setColorDevice(it.color)
+                binding.selectColor.setButtonColor(it.color)
                 setFavoriteButton(it.isFavorites ?: false)
                 setDeviceCapacity(it.capacity)
                 binding.run {
                     raiting.setRating(it.rating)
                     textTitleModel.text = it.title
                 }
+            }
+            colorDevice.observe(viewLifecycleOwner){
+                binding.selectColor.setWhichColor(it)
             }
             specification.observe(viewLifecycleOwner) {
                 viewPagerAdapter.update(it)
@@ -80,6 +84,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             secondCapacity.isActive.observe(viewLifecycleOwner){
                 viewModel.setCapacity(SECOND_CAPACITY)
             }
+            selectColor.whichColor.observe(viewLifecycleOwner){
+                Log.d("NEWAPI"," Color")
+                viewModel.setColorDevice(it)
+            }
         }
     }
 
@@ -88,13 +96,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         TabLayoutMediator(binding.tabLayout, binding.viewPagerAdapter) { tab, position ->
             tab.text = namesTab[position]
         }.attach()
-    }
-
-    private fun setColorDevice(color: List<String>) {
-        val colorFirst = Color.parseColor(color[0].replace("0x", "#", true))
-        binding.firstColor.setColorFilter(colorFirst, PorterDuff.Mode.MULTIPLY)
-        val colorSecond = Color.parseColor(color[1].replace("0x", "#", true))
-        binding.secondColor.setColorFilter(colorSecond, PorterDuff.Mode.MULTIPLY)
     }
 
     private fun setFavoriteButton(value: Boolean) {
