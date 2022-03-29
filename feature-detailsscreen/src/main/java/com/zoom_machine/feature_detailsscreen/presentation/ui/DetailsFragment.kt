@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.tabs.TabLayoutMediator
+import com.zoom_machine.api.services.data.ProductDetails
 import com.zoom_machine.feature_detailsscreen.R
 import com.zoom_machine.feature_detailsscreen.databinding.FragmentDetailsBinding
 import com.zoom_machine.feature_detailsscreen.presentation.adapters.TopGalleryAdapter
@@ -52,16 +53,8 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun observeViewModel() {
         viewModel.run {
-            product.observe(viewLifecycleOwner) {
-                Log.d("NEWAPI"," product.observe")
-                topGalleryAdapter.update(it.images)
-                binding.selectColor.setButtonColor(it.color)
-                setFavoriteButton(it.isFavorites ?: false)
-                setDeviceCapacity(it.capacity)
-                binding.run {
-                    raiting.setRating(it.rating)
-                    textTitleModel.text = it.title
-                }
+            product.observe(viewLifecycleOwner) {details ->
+                setDetailsToScreenFields(details)
             }
             colorDevice.observe(viewLifecycleOwner){
                 binding.selectColor.setWhichColor(it)
@@ -85,7 +78,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 viewModel.setCapacity(SECOND_CAPACITY)
             }
             selectColor.whichColor.observe(viewLifecycleOwner){
-                Log.d("NEWAPI"," Color")
                 viewModel.setColorDevice(it)
             }
         }
@@ -96,6 +88,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         TabLayoutMediator(binding.tabLayout, binding.viewPagerAdapter) { tab, position ->
             tab.text = namesTab[position]
         }.attach()
+    }
+
+    private fun setDetailsToScreenFields(details: ProductDetails){
+        topGalleryAdapter.update(details.images)
+        binding.selectColor.setButtonColor(details.color)
+        setFavoriteButton(details.isFavorites ?: false)
+        setDeviceCapacity(details.capacity)
+        binding.run {
+            raiting.setRating(details.rating)
+            textTitleModel.text = details.title
+        }
     }
 
     private fun setFavoriteButton(value: Boolean) {

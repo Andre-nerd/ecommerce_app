@@ -32,7 +32,6 @@ class DetailsViewModel : ViewModel() {
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
-
     suspend fun getDetailsProduct() {
         var response = getEmptyProductDetails()
         viewModelScope.launch(Dispatchers.Main) {
