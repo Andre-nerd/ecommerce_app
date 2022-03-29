@@ -54,7 +54,7 @@ class DetailsViewModel : ViewModel() {
         )
     }
 
-    fun ProductDetails.mapSpecification(): List<ProductSpecification> {
+    private fun ProductDetails.mapSpecification(): List<ProductSpecification> {
         return List(3) { ProductSpecification(this.CPU, this.camera, this.ssd, this.sd) }
     }
 }

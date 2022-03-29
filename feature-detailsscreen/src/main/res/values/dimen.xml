@@ -2,6 +2,7 @@
 <resources>
     <dimen name="font_micro">10sp</dimen>
     <dimen name="font_18">18sp</dimen>
+    <dimen name="font_16">16sp</dimen>
     <dimen name="font_24">24sp</dimen>
     <dimen name="font_22">22sp</dimen>
     <dimen name="font_20">20sp</dimen>
