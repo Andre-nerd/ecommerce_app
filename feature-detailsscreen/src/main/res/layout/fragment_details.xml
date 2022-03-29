@@ -154,6 +154,16 @@
                 app:layout_constraintStart_toEndOf="@+id/firstCapacity"
                 app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
 
+            <com.zoom_machine.feature_detailsscreen.presentation.ui.ButtonAddCartContainer
+                android:id="@+id/addCartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_36"
+                android:paddingBottom="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="@+id/tabLayout"
+                app:layout_constraintStart_toStartOf="@+id/viewPagerAdapter"
+                app:layout_constraintTop_toBottomOf="@+id/firstCapacity" />
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"

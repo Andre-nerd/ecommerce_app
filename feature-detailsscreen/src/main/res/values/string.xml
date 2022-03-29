@@ -3,6 +3,9 @@
     <string name="product_details">Product Details</string>
     <string name="title">Galaxy Note 20 Ultra</string>
     <string name="color_and_capacity">Select color and capacity</string>
+    <string name="_256">256</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="_1_500_00">1,150.00</string>
 
     <string-array name="namesTab">
         <item>Shop</item>

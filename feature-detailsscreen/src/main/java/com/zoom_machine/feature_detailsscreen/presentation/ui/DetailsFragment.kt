@@ -1,10 +1,8 @@
 package com.zoom_machine.feature_detailsscreen.presentation.ui
 
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -24,7 +22,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private lateinit var binding: FragmentDetailsBinding
     private val viewModel: DetailsViewModel by viewModels()
-
     private val topGalleryAdapter by lazy {
         TopGalleryAdapter().apply {
             binding.topGalleryRecyclerView.adapter = this
@@ -47,17 +44,23 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             buttonFavorite.setOnClickListener {
                 viewModel.setFavorite()
             }
+            buttonBags.setOnClickListener {
+                showToast()
+            }
+            buttonBackArrow.setOnClickListener {
+                showToast()
+            }
         }
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.run {
-            product.observe(viewLifecycleOwner) {details ->
+            product.observe(viewLifecycleOwner) { details ->
                 setDetailsToScreenFields(details)
             }
-            colorDevice.observe(viewLifecycleOwner){
-                binding.selectColor.setWhichColor(it)
+            colorDevice.observe(viewLifecycleOwner) {
+                binding.selectColor.switchColor()
             }
             specification.observe(viewLifecycleOwner) {
                 viewPagerAdapter.update(it)
@@ -66,19 +69,22 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             showProgressBar.observe(viewLifecycleOwner) {
                 binding.progressBar.isVisible = it
             }
-            capacity.observe(viewLifecycleOwner){
+            capacity.observe(viewLifecycleOwner) {
                 setActiveDeviceCapacity()
             }
         }
         binding.run {
-            firstCapacity.isActive.observe(viewLifecycleOwner){
+            firstCapacity.isActive.observe(viewLifecycleOwner) {
                 viewModel.setCapacity(FIRST_CAPACITY)
             }
-            secondCapacity.isActive.observe(viewLifecycleOwner){
+            secondCapacity.isActive.observe(viewLifecycleOwner) {
                 viewModel.setCapacity(SECOND_CAPACITY)
             }
-            selectColor.whichColor.observe(viewLifecycleOwner){
+            selectColor.whichColor.observe(viewLifecycleOwner) {
                 viewModel.setColorDevice(it)
+            }
+            addCartButton.clickAddCart.observe(viewLifecycleOwner){
+                showToast()
             }
         }
     }
@@ -90,14 +96,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }.attach()
     }
 
-    private fun setDetailsToScreenFields(details: ProductDetails){
+    private fun setDetailsToScreenFields(details: ProductDetails) {
         topGalleryAdapter.update(details.images)
-        binding.selectColor.setButtonColor(details.color)
+        binding.selectColor.setDeviceColor(details.color)
         setFavoriteButton(details.isFavorites ?: false)
         setDeviceCapacity(details.capacity)
         binding.run {
             raiting.setRating(details.rating)
             textTitleModel.text = details.title
+            addCartButton.setPrice(details.price)
         }
     }
 
@@ -112,24 +119,28 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun setDeviceCapacity(capacity: List<String>) {
         binding.run {
-            firstCapacity.setText(capacity[0] + GB)
-            secondCapacity.setText(capacity[1] + GB)
+            firstCapacity.setText(capacity[FIRST_CAPACITY] + GB)
+            secondCapacity.setText(capacity[SECOND_CAPACITY] + GB)
         }
     }
 
     private fun setActiveDeviceCapacity() {
         binding.run {
             when (viewModel.capacity.value) {
-                0 -> {
+                FIRST_CAPACITY -> {
                     firstCapacity.setActiveStatus(true)
                     secondCapacity.setActiveStatus(false)
                 }
-                1 -> {
+                SECOND_CAPACITY -> {
                     firstCapacity.setActiveStatus(false)
                     secondCapacity.setActiveStatus(true)
                 }
             }
         }
+    }
+
+    private fun showToast(){
+        Toast.makeText(requireContext(),"Click",Toast.LENGTH_SHORT).show()
     }
 }
 

@@ -40,20 +40,20 @@ class ColorSelectContainer @JvmOverloads constructor(
         }
     }
 
-    fun setButtonColor(color:List<String>){
+    fun setDeviceColor(color:List<String>){
         val colorFirst = Color.parseColor(color[0].replace("0x", "#", true))
         firstColor.setColorFilter(colorFirst, PorterDuff.Mode.MULTIPLY)
         val colorSecond = Color.parseColor(color[1].replace("0x", "#", true))
         secondColor.setColorFilter(colorSecond, PorterDuff.Mode.MULTIPLY)
     }
 
-    fun setWhichColor(value:Int){
+    fun switchColor(){
         when(whichColor.value){
-            0-> {
+            FIRST_COLOR-> {
                 firstOk.visibility = View.VISIBLE
                 secondOk.visibility = View.GONE
             }
-            1-> {
+            SECOND_COLOR-> {
                 firstOk.visibility = View.GONE
                 secondOk.visibility = View.VISIBLE
             }

@@ -58,7 +58,7 @@ class DetailsViewModel : ViewModel() {
     private fun getEmptyProductDetails(): ProductDetails {
         return ProductDetails(
             NO_INFO, NO_INFO, listOf(NO_INFO, NO_INFO), listOf("#772D03", "#010035"), NO_INFO,
-            listOf(NO_INFO), false, 0, 1F, NO_INFO, NO_INFO, NO_INFO
+            listOf(NO_INFO), false, 1200F, 3.5F, NO_INFO, NO_INFO, NO_INFO
         )
     }
 
