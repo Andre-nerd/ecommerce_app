@@ -21,8 +21,11 @@ class DetailsViewModel : ViewModel() {
     val product: LiveData<ProductDetails> = mutableProduct
     private val mutableSpecification = MutableLiveData<List<ProductSpecification>>()
     val specification: LiveData<List<ProductSpecification>> = mutableSpecification
+    private val mutableCapacity = MutableLiveData<Int>(0)
+    val capacity: LiveData<Int> = mutableCapacity
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
+
 
     suspend fun getDetailsProduct() {
         var response = getEmptyProductDetails()
@@ -64,5 +67,9 @@ class DetailsViewModel : ViewModel() {
             newProduct.isFavorites = !(product.value?.isFavorites ?: false)
         }
         mutableProduct.value = newProduct ?: getEmptyProductDetails()
+    }
+
+    fun setCapacity(value:Int){
+        mutableCapacity.postValue(value)
     }
 }
