@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.R
 import com.zoom_machine.feature_mainscreen.data.ColorSettingTopMenu
 import com.zoom_machine.feature_mainscreen.data.TopMenuItem

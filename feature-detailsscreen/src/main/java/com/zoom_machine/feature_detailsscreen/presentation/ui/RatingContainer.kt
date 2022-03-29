@@ -1,4 +1,4 @@
-package com.zoom_machine.feature_detailsscreen.presentation
+package com.zoom_machine.feature_detailsscreen.presentation.ui
 
 import android.content.Context
 import android.util.AttributeSet

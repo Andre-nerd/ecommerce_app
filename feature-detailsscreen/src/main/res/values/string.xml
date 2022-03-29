@@ -2,4 +2,10 @@
 <resources>
     <string name="product_details">Product Details</string>
     <string name="title">Galaxy Note 20 Ultra</string>
+
+    <string-array name="namesTab">
+        <item>Shop</item>
+        <item>Details</item>
+        <item>Features</item>
+    </string-array>
 </resources>

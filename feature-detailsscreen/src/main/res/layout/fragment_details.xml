@@ -43,8 +43,8 @@
         android:id="@+id/scrollMainScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_28"
         android:layout_marginTop="@dimen/margin_28"
+        android:paddingBottom="@dimen/margin_28"
         app:layout_constraintTop_toBottomOf="@+id/buttonBags">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,12 +83,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.zoom_machine.feature_detailsscreen.presentation.RatingContainer
+                <com.zoom_machine.feature_detailsscreen.presentation.ui.RatingContainer
                     android:id="@+id/raiting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="@+id/textTitleModel"
-                    app:layout_constraintTop_toBottomOf="@+id/textTitleModel"/>
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleModel" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonFavorite"
@@ -99,6 +99,28 @@
                     android:background="@drawable/ic_batton_favorite_full"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_12"
+                    android:layout_marginEnd="@dimen/margin_12"
+                    app:layout_constraintBottom_toTopOf="@+id/viewPagerAdapter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tabIndicatorHeight="@dimen/stroke_3"
+                    app:tabTextAppearance="@style/NoCapsTextAppearance" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerAdapter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_144"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

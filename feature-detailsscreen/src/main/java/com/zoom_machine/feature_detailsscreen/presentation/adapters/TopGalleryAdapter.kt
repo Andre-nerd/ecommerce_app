@@ -1,4 +1,4 @@
-package com.zoom_machine.feature_detailsscreen.presentation
+package com.zoom_machine.feature_detailsscreen.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
