@@ -50,6 +50,7 @@ dependencies {
     implementation project(path: ':feature-mainscreen')
     implementation project(":api")
     implementation project(path: ':feature-detailsscreen')
+    implementation project(path: ':nanigation')
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
