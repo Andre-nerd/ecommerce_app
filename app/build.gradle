@@ -50,6 +50,7 @@ dependencies {
     implementation project(":api")
     implementation project(path: ':feature-detailsscreen')
     implementation project(path: ':navigation')
+    implementation project(path: ':feature-cartscreen')
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
