@@ -23,6 +23,6 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.zoom_machine.feature_cartscreen.CartFragment"
+        android:name="com.zoom_machine.feature_cartscreen.presentation.ui.CartFragment"
         android:label="CartFragment" />
 </navigation>

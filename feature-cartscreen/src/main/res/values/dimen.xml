@@ -2,6 +2,7 @@
 <resources>
     <dimen name="margin_26">26sp</dimen>
     <dimen name="margin_68">68dp</dimen>
+    <dimen name="margin_64">64dp</dimen>
     <dimen name="margin8">8dp</dimen>
     <dimen name="size_111">111dp</dimen>
     <dimen name="size_89">89dp</dimen>

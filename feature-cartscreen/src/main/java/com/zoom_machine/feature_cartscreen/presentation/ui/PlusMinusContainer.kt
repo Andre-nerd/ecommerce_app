@@ -1,4 +1,4 @@
-package com.zoom_machine.feature_cartscreen
+package com.zoom_machine.feature_cartscreen.presentation.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,16 +7,17 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.zoom_machine.feature_cartscreen.R
 
 class PlusMinusContainer @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
-    private val plus: ImageView
-    private val minus: ImageView
+    val plus: ImageView
+    val minus: ImageView
     private val digit: TextView
-    private val mutableCount = MutableLiveData<Int>(1)
+    private val mutableCount = MutableLiveData<Int>()
     val count: LiveData<Int>
         get() = mutableCount
 
@@ -25,25 +26,10 @@ class PlusMinusContainer @JvmOverloads constructor(
         plus = root.findViewById(R.id.plus)
         minus = root.findViewById(R.id.minus)
         digit = root.findViewById(R.id.digit)
-        plus.setOnClickListener {
-            plusCount()
-            setDigit(count.value!!)
-        }
-        minus.setOnClickListener {
-            minusCount()
-            setDigit(count.value!!)
-        }
     }
 
     fun setDigit(value: Int) {
         digit.text = value.toString()
-    }
-
-    private fun plusCount(){
-        if(count.value!! < 10) mutableCount.value = mutableCount.value?.plus(1)
-    }
-
-    private fun minusCount(){
-        if(count.value!! > 0) mutableCount.value = mutableCount.value?.minus(1)
+        mutableCount.value = value
     }
 }
