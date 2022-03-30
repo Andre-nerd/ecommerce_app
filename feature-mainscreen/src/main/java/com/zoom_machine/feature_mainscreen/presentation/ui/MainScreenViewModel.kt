@@ -89,15 +89,6 @@ internal class MainScreenViewModel(
         mutableStatusFilter.value = status
     }
 
-    class Factory @Inject constructor(
-        private val getPhonesUseCase: GetPhonesUseCase
-    ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(getPhonesUseCase) as T
-        }
-    }
-
     fun setItemsTopMenu(list: List<TopMenuItem>) {
         mutableItemTopMenu.value = list
         handlingClickOnTopMenu(PHONES)
@@ -117,5 +108,13 @@ internal class MainScreenViewModel(
             BestSeller(3L, true, "No image", 0, 0, ""),
             BestSeller(4L, false, "No image", 0, 0, ""),
         )
+    }
+    class Factory @Inject constructor(
+        private val getPhonesUseCase: GetPhonesUseCase
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            require(modelClass == MainScreenViewModel::class.java)
+            return MainScreenViewModel(getPhonesUseCase) as T
+        }
     }
 }

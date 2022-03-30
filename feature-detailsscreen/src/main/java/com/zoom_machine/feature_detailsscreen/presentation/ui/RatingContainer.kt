@@ -38,7 +38,6 @@ class RatingContainer @JvmOverloads constructor(
     }
 
     fun setRating(value: Float) {
-
         if (value >= 0.5F) starZeroHalf.visibility = View.VISIBLE
         if (value >= 1F) star1.visibility = View.VISIBLE
         if (value >= 1.5F) starOneHalf.visibility = View.VISIBLE

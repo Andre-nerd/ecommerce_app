@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollMainScreen"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/light_grey"
-    app:layout_constraintTop_toBottomOf="@+id/buttonBags">
+    android:background="@color/light_grey">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -151,18 +154,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_20"
+                android:paddingBottom="@dimen/margin_80"
                 app:layout_constraintStart_toEndOf="@+id/firstCapacity"
                 app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
-
-            <com.zoom_machine.feature_detailsscreen.presentation.ui.ButtonAddCartContainer
-                android:id="@+id/addCartButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_36"
-                android:paddingBottom="@dimen/margin_16"
-                app:layout_constraintEnd_toEndOf="@+id/tabLayout"
-                app:layout_constraintStart_toStartOf="@+id/viewPagerAdapter"
-                app:layout_constraintTop_toBottomOf="@+id/firstCapacity" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
@@ -177,3 +171,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+        <com.zoom_machine.feature_detailsscreen.presentation.ui.ButtonAddCartContainer
+            android:id="@+id/addCartButton"
+            android:layout_width="match_parent"
+            android:elevation="@dimen/margin_6"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="@dimen/margin_6" />
+</RelativeLayout>

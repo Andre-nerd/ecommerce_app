@@ -4,5 +4,5 @@ import com.zoom_machine.api.services.data.ProductDetails
 
 interface DetailScreenRepository {
 
-    suspend fun getDetailsProduct():ProductDetails
+    suspend fun getDetailsProduct(): ProductDetails
 }

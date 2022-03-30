@@ -19,6 +19,7 @@
     <dimen name="margin_38">38dp</dimen>
     <dimen name="margin_144">144dp</dimen>
     <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_80">96dp</dimen>
     <dimen name="stroke_3">3dp</dimen>
     <dimen name="size_45">45dp</dimen>
     <dimen name="size_355">355dp</dimen>

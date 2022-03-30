@@ -9,19 +9,16 @@ import org.jetbrains.annotations.Nullable
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SingleLiveEvent<T> : MutableLiveData<T>() {
-
     private val mPending = AtomicBoolean(false)
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
-
         if (hasActiveObservers()) {
             Log.d(
                 "SLE",
                 "Multiple observers registered but only one will be notified of changes."
             )
         }
-
         super.observe(owner, Observer<T> { t ->
             if (mPending.compareAndSet(true, false)) {
                 observer.onChanged(t)
@@ -34,7 +31,6 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
         mPending.set(true)
         super.setValue(t)
     }
-
 
     @MainThread
     fun call() {

@@ -52,6 +52,8 @@ object MainScreenDepsStore : MainScreenProvider {
 }
 
 internal class MainScreenComponentViewModel : ViewModel() {
-    val newDetailComponent =
-        DaggerMainScreenComponent.builder().deps(MainScreenProvider.deps).build()
+    val newDetailComponent = DaggerMainScreenComponent
+        .builder()
+        .deps(MainScreenProvider.deps)
+        .build()
 }

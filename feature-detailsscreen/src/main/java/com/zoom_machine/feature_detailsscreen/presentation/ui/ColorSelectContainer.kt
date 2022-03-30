@@ -18,13 +18,13 @@ class ColorSelectContainer @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
-    private val firstColor:ImageView
-    private val secondColor:ImageView
-    private val firstOk:ImageView
-    private val secondOk:ImageView
+    private val firstColor: ImageView
+    private val secondColor: ImageView
+    private val firstOk: ImageView
+    private val secondOk: ImageView
     private val mutableWhichColor = MutableLiveData(0)
-    val whichColor:LiveData<Int>
-    get() = mutableWhichColor
+    val whichColor: LiveData<Int>
+        get() = mutableWhichColor
 
     init {
         val root = inflate(context, R.layout.container_color_select, this)
@@ -40,20 +40,20 @@ class ColorSelectContainer @JvmOverloads constructor(
         }
     }
 
-    fun setDeviceColor(color:List<String>){
+    fun setDeviceColor(color: List<String>) {
         val colorFirst = Color.parseColor(color[0].replace("0x", "#", true))
         firstColor.setColorFilter(colorFirst, PorterDuff.Mode.MULTIPLY)
         val colorSecond = Color.parseColor(color[1].replace("0x", "#", true))
         secondColor.setColorFilter(colorSecond, PorterDuff.Mode.MULTIPLY)
     }
 
-    fun switchColor(){
-        when(whichColor.value){
-            FIRST_COLOR-> {
+    fun switchColor() {
+        when (whichColor.value) {
+            FIRST_COLOR -> {
                 firstOk.visibility = View.VISIBLE
                 secondOk.visibility = View.GONE
             }
-            SECOND_COLOR-> {
+            SECOND_COLOR -> {
                 firstOk.visibility = View.GONE
                 secondOk.visibility = View.VISIBLE
             }

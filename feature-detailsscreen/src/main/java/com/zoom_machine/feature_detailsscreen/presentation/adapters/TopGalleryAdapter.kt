@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.zoom_machine.feature_detailsscreen.R
 import com.zoom_machine.feature_detailsscreen.databinding.ItemTopBannerBinding
 
-class TopGalleryAdapter  : RecyclerView.Adapter<TopGalleryAdapter.ViewHolder>() {
+class TopGalleryAdapter : RecyclerView.Adapter<TopGalleryAdapter.ViewHolder>() {
     private var items: List<String> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,10 +34,10 @@ class TopGalleryAdapter  : RecyclerView.Adapter<TopGalleryAdapter.ViewHolder>() 
         private val binding: ItemTopBannerBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
-                Glide.with(itemView)
-                    .load(item)
-                    .error(R.drawable.no_image)
-                    .into(binding.imageTopGallery)
+            Glide.with(itemView)
+                .load(item)
+                .error(R.drawable.no_image)
+                .into(binding.imageTopGallery)
         }
     }
 }

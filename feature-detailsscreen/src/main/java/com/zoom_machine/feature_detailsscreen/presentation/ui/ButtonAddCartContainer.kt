@@ -2,7 +2,6 @@ package com.zoom_machine.feature_detailsscreen.presentation.ui
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,8 +15,8 @@ class ButtonAddCartContainer @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
     private val price: TextView
-    private val button:ImageView
-    private val mutableClickAddCart = MutableLiveData(false)
+    private val button: ImageView
+    private val mutableClickAddCart = MutableLiveData<Boolean>()
     val clickAddCart: LiveData<Boolean>
         get() = mutableClickAddCart
 
@@ -31,15 +30,13 @@ class ButtonAddCartContainer @JvmOverloads constructor(
         }
     }
 
-    fun setPrice(value: Float){
-        val s = formatFloat(value)
-        Log.d("NEWAPI","s = $s")
-        price.text = s
+    fun setPrice(value: Float) {
+        price.text = formatFloat(value)
     }
 
-    private fun formatFloat(value:Float):String{
+    private fun formatFloat(value: Float): String {
         val s = value.toString()
-        val th = value%1000f
-        return s[0]+ " "+String.format("%.2f",th)
+        val th = value % 1000f
+        return s[0] + " " + String.format("%.2f", th)
     }
 }

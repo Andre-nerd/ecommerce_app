@@ -6,6 +6,7 @@
     <string name="_256">256</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="_1_500_00">1,150.00</string>
+    <string name="server_connection_error">Server connection error</string>
 
     <string-array name="namesTab">
         <item>Shop</item>

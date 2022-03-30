@@ -1,22 +1,20 @@
 package com.zoom_machine.feature_detailsscreen.presentation.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.ProductDetails
 import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_detailsscreen.data.DetailsScreenRepositoryImpl
 import com.zoom_machine.feature_detailsscreen.data.ProductSpecification
+import com.zoom_machine.feature_detailsscreen.domain.GetDetailsProductUseCase
 import com.zoom_machine.feature_detailsscreen.presentation.utils.NO_INFO
 import com.zoom_machine.feature_detailsscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailsViewModel : ViewModel() {
-
-    private val repository = DetailsScreenRepositoryImpl()
-
+class DetailsViewModel(
+    private val detailsProductUseCase: GetDetailsProductUseCase
+) : ViewModel() {
     private val mutableProduct = MutableLiveData<ProductDetails>()
     val product: LiveData<ProductDetails>
         get() = mutableProduct
@@ -39,7 +37,7 @@ class DetailsViewModel : ViewModel() {
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                response = repository.getDetailsProduct()
+                response = detailsProductUseCase.getDetailsProduct()
             } catch (t: Throwable) {
                 viewModelScope.launch(Dispatchers.Main) {
                     throwableMessage.value = MessageViewModel.CONNECTION_ERROR
@@ -58,7 +56,7 @@ class DetailsViewModel : ViewModel() {
     private fun getEmptyProductDetails(): ProductDetails {
         return ProductDetails(
             NO_INFO, NO_INFO, listOf(NO_INFO, NO_INFO), listOf("#772D03", "#010035"), NO_INFO,
-            listOf(NO_INFO), false, 1200F, 3.5F, NO_INFO, NO_INFO, NO_INFO
+            listOf(NO_INFO, NO_INFO), false, 1200F, 3.5F, NO_INFO, NO_INFO, NO_INFO
         )
     }
 
@@ -78,7 +76,16 @@ class DetailsViewModel : ViewModel() {
         mutableCapacity.postValue(value)
     }
 
-    fun setColorDevice(value: Int){
+    fun setColorDevice(value: Int) {
         mutableColorDevice.postValue(value)
+    }
+
+    class Factory @Inject constructor(
+        private val detailsProductUseCase: GetDetailsProductUseCase
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            require(modelClass == DetailsViewModel::class.java)
+            return DetailsViewModel(detailsProductUseCase) as T
+        }
     }
 }

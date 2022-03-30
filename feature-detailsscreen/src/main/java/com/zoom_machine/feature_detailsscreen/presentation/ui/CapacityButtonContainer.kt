@@ -6,8 +6,6 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.zoom_machine.feature_detailsscreen.R
 import com.zoom_machine.feature_detailsscreen.presentation.utils.SingleLiveEvent
 
@@ -29,7 +27,7 @@ class CapacityButtonContainer @JvmOverloads constructor(
         }
     }
 
-    fun changeActiveStatus() {
+    private fun changeActiveStatus() {
         val active = !(isActive.value ?: false)
         setColorToItems(active)
         isActive.value = true
