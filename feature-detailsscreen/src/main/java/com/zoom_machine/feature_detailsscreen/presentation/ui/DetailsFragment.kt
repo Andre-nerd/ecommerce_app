@@ -22,6 +22,7 @@ import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenCompo
 import com.zoom_machine.feature_detailsscreen.presentation.utils.FIRST_CAPACITY
 import com.zoom_machine.feature_detailsscreen.presentation.utils.GB
 import com.zoom_machine.feature_detailsscreen.presentation.utils.SECOND_CAPACITY
+import com.zoom_machine.nanigation.navigate
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -64,7 +65,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 showToast()
             }
             buttonBackArrow.setOnClickListener {
-                showToast()
+                navigateMainScreen()
             }
         }
         observeViewModel()
@@ -171,6 +172,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun showToast(){
         Toast.makeText(requireContext(),"Click",Toast.LENGTH_SHORT).show()
+    }
+    private fun navigateMainScreen(){
+        navigate(actionId = R.id.action_detailsScreenFragment_to_mainScreenFragment)
     }
 }
 

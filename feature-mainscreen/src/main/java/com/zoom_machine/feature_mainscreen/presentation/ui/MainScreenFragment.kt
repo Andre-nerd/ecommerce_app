@@ -2,6 +2,7 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -10,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zoom_machine.core.utils.MessageViewModel
@@ -23,6 +23,7 @@ import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenComponentViewModel
 import com.zoom_machine.feature_mainscreen.presentation.utils.*
+import com.zoom_machine.nanigation.navigate
 import dagger.Lazy
 import javax.inject.Inject
 
@@ -44,8 +45,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         }
     }
     private val hotSaleAdapter by lazy {
-        HotSaleAdapter {
-        }.apply {
+        HotSaleAdapter { onClick() }.apply {
             binding.hotSaleRecyclerView.adapter = this
             binding.hotSaleRecyclerView.setHasFixedSize(true)
         }
@@ -54,8 +54,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     private val bestSellerAdapter by lazy {
         BestSellerAdapter(
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_full_heart)
-        ) {
-        }.apply {
+        ) { onClick() }.apply {
             binding.bestSellerRecyclerView.adapter = this
             binding.bestSellerRecyclerView.layoutManager = GridLayoutManager(
                 requireContext(), 2, LinearLayoutManager.VERTICAL, false
@@ -93,7 +92,9 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 topMenuAdapter.update(listItems)
             }
             hotSales.observe(viewLifecycleOwner) { listHotSale ->
+                Log.d("NEWAPI","hotSales adapter = ${hotSaleAdapter}")
                 hotSaleAdapter.update(listHotSale)
+                Log.d("NEWAPI","hotSales.observe $listHotSale")
             }
             bestSeller.observe(viewLifecycleOwner) { listBestSeller ->
                 bestSellerAdapter.update(listBestSeller)
@@ -166,6 +167,10 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     private fun showToastClick() {
         Toast.makeText(requireContext(), "Click", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun onClick() {
+        navigate(R.id.action_mainScreenFragment_to_detailFragment)
     }
 }
 

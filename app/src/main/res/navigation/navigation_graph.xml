@@ -2,13 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/detailsFragment">
+    app:startDestination="@id/mainScreenFragment">
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment"
-        android:label="MainScreenFragment" />
+        android:label="MainScreenFragment">
+        <action
+            android:id="@id/action_mainScreenFragment_to_detailFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.zoom_machine.feature_detailsscreen.presentation.ui.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment">
+        <action
+            android:id="@id/action_detailsScreenFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment"
+            app:popUpTo="@id/navigation_graph" />
+    </fragment>
 </navigation>

@@ -16,7 +16,7 @@
             <option value="$PROJECT_DIR$/feature-cartscreen" />
             <option value="$PROJECT_DIR$/feature-detailsscreen" />
             <option value="$PROJECT_DIR$/feature-mainscreen" />
-            <option value="$PROJECT_DIR$/nanigation" />
+            <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

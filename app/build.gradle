@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -50,7 +49,7 @@ dependencies {
     implementation project(path: ':feature-mainscreen')
     implementation project(":api")
     implementation project(path: ':feature-detailsscreen')
-    implementation project(path: ':nanigation')
+    implementation project(path: ':navigation')
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
