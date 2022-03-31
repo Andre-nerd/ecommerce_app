@@ -3,4 +3,11 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="_1">1</string>
+    <string name="my_cart">My Cart</string>
+    <string name="add_address">Add address</string>
+    <string name="total">Total</string>
+    <string name="delivery">Delivery</string>
+    <string name="checkout">Checkout</string>
+    <string name="free">Free</string>
+    <string name="_0_00_us">$0,00 US</string>
 </resources>

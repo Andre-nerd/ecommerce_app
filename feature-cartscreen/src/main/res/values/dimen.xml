@@ -4,9 +4,12 @@
     <dimen name="margin_68">68dp</dimen>
     <dimen name="margin_64">64dp</dimen>
     <dimen name="margin8">8dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
     <dimen name="size_111">111dp</dimen>
     <dimen name="size_89">89dp</dimen>
     <dimen name="margin_23">23dp</dimen>
     <dimen name="ico_size_small">9dp</dimen>
+    <dimen name="small_button_size">37dp</dimen>
+    <dimen name="margin_36">36dp</dimen>
 
 </resources>
