@@ -62,7 +62,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 viewModel.setFavorite()
             }
             buttonBags.setOnClickListener {
-                showToast()
+                navigate(R.id.action_detailsScreenFragment_to_cartScreenFragment)
             }
             buttonBackArrow.setOnClickListener {
                 navigateMainScreen()

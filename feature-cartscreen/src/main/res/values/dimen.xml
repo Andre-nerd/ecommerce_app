@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_26">26sp</dimen>
+    <dimen name="margin_12">12dp</dimen>
     <dimen name="margin_68">68dp</dimen>
     <dimen name="margin_64">64dp</dimen>
     <dimen name="margin8">8dp</dimen>
+    <dimen name="margin_9">9dp</dimen>
     <dimen name="margin_6">6dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_55">55dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
     <dimen name="size_111">111dp</dimen>
     <dimen name="size_89">89dp</dimen>
+    <dimen name="size_18">18sp</dimen>
+    <dimen name="size_font_15">15sp</dimen>
+    <dimen name="size_20">20sp</dimen>
+    <dimen name="size_35">35sp</dimen>
+    <dimen name="alpha_025">0.25</dimen>
+    <dimen name="width_153">153dp</dimen>
+    <dimen name="width_326">326dp</dimen>
+    <dimen name="height_54">54dp</dimen>
     <dimen name="margin_23">23dp</dimen>
+    <dimen name="margin_44">44dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_90">90dp</dimen>
+    <dimen name="margin_194">194dp</dimen>
+    <dimen name="margin_270">270dp</dimen>
+    <dimen name="margin_269">269dp</dimen>
     <dimen name="ico_size_small">9dp</dimen>
     <dimen name="small_button_size">37dp</dimen>
     <dimen name="margin_36">36dp</dimen>

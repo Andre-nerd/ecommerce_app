@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.zoom_machine.api.services.data.Purchases
 import com.zoom_machine.feature_cartscreen.databinding.ItemPurchasesBinding
+import com.zoom_machine.feature_cartscreen.presentation.utils.formatFloat
 
 class PurchasesAdapter(
     private val onItemClick: (position: Int, countPurchase: Int) -> Unit
 ) : RecyclerView.Adapter<PurchasesAdapter.ViewHolder>() {
-    private var items: List<String> = emptyList()
+    private var items: List<Purchases> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding = ItemPurchasesBinding.inflate(
@@ -25,7 +27,7 @@ class PurchasesAdapter(
     override fun getItemCount(): Int = items.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun update(newList: List<String>) {
+    fun update(newList: List<Purchases>) {
         items = newList
         notifyDataSetChanged()
     }
@@ -47,11 +49,17 @@ class PurchasesAdapter(
             }
         }
 
-        fun bind(item: String) {
+        fun bind(item: Purchases) {
+            with(binding) {
+                textName.setText(item.name)
+                textPrice.setText("$" + formatFloat(item.price))
+                plusMinusContainer.setDigit(item.count)
+
 //                Glide.with(itemView)
 //                    .load(item)
 //                    .error(R.drawable.no_image)
 //                    .into(binding.imageTopGallery)
+            }
         }
 
         private fun plusCount(value: Int): Int {

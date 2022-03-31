@@ -9,10 +9,10 @@
         android:id="@+id/cardImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
         android:layout_marginStart="@dimen/margin_23"
         android:layout_marginTop="@dimen/margin_23"
         android:layout_marginBottom="@dimen/margin_23"
+        app:cardCornerRadius="@dimen/radius_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,6 +25,30 @@
             android:scaleType="centerCrop"
             android:src="@drawable/iphon" />
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="@dimen/width_153"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin8"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/model"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_18"
+        app:layout_constraintStart_toEndOf="@+id/cardImage"
+        app:layout_constraintTop_toTopOf="@+id/cardImage" />
+
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="@dimen/width_153"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin8"
+        android:fontFamily="@font/marc_pro_medium"
+        android:text="@string/_0_00_us"
+        android:textColor="@color/ocher"
+        android:textSize="@dimen/size_18"
+        app:layout_constraintBottom_toBottomOf="@+id/cardImage"
+        app:layout_constraintStart_toEndOf="@+id/cardImage" />
 
     <com.zoom_machine.feature_cartscreen.presentation.ui.PlusMinusContainer
         android:id="@+id/plusMinusContainer"
@@ -43,6 +67,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/plusMinusContainer"
         app:layout_constraintTop_toTopOf="@+id/plusMinusContainer" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

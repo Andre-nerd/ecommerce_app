@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/cartFragment">
+    app:startDestination="@id/mainScreenFragment">
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment"
@@ -20,9 +20,18 @@
             android:id="@id/action_detailsScreenFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment"
             app:popUpTo="@id/navigation_graph" />
+        <action
+            android:id="@id/action_detailsScreenFragment_to_cartScreenFragment"
+            app:destination="@id/cartFragment"
+            app:popUpTo="@id/navigation_graph"/>
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.zoom_machine.feature_cartscreen.presentation.ui.CartFragment"
-        android:label="CartFragment" />
+        android:label="CartFragment" >
+        <action
+            android:id="@id/action_cartFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/navigation_graph"/>
+    </fragment>
 </navigation>
