@@ -9,3 +9,7 @@ annotation class Feature
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
 annotation class FeatureDetails
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class FeatureCart

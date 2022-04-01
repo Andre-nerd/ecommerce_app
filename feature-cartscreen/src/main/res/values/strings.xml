@@ -12,4 +12,5 @@
     <string name="_0_00_us">$0,00 US</string>
     <string name="model">Model</string>
     <string name="_0">0</string>
+    <string name="server_connection_error">Server connection error</string>
 </resources>

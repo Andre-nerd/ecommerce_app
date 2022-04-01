@@ -1,10 +1,8 @@
 package com.zoom_machine.ecommerce_app.presentation.di
 
 import android.app.Application
-import com.zoom_machine.api.services.DetailsScreenService
-import com.zoom_machine.api.services.MainScreenService
-import com.zoom_machine.api.services.detailsScreenService
-import com.zoom_machine.api.services.mainScreenService
+import com.zoom_machine.api.services.*
+import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
 import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDeps
 import dagger.BindsInstance
@@ -14,9 +12,10 @@ import dagger.Provides
 import javax.inject.Scope
 
 @[AppScope Component(modules = [AppModule::class])]
-interface AppComponent : MainScreenDeps,DetailsScreenDeps {
+interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
     override val mainScreenService: MainScreenService
-    override val detailsScreenService:DetailsScreenService
+    override val detailsScreenService: DetailsScreenService
+    override val cartScreenService: CartScreenService
 
     @Component.Builder
     interface Builder {
@@ -30,8 +29,12 @@ interface AppComponent : MainScreenDeps,DetailsScreenDeps {
 class AppModule {
     @[Provides AppScope]
     fun provideMainScreenService() = mainScreenService()
+
     @[Provides AppScope]
     fun provideDetailsScreenService() = detailsScreenService()
+
+    @[Provides AppScope]
+    fun provideCartScreenService() = cartScreenService()
 }
 
 @Scope
