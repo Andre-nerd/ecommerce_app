@@ -36,6 +36,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textCountPurchases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/margin_6"
+            android:layout_marginBottom="@dimen/margin_28"
+            android:hint="@string/_2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_18"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonBags"
+            app:layout_constraintEnd_toEndOf="@+id/buttonBags"
+            app:layout_constraintStart_toStartOf="@+id/buttonBags" />
+        <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

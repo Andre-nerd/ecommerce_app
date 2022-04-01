@@ -11,4 +11,5 @@
     <color name="dark_grey">#AEAEAE</color>
     <color name="ocher">#FF6E4E</color>
     <color name="ocher_light">#FFC1B3</color>
+    <color name="red">#FF0000</color>
 </resources>

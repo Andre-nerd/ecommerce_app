@@ -67,6 +67,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             buttonBackArrow.setOnClickListener {
                 navigateMainScreen()
             }
+            addCartButton.setOnClickListener{
+                viewModel.addPurchasesCount()
+            }
         }
         observeViewModel()
     }
@@ -91,6 +94,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             }
             throwableMessage.observe(viewLifecycleOwner) { message ->
                 handlingThrowableMessage(message)
+            }
+            countPurchases.observe(viewLifecycleOwner) {count ->
+                displayCountPurchases(count)
             }
         }
         binding.run {
@@ -142,6 +148,13 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             firstCapacity.setText(capacity[FIRST_CAPACITY] + GB)
             secondCapacity.setText(capacity[SECOND_CAPACITY] + GB)
         }
+    }
+    private fun displayCountPurchases(count:Int){
+        binding.run{
+            textCountPurchases.isVisible = (count > 0)
+            textCountPurchases.text = count.toString()
+        }
+
     }
 
     private fun setActiveDeviceCapacity() {

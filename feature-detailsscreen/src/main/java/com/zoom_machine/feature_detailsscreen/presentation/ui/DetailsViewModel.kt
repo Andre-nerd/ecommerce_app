@@ -3,7 +3,6 @@ package com.zoom_machine.feature_detailsscreen.presentation.ui
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.ProductDetails
 import com.zoom_machine.core.utils.MessageViewModel
-import com.zoom_machine.feature_detailsscreen.data.DetailsScreenRepositoryImpl
 import com.zoom_machine.feature_detailsscreen.data.ProductSpecification
 import com.zoom_machine.feature_detailsscreen.domain.GetDetailsProductUseCase
 import com.zoom_machine.feature_detailsscreen.presentation.utils.NO_INFO
@@ -27,6 +26,9 @@ class DetailsViewModel(
     private val mutableColorDevice = MutableLiveData(0)
     val colorDevice: LiveData<Int>
         get() = mutableColorDevice
+    private val mutableCountPurchases = MutableLiveData(0)
+    val countPurchases: LiveData<Int>
+        get() = mutableCountPurchases
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
 
@@ -78,6 +80,10 @@ class DetailsViewModel(
 
     fun setColorDevice(value: Int) {
         mutableColorDevice.postValue(value)
+    }
+
+    fun addPurchasesCount(){
+        mutableCountPurchases.value = mutableCountPurchases.value?.plus(1)
     }
 
     class Factory @Inject constructor(
