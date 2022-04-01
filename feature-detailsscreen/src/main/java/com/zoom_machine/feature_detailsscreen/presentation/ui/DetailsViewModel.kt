@@ -82,7 +82,7 @@ class DetailsViewModel(
         mutableColorDevice.postValue(value)
     }
 
-    fun addPurchasesCount(){
+    fun addPurchasesCount() {
         mutableCountPurchases.value = mutableCountPurchases.value?.plus(1)
     }
 

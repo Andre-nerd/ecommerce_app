@@ -11,183 +11,185 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonBackArrow"
-            android:layout_width="@dimen/small_button_size"
-            android:layout_height="@dimen/small_button_size"
-            android:layout_marginStart="@dimen/margin_36"
-            android:layout_marginTop="@dimen/margin_36"
-            android:background="@drawable/ic_back_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonBags"
-            android:layout_width="@dimen/small_button_size"
-            android:layout_height="@dimen/small_button_size"
-            android:layout_marginTop="@dimen/margin_36"
-            android:layout_marginEnd="@dimen/margin_36"
-            android:background="@drawable/ic_bags_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textCountPurchases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/margin_6"
-            android:layout_marginBottom="@dimen/margin_28"
-            android:hint="@string/_2"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_18"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonBags"
-            app:layout_constraintEnd_toEndOf="@+id/buttonBags"
-            app:layout_constraintStart_toStartOf="@+id/buttonBags" />
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_6"
-            android:fontFamily="@font/marc_pro_medium"
-            android:text="@string/product_details"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_18"
-            app:layout_constraintEnd_toStartOf="@+id/buttonBags"
-            app:layout_constraintStart_toEndOf="@+id/buttonBackArrow"
-            app:layout_constraintTop_toTopOf="@+id/buttonBackArrow" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topGalleryRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonBackArrow"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_top_banner" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:background="@drawable/round_box"
-            app:layout_constraintTop_toBottomOf="@+id/topGalleryRecyclerView">
-
-            <TextView
-                android:id="@+id/textTitleModel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_36"
-                android:layout_marginTop="@dimen/margin_28"
-                android:fontFamily="@font/marc_pro_medium"
-                android:hint="@string/title"
-                android:textColor="@color/black"
-                android:textSize="@dimen/font_22"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.zoom_machine.feature_detailsscreen.presentation.ui.RatingContainer
-                android:id="@+id/raiting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/textTitleModel"
-                app:layout_constraintTop_toBottomOf="@+id/textTitleModel" />
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonFavorite"
+                android:id="@+id/buttonBackArrow"
                 android:layout_width="@dimen/small_button_size"
                 android:layout_height="@dimen/small_button_size"
-                android:layout_marginTop="@dimen/margin_28"
-                android:layout_marginEnd="@dimen/margin_36"
-                android:background="@drawable/ic_batton_favorite"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/margin_36"
+                android:layout_marginTop="@dimen/margin_36"
+                android:background="@drawable/ic_back_arrow"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_12"
-                android:layout_marginEnd="@dimen/margin_12"
-                app:layout_constraintBottom_toTopOf="@+id/viewPagerAdapter"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonBags"
+                android:layout_width="@dimen/small_button_size"
+                android:layout_height="@dimen/small_button_size"
+                android:layout_marginTop="@dimen/margin_36"
+                android:layout_marginEnd="@dimen/margin_36"
+                android:background="@drawable/ic_bags_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:tabIndicatorHeight="@dimen/stroke_3"
-                app:tabTextAppearance="@style/NoCapsTextAppearance" />
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerAdapter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_144"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textColorAndCapacity"
+                android:id="@+id/textCountPurchases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_28"
-                android:fontFamily="@font/marc_pro_medium"
-                android:text="@string/color_and_capacity"
+                android:layout_marginBottom="@dimen/margin_28"
+                android:elevation="@dimen/margin_6"
+                android:hint="@string/_2"
                 android:textColor="@color/black"
-                android:textSize="@dimen/font_16"
-                app:layout_constraintStart_toStartOf="@+id/tabLayout"
-                app:layout_constraintTop_toBottomOf="@+id/viewPagerAdapter" />
+                android:textSize="@dimen/font_18"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonBags"
+                app:layout_constraintEnd_toEndOf="@+id/buttonBags"
+                app:layout_constraintStart_toStartOf="@+id/buttonBags" />
 
-            <com.zoom_machine.feature_detailsscreen.presentation.ui.ColorSelectContainer
-                android:id="@+id/selectColor"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/textColorAndCapacity"
-                app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
+                android:layout_marginTop="@dimen/margin_6"
+                android:fontFamily="@font/marc_pro_medium"
+                android:text="@string/product_details"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_18"
+                app:layout_constraintEnd_toStartOf="@+id/buttonBags"
+                app:layout_constraintStart_toEndOf="@+id/buttonBackArrow"
+                app:layout_constraintTop_toTopOf="@+id/buttonBackArrow" />
 
 
-            <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer
-                android:id="@+id/firstCapacity"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topGalleryRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_60"
-                android:layout_marginTop="@dimen/margin_20"
-                app:layout_constraintStart_toEndOf="@+id/selectColor"
-                app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
-
-            <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer
-                android:id="@+id/secondCapacity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_20"
-                android:paddingBottom="@dimen/margin_80"
-                app:layout_constraintStart_toEndOf="@+id/firstCapacity"
-                app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/buttonBackArrow"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_top_banner" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
-        <com.zoom_machine.feature_detailsscreen.presentation.ui.ButtonAddCartContainer
-            android:id="@+id/addCartButton"
-            android:layout_width="match_parent"
-            android:elevation="@dimen/margin_6"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:paddingBottom="@dimen/margin_6" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:background="@drawable/round_box"
+                app:layout_constraintTop_toBottomOf="@+id/topGalleryRecyclerView">
+
+                <TextView
+                    android:id="@+id/textTitleModel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_36"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:fontFamily="@font/marc_pro_medium"
+                    android:hint="@string/title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_22"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.zoom_machine.feature_detailsscreen.presentation.ui.RatingContainer
+                    android:id="@+id/raiting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/textTitleModel"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleModel" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonFavorite"
+                    android:layout_width="@dimen/small_button_size"
+                    android:layout_height="@dimen/small_button_size"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:layout_marginEnd="@dimen/margin_36"
+                    android:background="@drawable/ic_batton_favorite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_12"
+                    android:layout_marginEnd="@dimen/margin_12"
+                    app:layout_constraintBottom_toTopOf="@+id/viewPagerAdapter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tabIndicatorHeight="@dimen/stroke_3"
+                    app:tabTextAppearance="@style/NoCapsTextAppearance" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerAdapter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_144"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textColorAndCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_28"
+                    android:fontFamily="@font/marc_pro_medium"
+                    android:text="@string/color_and_capacity"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_16"
+                    app:layout_constraintStart_toStartOf="@+id/tabLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPagerAdapter" />
+
+                <com.zoom_machine.feature_detailsscreen.presentation.ui.ColorSelectContainer
+                    android:id="@+id/selectColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/textColorAndCapacity"
+                    app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
+
+
+                <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer
+                    android:id="@+id/firstCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_60"
+                    android:layout_marginTop="@dimen/margin_20"
+                    app:layout_constraintStart_toEndOf="@+id/selectColor"
+                    app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
+
+                <com.zoom_machine.feature_detailsscreen.presentation.ui.CapacityButtonContainer
+                    android:id="@+id/secondCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:paddingBottom="@dimen/margin_80"
+                    app:layout_constraintStart_toEndOf="@+id/firstCapacity"
+                    app:layout_constraintTop_toBottomOf="@+id/textColorAndCapacity" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.zoom_machine.feature_detailsscreen.presentation.ui.ButtonAddCartContainer
+        android:id="@+id/addCartButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:elevation="@dimen/margin_6"
+        android:paddingBottom="@dimen/margin_6" />
 </RelativeLayout>

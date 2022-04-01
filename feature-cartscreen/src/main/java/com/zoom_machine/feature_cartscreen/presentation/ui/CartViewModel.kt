@@ -26,8 +26,6 @@ internal class CartViewModel(
         viewModelScope.launch {
             getContentCart()
         }
-        mutableTotal.value = calculateTotal(purchases.value ?: emptyList())
-
     }
 
     private suspend fun getContentCart() {
@@ -47,6 +45,7 @@ internal class CartViewModel(
         job.join()
         viewModelScope.launch(Dispatchers.Main) {
             mutablePurchases.value = listOfPurchases
+            mutableTotal.value = calculateTotal(purchases.value ?: emptyList())
             showProgressBar.value = false
         }
         job.cancel()

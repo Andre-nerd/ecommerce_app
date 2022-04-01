@@ -45,6 +45,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             binding.viewPagerAdapter.adapter = this
         }
     }
+
     override fun onAttach(context: Context) {
         ViewModelProvider(this).get<DetailsScreenComponentViewModel>()
             .newDetailComponent.inject(this)
@@ -67,7 +68,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             buttonBackArrow.setOnClickListener {
                 navigateMainScreen()
             }
-            addCartButton.setOnClickListener{
+            addCartButton.setOnClickListener {
                 viewModel.addPurchasesCount()
             }
         }
@@ -95,7 +96,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             throwableMessage.observe(viewLifecycleOwner) { message ->
                 handlingThrowableMessage(message)
             }
-            countPurchases.observe(viewLifecycleOwner) {count ->
+            countPurchases.observe(viewLifecycleOwner) { count ->
                 displayCountPurchases(count)
             }
         }
@@ -109,7 +110,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             selectColor.whichColor.observe(viewLifecycleOwner) {
                 viewModel.setColorDevice(it)
             }
-            addCartButton.clickAddCart.observe(viewLifecycleOwner){
+            addCartButton.clickAddCart.observe(viewLifecycleOwner) {
                 showToast()
             }
         }
@@ -149,8 +150,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
             secondCapacity.setText(capacity[SECOND_CAPACITY] + GB)
         }
     }
-    private fun displayCountPurchases(count:Int){
-        binding.run{
+
+    private fun displayCountPurchases(count: Int) {
+        binding.run {
             textCountPurchases.isVisible = (count > 0)
             textCountPurchases.text = count.toString()
         }
@@ -183,10 +185,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         }
     }
 
-    private fun showToast(){
-        Toast.makeText(requireContext(),"Click",Toast.LENGTH_SHORT).show()
+    private fun showToast() {
+        Toast.makeText(requireContext(), "Click", Toast.LENGTH_SHORT).show()
     }
-    private fun navigateMainScreen(){
+
+    private fun navigateMainScreen() {
         navigate(actionId = R.id.action_detailsScreenFragment_to_mainScreenFragment)
     }
 }
