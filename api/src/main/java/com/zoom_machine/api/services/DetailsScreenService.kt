@@ -6,14 +6,14 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 interface DetailsScreenService {
-    @GET("/detail")
+    @GET("6c14c560-15c6-4248-b9d2-b4508df7d4f5")
     suspend fun getContentForMainScreen(): ProductDetails
 }
 
 fun detailsScreenService(): DetailsScreenService {
     val okHttpClient = OkHttp.client
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://c7ae1634-c91d-4a58-8aa4-8aef21936a9d.mock.pstmn.io")
+        .baseUrl("https://run.mocky.io/v3/")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okHttpClient)
         .build()

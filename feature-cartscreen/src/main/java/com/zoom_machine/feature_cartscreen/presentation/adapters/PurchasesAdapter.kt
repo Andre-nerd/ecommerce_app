@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.zoom_machine.api.services.data.Purchases
+import com.zoom_machine.feature_cartscreen.R
 import com.zoom_machine.feature_cartscreen.databinding.ItemPurchasesBinding
 import com.zoom_machine.feature_cartscreen.presentation.utils.formatFloat
 
@@ -51,14 +53,13 @@ class PurchasesAdapter(
 
         fun bind(item: Purchases) {
             with(binding) {
-                textName.setText(item.name)
+                textName.setText(item.title)
                 textPrice.setText("$" + formatFloat(item.price))
                 plusMinusContainer.setDigit(item.count)
-
-//                Glide.with(itemView)
-//                    .load(item)
-//                    .error(R.drawable.no_image)
-//                    .into(binding.imageTopGallery)
+                Glide.with(itemView)
+                    .load(item.images)
+                    .error(R.drawable.no_image)
+                    .into(binding.imageView2)
             }
         }
 

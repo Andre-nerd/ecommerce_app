@@ -2,7 +2,6 @@ package com.zoom_machine.feature_mainscreen.presentation.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -29,7 +28,6 @@ import javax.inject.Inject
 
 
 class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main_screen) {
-
     @Inject
     internal lateinit var mainScreenViewModelFactory: Lazy<MainScreenViewModel.Factory>
     private val viewModel: MainScreenViewModel by viewModels {
@@ -92,9 +90,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 topMenuAdapter.update(listItems)
             }
             hotSales.observe(viewLifecycleOwner) { listHotSale ->
-                Log.d("NEWAPI","hotSales adapter = ${hotSaleAdapter}")
                 hotSaleAdapter.update(listHotSale)
-                Log.d("NEWAPI","hotSales.observe $listHotSale")
             }
             bestSeller.observe(viewLifecycleOwner) { listBestSeller ->
                 bestSellerAdapter.update(listBestSeller)

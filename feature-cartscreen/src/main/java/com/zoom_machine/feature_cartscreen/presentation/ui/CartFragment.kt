@@ -55,6 +55,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
             purchases.observe(viewLifecycleOwner) {
                 purchasesAdapter.update(it)
             }
+            deliveryStatus.observe(viewLifecycleOwner){
+                binding.textDeliveryStatus.text = it
+            }
             throwableMessage.observe(viewLifecycleOwner) { message ->
                 handlingThrowableMessage(message)
             }

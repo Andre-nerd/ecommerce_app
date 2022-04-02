@@ -7,14 +7,14 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 
 interface MainScreenService {
-    @GET("/home")
+    @GET("654bd15e-b121-49ba-a588-960956b15175")
     suspend fun getContentForMainScreen(): MainScreenResponse
 }
 
 fun mainScreenService(): MainScreenService {
     val okHttpClient = OkHttp.client
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://c7ae1634-c91d-4a58-8aa4-8aef21936a9d.mock.pstmn.io")
+        .baseUrl("https://run.mocky.io/v3/")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(okHttpClient)
         .build()

@@ -1,5 +1,6 @@
 package com.zoom_machine.feature_cartscreen.presentation.ui
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.Purchases
 import com.zoom_machine.core.utils.MessageViewModel
@@ -13,9 +14,12 @@ internal class CartViewModel(
     private val getPurchasesUseCase: GetPurchasesUseCase
 ) : ViewModel() {
     private val mutablePurchases =
-        MutableLiveData(emptyList<com.zoom_machine.api.services.data.Purchases>())
-    val purchases: LiveData<List<com.zoom_machine.api.services.data.Purchases>>
+        MutableLiveData(emptyList<Purchases>())
+    val purchases: LiveData<List<Purchases>>
         get() = mutablePurchases
+    private val mutableDeliveryStatus = MutableLiveData<String>()
+    val deliveryStatus: LiveData<String>
+        get() = mutableDeliveryStatus
     private val mutableTotal = MutableLiveData(0f)
     val total: LiveData<Float>
         get() = mutableTotal
@@ -30,13 +34,18 @@ internal class CartViewModel(
 
     private suspend fun getContentCart() {
         var listOfPurchases = dummyListPurchases()
+        var deliveryStatus = " "
         viewModelScope.launch(Dispatchers.Main) {
             showProgressBar.value = true
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                listOfPurchases = getPurchasesUseCase.getPurchases()
+                val response  = getPurchasesUseCase.getPurchases()
+                listOfPurchases = response.basket
+                deliveryStatus = response.delivery
+
             } catch (t: Throwable) {
+                Log.d("NEWAPI", "Throwable getContentCart() $t")
                 viewModelScope.launch(Dispatchers.Main) {
                     throwableMessage.value = MessageViewModel.CONNECTION_ERROR
                 }
@@ -46,6 +55,7 @@ internal class CartViewModel(
         viewModelScope.launch(Dispatchers.Main) {
             mutablePurchases.value = listOfPurchases
             mutableTotal.value = calculateTotal(purchases.value ?: emptyList())
+            mutableDeliveryStatus.value = deliveryStatus
             showProgressBar.value = false
         }
         job.cancel()
@@ -70,14 +80,9 @@ internal class CartViewModel(
 
     private fun dummyListPurchases(): List<Purchases> {
         return listOf(
-            com.zoom_machine.api.services.data.Purchases("Honor 50 6/128GB", 1200f, "", 1),
-            com.zoom_machine.api.services.data.Purchases(
-                "Asus ROG Phone 5S ZS676KS ",
-                1350f,
-                "",
-                2
-            ),
-            com.zoom_machine.api.services.data.Purchases("BQ 5560L Trend Black", 1500f, "", 1)
+            com.zoom_machine.api.services.data.Purchases(1, "", 1200f, "Honor 50 6/128GB", 1),
+            com.zoom_machine.api.services.data.Purchases(2, "", 1350f, "Asus ROG Phone 5S", 1),
+            com.zoom_machine.api.services.data.Purchases(3, " ", 1500f, "BQ 5560L Trend Black", 1)
         )
     }
 
