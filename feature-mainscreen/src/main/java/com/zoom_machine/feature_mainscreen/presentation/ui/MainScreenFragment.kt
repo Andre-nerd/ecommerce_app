@@ -33,19 +33,19 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     private val viewModel: MainScreenViewModel by viewModels {
         mainScreenViewModelFactory.get()
     }
-    private lateinit var binding: FragmentMainScreenBinding
+    private var binding: FragmentMainScreenBinding? = null
     private val topMenuAdapter by lazy {
         TopMenuAdapter(getColorsTopMenu()) { position ->
             viewModel.handlingClickOnTopMenu(position)
         }.apply {
-            binding.topMenuRecyclerView.adapter = this
-            binding.topMenuRecyclerView.setHasFixedSize(true)
+            binding?.topMenuRecyclerView?.adapter = this
+            binding?.topMenuRecyclerView?.setHasFixedSize(true)
         }
     }
     private val hotSaleAdapter by lazy {
         HotSaleAdapter { onClick() }.apply {
-            binding.hotSaleRecyclerView.adapter = this
-            binding.hotSaleRecyclerView.setHasFixedSize(true)
+            binding?.hotSaleRecyclerView?.adapter = this
+            binding?.hotSaleRecyclerView?.setHasFixedSize(true)
         }
     }
 
@@ -53,11 +53,11 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         BestSellerAdapter(
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_full_heart)
         ) { onClick() }.apply {
-            binding.bestSellerRecyclerView.adapter = this
-            binding.bestSellerRecyclerView.layoutManager = GridLayoutManager(
+            binding?.bestSellerRecyclerView?.adapter = this
+            binding?.bestSellerRecyclerView?.layoutManager = GridLayoutManager(
                 requireContext(), 2, LinearLayoutManager.VERTICAL, false
             )
-            binding.bestSellerRecyclerView.setHasFixedSize(true)
+            binding?.bestSellerRecyclerView?.setHasFixedSize(true)
         }
     }
 
@@ -72,7 +72,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         binding = FragmentMainScreenBinding.bind(view)
         viewModel.setItemsTopMenu(getItemsTopMenu())
         observeViewModel()
-        binding.run {
+        binding?.run {
             selectCategoryBlock.apply {
                 setTextToCategory(SELECT_CATEGORY)
                 setTextToRightMenu(VIEW_ALL)
@@ -99,10 +99,10 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 handlingThrowableMessage(message)
             }
             showProgressBar.observe(viewLifecycleOwner) {
-                binding.progressBarPhones.isVisible = it
+                binding?.progressBarPhones?.isVisible = it
             }
         }
-        binding.run {
+        binding?.run {
             selectCategoryBlock.isRightMenuPressed.observe(viewLifecycleOwner) {
                 showToastClick()
             }
@@ -132,7 +132,7 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
     private fun handlingFilterBottom() {
         viewModel.changeFilterVisible()
         viewModel.statusFilter.value?.let { visible ->
-            binding.filterBottom.visibleFilterSetting(
+            binding?.filterBottom?.visibleFilterSetting(
                 visible
             )
         }
@@ -167,6 +167,11 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     private fun onClick() {
         navigate(R.id.action_mainScreenFragment_to_detailFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
 

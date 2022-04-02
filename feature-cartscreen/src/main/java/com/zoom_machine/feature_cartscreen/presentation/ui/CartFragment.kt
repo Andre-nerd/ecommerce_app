@@ -22,13 +22,14 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     @Inject
     internal lateinit var cartScreenViewModelFactory: Lazy<CartViewModel.Factory>
     private val viewModel: CartViewModel by viewModels {
+
         cartScreenViewModelFactory.get()
     }
-    private lateinit var binding: FragmentCartBinding
+    private var binding: FragmentCartBinding? = null
     private val purchasesAdapter by lazy {
         PurchasesAdapter(::onItemClick).apply {
-            binding.purchasesRecyclerView.adapter = this
-            binding.purchasesRecyclerView.setHasFixedSize(true)
+            binding?.purchasesRecyclerView?.adapter = this
+            binding?.purchasesRecyclerView?.setHasFixedSize(true)
         }
     }
 
@@ -42,7 +43,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCartBinding.bind(view)
         observeViewModel()
-        binding.buttonBackArrow.setOnClickListener {
+        binding!!.buttonBackArrow.setOnClickListener {
             navigate(R.id.action_cartFragment_to_detailsFragment)
         }
     }
@@ -50,19 +51,19 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     private fun observeViewModel() {
         viewModel.run {
             total.observe(viewLifecycleOwner) {
-                binding.textTotalSum.text = "$" + String.format("%.2f", it) + " us"
+                binding?.textTotalSum?.text = "$" + String.format("%.2f", it) + " us"
             }
             purchases.observe(viewLifecycleOwner) {
                 purchasesAdapter.update(it)
             }
             deliveryStatus.observe(viewLifecycleOwner){
-                binding.textDeliveryStatus.text = it
+                binding?.textDeliveryStatus?.text = it
             }
             throwableMessage.observe(viewLifecycleOwner) { message ->
                 handlingThrowableMessage(message)
             }
             showProgressBar.observe(viewLifecycleOwner) {
-                binding.progressBar.isVisible = it
+                binding?.progressBar?.isVisible = it
             }
         }
     }
@@ -80,5 +81,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     private fun onItemClick(position: Int, countPurchase: Int) {
         viewModel.setCountToItem(position, countPurchase)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

@@ -33,16 +33,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     private val viewModel: DetailsViewModel by viewModels {
         detailsViewModelFactory.get()
     }
-    private lateinit var binding: FragmentDetailsBinding
+    private var binding: FragmentDetailsBinding? = null
     private val topGalleryAdapter by lazy {
         TopGalleryAdapter().apply {
-            binding.topGalleryRecyclerView.adapter = this
-            binding.topGalleryRecyclerView.setHasFixedSize(true)
+            binding?.topGalleryRecyclerView?.adapter = this
+            binding?.topGalleryRecyclerView?.setHasFixedSize(true)
         }
     }
     private val viewPagerAdapter by lazy {
         ViewPagerAdapter().apply {
-            binding.viewPagerAdapter.adapter = this
+            binding?.viewPagerAdapter?.adapter = this
         }
     }
 
@@ -58,7 +58,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         lifecycleScope.launchWhenStarted {
             viewModel.getDetailsProduct()
         }
-        binding.run {
+        binding?.run {
             buttonFavorite.setOnClickListener {
                 viewModel.setFavorite()
             }
@@ -81,14 +81,14 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 setDetailsToScreenFields(details)
             }
             colorDevice.observe(viewLifecycleOwner) {
-                binding.selectColor.switchColor()
+                binding?.selectColor?.switchColor()
             }
             specification.observe(viewLifecycleOwner) {
                 viewPagerAdapter.update(it)
                 attachTabMediator()
             }
             showProgressBar.observe(viewLifecycleOwner) {
-                binding.progressBar.isVisible = it
+                binding?.progressBar?.isVisible = it
             }
             capacity.observe(viewLifecycleOwner) {
                 setActiveDeviceCapacity()
@@ -100,7 +100,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 displayCountPurchases(count)
             }
         }
-        binding.run {
+        binding?.run {
             firstCapacity.isActive.observe(viewLifecycleOwner) {
                 viewModel.setCapacity(FIRST_CAPACITY)
             }
@@ -118,17 +118,17 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun attachTabMediator() {
         val namesTab = resources.getStringArray(R.array.namesTab)
-        TabLayoutMediator(binding.tabLayout, binding.viewPagerAdapter) { tab, position ->
+        TabLayoutMediator(binding!!.tabLayout, binding!!.viewPagerAdapter) { tab, position ->
             tab.text = namesTab[position]
         }.attach()
     }
 
     private fun setDetailsToScreenFields(details: ProductDetails) {
         topGalleryAdapter.update(details.images)
-        binding.selectColor.setDeviceColor(details.color)
+        binding?.selectColor?.setDeviceColor(details.color)
         setFavoriteButton(details.isFavorites ?: false)
         setDeviceCapacity(details.capacity)
-        binding.run {
+        binding?.run {
             raiting.setRating(details.rating)
             textTitleModel.text = details.title
             addCartButton.setPrice(details.price)
@@ -141,18 +141,18 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         } else {
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_batton_favorite)
         }
-        binding.buttonFavorite.background = drawable
+        binding?.buttonFavorite?.background = drawable
     }
 
     private fun setDeviceCapacity(capacity: List<String>) {
-        binding.run {
+        binding?.run {
             firstCapacity.setText(capacity[FIRST_CAPACITY] + GB)
             secondCapacity.setText(capacity[SECOND_CAPACITY] + GB)
         }
     }
 
     private fun displayCountPurchases(count: Int) {
-        binding.run {
+        binding?.run {
             textCountPurchases.isVisible = (count > 0)
             textCountPurchases.text = count.toString()
         }
@@ -160,7 +160,7 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
     }
 
     private fun setActiveDeviceCapacity() {
-        binding.run {
+        binding?.run {
             when (viewModel.capacity.value) {
                 FIRST_CAPACITY -> {
                     firstCapacity.setActiveStatus(true)
@@ -191,6 +191,11 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private fun navigateMainScreen() {
         navigate(actionId = R.id.action_detailsScreenFragment_to_mainScreenFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
 
