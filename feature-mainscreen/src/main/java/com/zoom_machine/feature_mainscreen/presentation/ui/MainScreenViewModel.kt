@@ -6,6 +6,7 @@ import com.zoom_machine.api.services.data.HotSales
 import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.data.TopMenuItem
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
+import com.zoom_machine.feature_mainscreen.domain.SaveHotSalesUseCase
 import com.zoom_machine.feature_mainscreen.presentation.utils.PHONES
 import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class MainScreenViewModel(
-    private val getPhonesUseCase: GetPhonesUseCase
+    private val getPhonesUseCase: GetPhonesUseCase,
+    private val saveHotSalesUseCase: SaveHotSalesUseCase
 ) : ViewModel() {
 
     private val mutableItemTopMenu = MutableLiveData<List<TopMenuItem>>(emptyList())
@@ -58,6 +60,7 @@ internal class MainScreenViewModel(
         job.join()
         viewModelScope.launch(Dispatchers.Main) {
             mutableHotSales.value = listOfHotSales
+            saveHotSalesUseCase.save(listOfHotSales)
             mutableBestSeller.value = listOfBestSeller
             showProgressBar.value = false
         }
@@ -109,12 +112,14 @@ internal class MainScreenViewModel(
             BestSeller(4L, false, "No image", 0, 0, ""),
         )
     }
+
     class Factory @Inject constructor(
-        private val getPhonesUseCase: GetPhonesUseCase
+        private val getPhonesUseCase: GetPhonesUseCase,
+        private val saveHotSalesUseCase: SaveHotSalesUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(getPhonesUseCase) as T
+            return MainScreenViewModel(getPhonesUseCase, saveHotSalesUseCase) as T
         }
     }
 }

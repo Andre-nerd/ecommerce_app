@@ -16,7 +16,7 @@ rootProject.name = "ecommerce_app"
 include ':app'
 include ':feature-mainscreen'
 include ':core'
-include ':api'
+include ':api-database'
 include ':feature-cartscreen'
 include ':feature-detailsscreen'
 include ':navigation'

@@ -48,7 +48,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation project(":core")
-    implementation project(":api")
+    implementation project(':api-database')
     implementation project(path: ':navigation')
 
     // Coroutines
