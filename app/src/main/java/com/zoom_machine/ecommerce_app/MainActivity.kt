@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
+import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreen
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
 import javax.inject.Inject
@@ -15,10 +16,15 @@ class MainActivity : AppCompatActivity() {
             is App -> appComponent
             else -> this.applicationContext.appComponent
         }
+
     @Inject
     lateinit var sharedPrefMainScreen: SharedPrefMainScreen
+
     @Inject
-    lateinit var sharedPrefDetailsScreen:SharedPrefDetailsScreen
+    lateinit var sharedPrefDetailsScreen: SharedPrefDetailsScreen
+
+    @Inject
+    lateinit var sharedPrefCartScreen: SharedPrefCartScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         sharedPrefMainScreen.refreshDataMainScreenToSharedPref()
         sharedPrefDetailsScreen.refreshDetailsScreenToSharedPref()
+        sharedPrefCartScreen.refreshCartScreenToSharedPref()
         super.onPause()
     }
 }

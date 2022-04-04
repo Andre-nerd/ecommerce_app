@@ -8,9 +8,9 @@ import com.zoom_machine.api.services.MainScreenService
 import com.zoom_machine.core.Feature
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.feature_mainscreen.data.MainScreenRepositoryImpl
+import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment
-import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
 import dagger.Binds
 import dagger.Component
 import dagger.Module

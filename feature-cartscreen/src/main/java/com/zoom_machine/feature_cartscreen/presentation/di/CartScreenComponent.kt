@@ -6,7 +6,9 @@ import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.zoom_machine.api.services.CartScreenService
 import com.zoom_machine.core.FeatureCart
+import com.zoom_machine.database.cart_model.CartScreenDao
 import com.zoom_machine.feature_cartscreen.data.CartRepositoryImpl
+import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreen
 import com.zoom_machine.feature_cartscreen.domain.CartRepository
 import com.zoom_machine.feature_cartscreen.presentation.ui.CartFragment
 import dagger.Binds
@@ -37,6 +39,8 @@ interface BindRepository {
 
 interface CartScreenDeps {
     val cartScreenService: CartScreenService
+    val cartScreenDao: CartScreenDao
+    val sharedPrefCartScreen: SharedPrefCartScreen
 }
 
 

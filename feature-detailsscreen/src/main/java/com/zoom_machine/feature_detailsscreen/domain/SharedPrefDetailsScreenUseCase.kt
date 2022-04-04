@@ -4,17 +4,17 @@ import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import javax.inject.Inject
 
 class SharedPrefDetailsScreenUseCase @Inject constructor(
-    private val sharedPrefMainScreen: SharedPrefDetailsScreen
+    private val sharedPrefDetailsScreen: SharedPrefDetailsScreen
 ) {
     fun isFirstLaunch(): Boolean {
-        return sharedPrefMainScreen.readDetailsScreenFromSharedPref()
+        return sharedPrefDetailsScreen.readDetailsScreenFromSharedPref()
     }
 
-    fun mainScreenNoFirstLaunch() {
-        sharedPrefMainScreen.saveDetailsScreenToSharedPref()
+    fun detailScreenNoFirstLaunch() {
+        sharedPrefDetailsScreen.saveDetailsScreenToSharedPref()
     }
 
     fun refreshSharedPref() {
-        sharedPrefMainScreen.refreshDetailsScreenToSharedPref()
+        sharedPrefDetailsScreen.refreshDetailsScreenToSharedPref()
     }
 }

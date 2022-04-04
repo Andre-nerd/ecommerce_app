@@ -4,6 +4,7 @@ import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.zoom_machine.api.services.DetailsScreenService
 import com.zoom_machine.core.FeatureDetails
+import com.zoom_machine.database.detailsscreen_model.DetailsScreenDao
 import com.zoom_machine.feature_detailsscreen.data.DetailsScreenRepositoryImpl
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import com.zoom_machine.feature_detailsscreen.domain.DetailScreenRepository
@@ -35,7 +36,8 @@ interface BindRepository {
 
 interface DetailsScreenDeps {
     val detailsScreenService: DetailsScreenService
-    val sharedPrefDetailsScreen:SharedPrefDetailsScreen
+    val detailsScreenDao: DetailsScreenDao
+    val sharedPrefDetailsScreen: SharedPrefDetailsScreen
 }
 
 interface DetailsScreenProvider {

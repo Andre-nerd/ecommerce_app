@@ -25,7 +25,7 @@ class MainScreenRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getHotSalesFromDatabase(): List<HotSales> {
-       return mainScreenDao.getHotSalesList()
+        return mainScreenDao.getHotSalesList()
     }
 
     override suspend fun saveBestSellerToDatabase(items: List<BestSeller>) {

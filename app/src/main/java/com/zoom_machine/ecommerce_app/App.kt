@@ -15,9 +15,12 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         Database.init(this)
+        val database = Database.instance
         appComponent = DaggerAppComponent.builder()
             .application(this)
-            .provideMainScreenDao(Database.instance.mainScreenDao())
+            .provideMainScreenDao(database.mainScreenDao())
+            .provideDetailsScreenDao(database.detailsScreenDao())
+            .provideCartScreenDao(database.cartScreenDao())
             .context(this)
             .build()
         Database.init(this)

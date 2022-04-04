@@ -3,8 +3,12 @@ package com.zoom_machine.ecommerce_app.presentation.di
 import android.app.Application
 import android.content.Context
 import com.zoom_machine.api.services.*
+import com.zoom_machine.database.cart_model.CartScreenDao
+import com.zoom_machine.database.detailsscreen_model.DetailsScreenDao
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.ecommerce_app.MainActivity
+import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreen
+import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreenImpl
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreenImpl
@@ -31,6 +35,12 @@ interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
 
         @BindsInstance
         fun provideMainScreenDao(mainScreenDao: MainScreenDao): Builder
+
+        @BindsInstance
+        fun provideDetailsScreenDao(detailsScreenDao: DetailsScreenDao): Builder
+
+        @BindsInstance
+        fun provideCartScreenDao(cartScreenDao: CartScreenDao): Builder
         fun build(): AppComponent
     }
 
@@ -56,6 +66,9 @@ interface BindSharedPrefRepository {
 
     @Binds
     fun bindSharedPrefDetailsScreenRepository(repository: SharedPrefDetailsScreenImpl): SharedPrefDetailsScreen
+
+    @Binds
+    fun bindSharedPrefCartScreenRepository(repository: SharedPrefCartScreenImpl): SharedPrefCartScreen
 }
 
 @Scope

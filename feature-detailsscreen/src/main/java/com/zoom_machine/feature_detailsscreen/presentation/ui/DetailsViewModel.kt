@@ -1,11 +1,13 @@
 package com.zoom_machine.feature_detailsscreen.presentation.ui
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.ProductDetails
 import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_detailsscreen.data.ProductSpecification
-import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
+import com.zoom_machine.feature_detailsscreen.domain.DetailsScreenDatabaseUseCase
 import com.zoom_machine.feature_detailsscreen.domain.GetDetailsProductUseCase
+import com.zoom_machine.feature_detailsscreen.domain.SharedPrefDetailsScreenUseCase
 import com.zoom_machine.feature_detailsscreen.presentation.utils.NO_INFO
 import com.zoom_machine.feature_detailsscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +16,8 @@ import javax.inject.Inject
 
 class DetailsViewModel(
     private val detailsProductUseCase: GetDetailsProductUseCase,
-    private val sharedPrefDetailsScreen: SharedPrefDetailsScreen
+    private val detailsScreenDatabaseUseCase: DetailsScreenDatabaseUseCase,
+    private val sharedPrefDetailsScreen: SharedPrefDetailsScreenUseCase
 ) : ViewModel() {
     private val mutableProduct = MutableLiveData<ProductDetails>()
     val product: LiveData<ProductDetails>
@@ -33,6 +36,11 @@ class DetailsViewModel(
         get() = mutableCountPurchases
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
+    private var isDataInSharedPref = false
+
+    init {
+        isDataInSharedPref = sharedPrefDetailsScreen.isFirstLaunch()
+    }
 
     suspend fun getDetailsProduct() {
         var response = getEmptyProductDetails()
@@ -41,7 +49,7 @@ class DetailsViewModel(
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                response = detailsProductUseCase.getDetailsProduct()
+                response = getResponse()
             } catch (t: Throwable) {
                 viewModelScope.launch(Dispatchers.Main) {
                     throwableMessage.value = MessageViewModel.CONNECTION_ERROR
@@ -55,6 +63,21 @@ class DetailsViewModel(
             showProgressBar.value = false
         }
         job.cancel()
+    }
+
+    private suspend fun getResponse(): ProductDetails {
+        var response: ProductDetails
+        if (isDataInSharedPref) {
+            Log.d("2LEVEL", "Details Screen info loading from DB")
+            response = detailsScreenDatabaseUseCase.getDetailsProduct()
+
+        } else {
+            Log.d("2LEVEL", "Details Screen info loading from Server")
+            response = detailsProductUseCase.getDetailsProduct()
+            detailsScreenDatabaseUseCase.saveDetailsProduct(response)
+            sharedPrefDetailsScreen.detailScreenNoFirstLaunch()
+        }
+        return response
     }
 
     private fun getEmptyProductDetails(): ProductDetails {
@@ -90,11 +113,16 @@ class DetailsViewModel(
 
     class Factory @Inject constructor(
         private val detailsProductUseCase: GetDetailsProductUseCase,
-        private val sharedPrefDetailsScreen: SharedPrefDetailsScreen
+        private val detailsScreenDatabaseUseCase: DetailsScreenDatabaseUseCase,
+        private val sharedPrefDetailsScreen: SharedPrefDetailsScreenUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == DetailsViewModel::class.java)
-            return DetailsViewModel(detailsProductUseCase,sharedPrefDetailsScreen) as T
+            return DetailsViewModel(
+                detailsProductUseCase,
+                detailsScreenDatabaseUseCase,
+                sharedPrefDetailsScreen
+            ) as T
         }
     }
 }

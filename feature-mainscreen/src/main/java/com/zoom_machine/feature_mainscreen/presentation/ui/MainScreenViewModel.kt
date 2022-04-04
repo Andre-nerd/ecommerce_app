@@ -44,7 +44,6 @@ internal class MainScreenViewModel(
     init {
         mutableStatusFilter.value = false
         isDataInSharedPref = sharedPrefMainScreenUseCase.isFirstLaunch()
-        Log.d("2LEVEL", "isDataInSharedPref = $isDataInSharedPref")
     }
 
     private suspend fun getContentPhones() {
@@ -76,14 +75,14 @@ internal class MainScreenViewModel(
     private suspend fun getResponse(): MainScreenResponse {
         var response: MainScreenResponse
         if (isDataInSharedPref) {
-            Log.d("2LEVEL", "Load dB")
+            Log.d("2LEVEL", "MainScreen data loading from DB")
             response = MainScreenResponse(
                 mainScreenDatabaseUseCase.getHotSalesList(),
                 mainScreenDatabaseUseCase.getBestSellerList()
             )
 
         } else {
-            Log.d("2LEVEL", "Load Server")
+            Log.d("2LEVEL", "MainScreen data loading from Server")
             response = getPhonesUseCase.getContentPhones()
             mainScreenDatabaseUseCase.saveHotSales(response.hotSales)
             mainScreenDatabaseUseCase.saveBestSeller(response.bestSeller)

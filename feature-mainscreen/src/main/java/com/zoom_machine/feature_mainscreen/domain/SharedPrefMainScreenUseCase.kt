@@ -6,15 +6,15 @@ import javax.inject.Inject
 class SharedPrefMainScreenUseCase @Inject constructor(
     private val sharedPrefMainScreen: SharedPrefMainScreen
 ) {
-    fun isFirstLaunch():Boolean{
+    fun isFirstLaunch(): Boolean {
         return sharedPrefMainScreen.readDataMainScreenFromSharedPref()
     }
 
-    fun mainScreenNoFirstLaunch(){
+    fun mainScreenNoFirstLaunch() {
         sharedPrefMainScreen.saveDataMainScreenToSharedPref()
     }
 
-    fun refreshSharedPref(){
+    fun refreshSharedPref() {
         sharedPrefMainScreen.refreshDataMainScreenToSharedPref()
     }
 }

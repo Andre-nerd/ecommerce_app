@@ -1,6 +1,5 @@
 package com.zoom_machine.feature_detailsscreen.domain
 
-import com.zoom_machine.api.services.data.MainScreenResponse
 import com.zoom_machine.api.services.data.ProductDetails
 import javax.inject.Inject
 
