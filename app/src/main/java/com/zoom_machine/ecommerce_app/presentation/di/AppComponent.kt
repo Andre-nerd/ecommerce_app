@@ -5,10 +5,12 @@ import android.content.Context
 import com.zoom_machine.api.services.*
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.ecommerce_app.MainActivity
+import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
+import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
+import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreenImpl
+import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
 import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreenImpl
-import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
-import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDeps
 import dagger.*
 import javax.inject.Scope
@@ -23,12 +25,15 @@ interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
     interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
+
         @BindsInstance
-        fun context(context:Context):Builder
+        fun context(context: Context): Builder
+
         @BindsInstance
-        fun provideMainScreenDao(mainScreenDao: MainScreenDao) :Builder
+        fun provideMainScreenDao(mainScreenDao: MainScreenDao): Builder
         fun build(): AppComponent
     }
+
     fun injectToMainActivity(activity: MainActivity)
 }
 
@@ -45,9 +50,12 @@ class AppModule {
 }
 
 @Module
-interface BindSharedPrefRepository{
+interface BindSharedPrefRepository {
     @Binds
-    fun bindSharedPrefRepository(repository: SharedPrefMainScreenImpl): SharedPrefMainScreen
+    fun bindSharedPrefMainScreenRepository(repository: SharedPrefMainScreenImpl): SharedPrefMainScreen
+
+    @Binds
+    fun bindSharedPrefDetailsScreenRepository(repository: SharedPrefDetailsScreenImpl): SharedPrefDetailsScreen
 }
 
 @Scope

@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.ProductDetails
 import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_detailsscreen.data.ProductSpecification
+import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import com.zoom_machine.feature_detailsscreen.domain.GetDetailsProductUseCase
 import com.zoom_machine.feature_detailsscreen.presentation.utils.NO_INFO
 import com.zoom_machine.feature_detailsscreen.presentation.utils.SingleLiveEvent
@@ -12,7 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DetailsViewModel(
-    private val detailsProductUseCase: GetDetailsProductUseCase
+    private val detailsProductUseCase: GetDetailsProductUseCase,
+    private val sharedPrefDetailsScreen: SharedPrefDetailsScreen
 ) : ViewModel() {
     private val mutableProduct = MutableLiveData<ProductDetails>()
     val product: LiveData<ProductDetails>
@@ -87,11 +89,12 @@ class DetailsViewModel(
     }
 
     class Factory @Inject constructor(
-        private val detailsProductUseCase: GetDetailsProductUseCase
+        private val detailsProductUseCase: GetDetailsProductUseCase,
+        private val sharedPrefDetailsScreen: SharedPrefDetailsScreen
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == DetailsViewModel::class.java)
-            return DetailsViewModel(detailsProductUseCase) as T
+            return DetailsViewModel(detailsProductUseCase,sharedPrefDetailsScreen) as T
         }
     }
 }
