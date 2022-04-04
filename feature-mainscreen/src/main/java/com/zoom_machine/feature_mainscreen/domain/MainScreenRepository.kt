@@ -9,4 +9,6 @@ interface MainScreenRepository {
 
     suspend fun saveHotSalesToDatabase(items:List<HotSales>)
 
+    suspend fun getHotSalesFromDatabase():List<HotSales>
+
 }

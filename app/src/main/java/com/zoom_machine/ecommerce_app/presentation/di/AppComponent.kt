@@ -2,7 +2,7 @@ package com.zoom_machine.ecommerce_app.presentation.di
 
 import android.app.Application
 import com.zoom_machine.api.services.*
-import com.zoom_machine.database.MainScreenDao
+import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
 import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDeps
@@ -23,7 +23,7 @@ interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
         @BindsInstance
         fun application(application: Application): Builder
         @BindsInstance
-        fun provideDatabase(database:MainScreenDao) :Builder
+        fun provideMainScreenDao(mainScreenDao: MainScreenDao) :Builder
         fun build(): AppComponent
     }
 }

@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.zoom_machine.api.services.data.HotSales
 import com.zoom_machine.database.DatabaseObject.Companion.DB_VERSION
+import com.zoom_machine.database.mainscreen_model.MainScreenDao
 
 @Database(
     entities = [HotSales::class],
@@ -14,6 +15,6 @@ abstract class DatabaseObject : RoomDatabase() {
 
     companion object {
         const val DB_VERSION = 1
-        const val DB_NAME = "industrial_objects_database"
+        const val DB_NAME = "ecommerce app"
     }
 }

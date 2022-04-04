@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
-import com.zoom_machine.database.HotSalesContract
+import com.zoom_machine.database.mainscreen_model.HotSalesContract
 
 @Entity(tableName = HotSalesContract.TABLE_NAME)
 

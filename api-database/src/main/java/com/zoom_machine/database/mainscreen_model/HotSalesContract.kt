@@ -1,7 +1,7 @@
-package com.zoom_machine.database
+package com.zoom_machine.database.mainscreen_model
 
 object HotSalesContract {
-    const val TABLE_NAME = "hot sales"
+    const val TABLE_NAME = "hot_sales"
 
     object Columns {
         const val ID = "id"

@@ -6,7 +6,7 @@ import androidx.annotation.RestrictTo
 import androidx.lifecycle.ViewModel
 import com.zoom_machine.api.services.MainScreenService
 import com.zoom_machine.core.Feature
-import com.zoom_machine.database.MainScreenDao
+import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.feature_mainscreen.data.MainScreenRepositoryImpl
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment
@@ -38,7 +38,7 @@ interface BindRepository {
 
 interface MainScreenDeps {
     val mainScreenService: MainScreenService
-    val mainScreenDao:MainScreenDao
+    val mainScreenDao: MainScreenDao
 }
 
 
