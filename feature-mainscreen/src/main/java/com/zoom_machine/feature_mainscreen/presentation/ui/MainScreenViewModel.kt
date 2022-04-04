@@ -60,8 +60,6 @@ internal class MainScreenViewModel(
         job.join()
         viewModelScope.launch(Dispatchers.Main) {
             mutableHotSales.value = listOfHotSales
-            //Запись в БД
-            hotSalesUseCase.save(listOfHotSales)
             mutableBestSeller.value = listOfBestSeller
             showProgressBar.value = false
         }

@@ -44,6 +44,7 @@ dependencies {
     implementation project(":core")
     implementation project(':api-database')
     implementation project(path: ':navigation')
+    implementation project(path: ':shared')
 
     //ViewModel
     def lifecycleVersion = '2.4.1'

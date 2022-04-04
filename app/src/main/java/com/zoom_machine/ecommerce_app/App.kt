@@ -18,6 +18,7 @@ class App : Application() {
         appComponent = DaggerAppComponent.builder()
             .application(this)
             .provideMainScreenDao(Database.instance.mainScreenDao())
+            .context(this)
             .build()
         Database.init(this)
         MainScreenDepsStore.deps = appComponent

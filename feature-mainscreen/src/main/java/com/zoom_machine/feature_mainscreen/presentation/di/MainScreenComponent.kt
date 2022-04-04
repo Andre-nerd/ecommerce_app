@@ -10,6 +10,7 @@ import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.feature_mainscreen.data.MainScreenRepositoryImpl
 import com.zoom_machine.feature_mainscreen.domain.MainScreenRepository
 import com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment
+import com.zoom_machine.shared.SharedPrefRepository
 import dagger.Binds
 import dagger.Component
 import dagger.Module
@@ -39,6 +40,7 @@ interface BindRepository {
 interface MainScreenDeps {
     val mainScreenService: MainScreenService
     val mainScreenDao: MainScreenDao
+    val sharedPrefRepository:SharedPrefRepository
 }
 
 

@@ -1,18 +1,19 @@
 package com.zoom_machine.ecommerce_app.presentation.di
 
 import android.app.Application
+import android.content.Context
 import com.zoom_machine.api.services.*
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
+import com.zoom_machine.ecommerce_app.MainActivity
+import com.zoom_machine.shared.SharedPrefRepository
+import com.zoom_machine.shared.SharedPrefRepositoryImpl
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
 import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDeps
-import dagger.BindsInstance
-import dagger.Component
-import dagger.Module
-import dagger.Provides
+import dagger.*
 import javax.inject.Scope
 
-@[AppScope Component(modules = [AppModule::class])]
+@[AppScope Component(modules = [AppModule::class, BindSharedPrefRepository::class])]
 interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
     override val mainScreenService: MainScreenService
     override val detailsScreenService: DetailsScreenService
@@ -23,9 +24,12 @@ interface AppComponent : MainScreenDeps, DetailsScreenDeps, CartScreenDeps {
         @BindsInstance
         fun application(application: Application): Builder
         @BindsInstance
+        fun context(context:Context):Builder
+        @BindsInstance
         fun provideMainScreenDao(mainScreenDao: MainScreenDao) :Builder
         fun build(): AppComponent
     }
+    fun injectToMainActivity(activity: MainActivity)
 }
 
 @Module
@@ -38,6 +42,12 @@ class AppModule {
 
     @[Provides AppScope]
     fun provideCartScreenService() = cartScreenService()
+}
+
+@Module
+interface BindSharedPrefRepository{
+    @Binds
+    fun bindSharedPrefRepository(repository: com.zoom_machine.shared.SharedPrefRepositoryImpl): com.zoom_machine.shared.SharedPrefRepository
 }
 
 @Scope

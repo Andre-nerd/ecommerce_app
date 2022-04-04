@@ -51,6 +51,7 @@ dependencies {
     implementation project(path: ':feature-detailsscreen')
     implementation project(path: ':navigation')
     implementation project(path: ':feature-cartscreen')
+    implementation project(path: ':shared')
 
 
     // Coroutines
