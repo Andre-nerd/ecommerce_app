@@ -1,12 +1,15 @@
 package com.zoom_machine.feature_mainscreen.presentation.ui
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
+import com.zoom_machine.api.services.data.MainScreenResponse
 import com.zoom_machine.core.utils.MessageViewModel
 import com.zoom_machine.feature_mainscreen.data.TopMenuItem
 import com.zoom_machine.feature_mainscreen.domain.GetPhonesUseCase
-import com.zoom_machine.feature_mainscreen.domain.HotSalesUseCase
+import com.zoom_machine.feature_mainscreen.domain.MainScreenDatabaseUseCase
+import com.zoom_machine.feature_mainscreen.domain.SharedPrefMainScreenUseCase
 import com.zoom_machine.feature_mainscreen.presentation.utils.PHONES
 import com.zoom_machine.feature_mainscreen.presentation.utils.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +18,8 @@ import javax.inject.Inject
 
 internal class MainScreenViewModel(
     private val getPhonesUseCase: GetPhonesUseCase,
-    private val hotSalesUseCase: HotSalesUseCase
+    private val mainScreenDatabaseUseCase: MainScreenDatabaseUseCase,
+    private val sharedPrefMainScreenUseCase: SharedPrefMainScreenUseCase
 ) : ViewModel() {
 
     private val mutableItemTopMenu = MutableLiveData<List<TopMenuItem>>(emptyList())
@@ -35,9 +39,12 @@ internal class MainScreenViewModel(
 
     val throwableMessage = SingleLiveEvent<MessageViewModel>()
     val showProgressBar = SingleLiveEvent<Boolean>()
+    private var isDataInSharedPref = false
 
     init {
         mutableStatusFilter.value = false
+        isDataInSharedPref = sharedPrefMainScreenUseCase.isFirstLaunch()
+        Log.d("2LEVEL", "isDataInSharedPref = $isDataInSharedPref")
     }
 
     private suspend fun getContentPhones() {
@@ -48,7 +55,7 @@ internal class MainScreenViewModel(
         }
         val job = viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = getPhonesUseCase.getContentPhones()
+                val response = getResponse()
                 listOfHotSales = response.hotSales
                 listOfBestSeller = response.bestSeller
             } catch (t: Throwable) {
@@ -64,6 +71,25 @@ internal class MainScreenViewModel(
             showProgressBar.value = false
         }
         job.cancel()
+    }
+
+    private suspend fun getResponse(): MainScreenResponse {
+        var response: MainScreenResponse
+        if (isDataInSharedPref) {
+            Log.d("2LEVEL", "Load dB")
+            response = MainScreenResponse(
+                mainScreenDatabaseUseCase.getHotSalesList(),
+                mainScreenDatabaseUseCase.getBestSellerList()
+            )
+
+        } else {
+            Log.d("2LEVEL", "Load Server")
+            response = getPhonesUseCase.getContentPhones()
+            mainScreenDatabaseUseCase.saveHotSales(response.hotSales)
+            mainScreenDatabaseUseCase.saveBestSeller(response.bestSeller)
+            sharedPrefMainScreenUseCase.mainScreenNoFirstLaunch()
+        }
+        return response
     }
 
     fun handlingClickOnTopMenu(itemPosition: Int) {
@@ -114,11 +140,16 @@ internal class MainScreenViewModel(
 
     class Factory @Inject constructor(
         private val getPhonesUseCase: GetPhonesUseCase,
-        private val hotSalesUseCase: HotSalesUseCase
+        private val mainScreenDatabaseUseCase: MainScreenDatabaseUseCase,
+        private val sharedPrefMainScreenUseCase: SharedPrefMainScreenUseCase
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             require(modelClass == MainScreenViewModel::class.java)
-            return MainScreenViewModel(getPhonesUseCase, hotSalesUseCase) as T
+            return MainScreenViewModel(
+                getPhonesUseCase,
+                mainScreenDatabaseUseCase,
+                sharedPrefMainScreenUseCase
+            ) as T
         }
     }
 }

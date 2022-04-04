@@ -5,8 +5,8 @@ import android.content.Context
 import com.zoom_machine.api.services.*
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
 import com.zoom_machine.ecommerce_app.MainActivity
-import com.zoom_machine.shared.SharedPrefRepository
-import com.zoom_machine.shared.SharedPrefRepositoryImpl
+import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
+import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreenImpl
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDeps
 import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDeps
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDeps
@@ -47,7 +47,7 @@ class AppModule {
 @Module
 interface BindSharedPrefRepository{
     @Binds
-    fun bindSharedPrefRepository(repository: com.zoom_machine.shared.SharedPrefRepositoryImpl): com.zoom_machine.shared.SharedPrefRepository
+    fun bindSharedPrefRepository(repository: SharedPrefMainScreenImpl): SharedPrefMainScreen
 }
 
 @Scope

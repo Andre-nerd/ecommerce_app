@@ -50,7 +50,7 @@ dependencies {
     implementation project(":core")
     implementation project(':api-database')
     implementation project(path: ':navigation')
-    implementation project(path: ':shared')
+
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'

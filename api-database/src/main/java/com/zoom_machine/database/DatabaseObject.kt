@@ -2,12 +2,13 @@ package com.zoom_machine.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
 import com.zoom_machine.database.DatabaseObject.Companion.DB_VERSION
 import com.zoom_machine.database.mainscreen_model.MainScreenDao
 
 @Database(
-    entities = [HotSales::class],
+    entities = [HotSales::class, BestSeller::class],
     version = DB_VERSION
 )
 abstract class DatabaseObject : RoomDatabase() {

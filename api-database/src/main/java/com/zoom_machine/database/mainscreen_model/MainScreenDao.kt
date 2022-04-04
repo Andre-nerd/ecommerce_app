@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.zoom_machine.api.services.data.BestSeller
 import com.zoom_machine.api.services.data.HotSales
 
 @Dao
@@ -12,5 +13,11 @@ interface MainScreenDao {
     suspend fun getHotSalesList(): List<HotSales>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNewHotSale(item:HotSales): Long
+    suspend fun insertNewHotSale(item: HotSales): Long
+
+    @Query("SELECT * FROM ${BestSellerContract.TABLE_NAME}")
+    suspend fun getBestSellerList(): List<BestSeller>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNewBestSeller(item: BestSeller): Long
 }
