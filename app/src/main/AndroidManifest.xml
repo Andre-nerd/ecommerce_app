@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="mysite.com"
+                    android:host="@string/base_url"
                     android:scheme="http" />
             </intent-filter>
             <intent-filter>
@@ -34,7 +34,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="mysite.com"
+                    android:host="@string/base_url"
                     android:scheme="https" />
             </intent-filter>
         </activity>

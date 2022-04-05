@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ecommerce_app</string>
+    <string name="base_url" translatable="false">mysite.com</string>
 </resources>
