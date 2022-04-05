@@ -3,9 +3,6 @@ package com.zoom_machine.ecommerce_app.data
 import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -46,6 +43,7 @@ class MessagingService : FirebaseMessagingService() {
             PendingIntent.FLAG_CANCEL_CURRENT
         )
     }
+
     companion object {
         const val NOTIFICATION_HIGH_ID = 101
         const val REQUEST_CODE = 3001
