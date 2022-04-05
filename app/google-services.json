@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215570712661",
+    "project_id": "ecommerce-app-13853",
+    "storage_bucket": "ecommerce-app-13853.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215570712661:android:0226625bb4742cb40bacdc",
+        "android_client_info": {
+          "package_name": "com.zoom_machine.ecommerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215570712661-b45hkhvm0u5pr8p9f75ftd58qv1ru6d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYnBemUQXA0P8bzOizxTG9H-ldGxWQDB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215570712661-b45hkhvm0u5pr8p9f75ftd58qv1ru6d6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

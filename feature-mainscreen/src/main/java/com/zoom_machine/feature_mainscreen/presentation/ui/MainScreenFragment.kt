@@ -22,6 +22,8 @@ import com.zoom_machine.feature_mainscreen.presentation.adapters.HotSaleAdapter
 import com.zoom_machine.feature_mainscreen.presentation.adapters.TopMenuAdapter
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenComponentViewModel
 import com.zoom_machine.feature_mainscreen.presentation.utils.*
+import com.zoom_machine.feature_mainscreen.presentation.utils.LaunchMode.NORMAL
+import com.zoom_machine.feature_mainscreen.presentation.utils.LaunchMode.NOTIFICATION
 import com.zoom_machine.nanigation.navigate
 import dagger.Lazy
 import javax.inject.Inject
@@ -69,8 +71,12 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(LaunchMode.value == NOTIFICATION){
+            navigate(R.id.action_mainScreenFragment_to_cartFragment)
+            LaunchMode.value = NORMAL
+        }
         binding = FragmentMainScreenBinding.bind(view)
-        viewModel.setItemsTopMenu(getItemsTopMenu())
+         viewModel.setItemsTopMenu(getItemsTopMenu())
         observeViewModel()
         binding?.run {
             selectCategoryBlock.apply {

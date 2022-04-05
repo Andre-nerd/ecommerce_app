@@ -2,11 +2,14 @@ package com.zoom_machine.ecommerce_app
 
 import android.app.Application
 import com.zoom_machine.database.Database
+import com.zoom_machine.ecommerce_app.data.NotificationChannels
+import com.zoom_machine.ecommerce_app.data.TokenFCM
 import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
 import com.zoom_machine.ecommerce_app.presentation.di.DaggerAppComponent
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDepsStore
 import com.zoom_machine.feature_detailsscreen.presentation.di.DetailsScreenDepsStore
 import com.zoom_machine.feature_mainscreen.presentation.di.MainScreenDepsStore
+import kotlinx.coroutines.MainScope
 
 
 class App : Application() {
@@ -27,5 +30,7 @@ class App : Application() {
         MainScreenDepsStore.deps = appComponent
         DetailsScreenDepsStore.deps = appComponent
         CartScreenDepsStore.deps = appComponent
+        TokenFCM.getTokenFCM(MainScope())
+        NotificationChannels.create(this.applicationContext)
     }
 }
