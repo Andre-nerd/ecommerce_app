@@ -3,10 +3,7 @@ package com.zoom_machine.ecommerce_app
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.FROM_NOTIFICATION
 import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.OPEN_CART
 import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
@@ -39,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         appComponent.injectToMainActivity(this)
         val launchMode = intent.getIntExtra(FROM_NOTIFICATION, 0)
-        if (launchMode == OPEN_CART) {
+        val deepLink = intent.data?.lastPathSegment ?: ""
+        if (launchMode == OPEN_CART || deepLink == LAUNCH_CART) {
             LaunchMode.value = NOTIFICATION
             clearAllNotifications()
         }
@@ -56,5 +54,8 @@ class MainActivity : AppCompatActivity() {
         sharedPrefDetailsScreen.refreshDetailsScreenToSharedPref()
         sharedPrefCartScreen.refreshCartScreenToSharedPref()
         super.onPause()
+    }
+    companion object{
+        const val LAUNCH_CART = "cart"
     }
 }
