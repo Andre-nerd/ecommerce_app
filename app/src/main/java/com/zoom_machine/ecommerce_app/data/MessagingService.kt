@@ -3,6 +3,7 @@ package com.zoom_machine.ecommerce_app.data
 import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -36,11 +37,12 @@ class MessagingService : FirebaseMessagingService() {
     private fun getPendingIntent(): PendingIntent {
         val intentNotification = Intent(this, MainActivity::class.java)
         intentNotification.putExtra(FROM_NOTIFICATION, OPEN_CART)
+        intentNotification.addFlags((Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
         return PendingIntent.getActivity(
             this.applicationContext,
             REQUEST_CODE,
             intentNotification,
-            PendingIntent.FLAG_CANCEL_CURRENT
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
     }
 

@@ -3,6 +3,7 @@ package com.zoom_machine.ecommerce_app
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.FROM_NOTIFICATION
 import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.OPEN_CART
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("2LEVEL","Activity = $this")
         setContentView(R.layout.activity_main)
         appComponent.injectToMainActivity(this)
         val launchMode = intent.getIntExtra(FROM_NOTIFICATION, 0)
