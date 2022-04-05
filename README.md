@@ -1,5 +1,5 @@
 # ecommerce app screen
-Multi-module project. Dagger2 Dependency Injection, 
+Multi-module project. Dagger2 Dependency Injection, RoomDao, Firebase, Notifications, 
 MVVM, LiveData, Retrofit, Custom View 
 
 
