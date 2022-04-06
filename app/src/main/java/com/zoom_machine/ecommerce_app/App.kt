@@ -2,8 +2,8 @@ package com.zoom_machine.ecommerce_app
 
 import android.app.Application
 import com.zoom_machine.database.Database
-import com.zoom_machine.ecommerce_app.data.NotificationChannels
-import com.zoom_machine.ecommerce_app.data.TokenFCM
+import com.zoom_machine.ecommerce_app.presentation.notifications.NotificationChannels
+import com.zoom_machine.ecommerce_app.presentation.notifications.TokenFCM
 import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
 import com.zoom_machine.ecommerce_app.presentation.di.DaggerAppComponent
 import com.zoom_machine.feature_cartscreen.presentation.di.CartScreenDepsStore

@@ -1,4 +1,4 @@
-package com.zoom_machine.ecommerce_app.data
+package com.zoom_machine.ecommerce_app.presentation.notifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

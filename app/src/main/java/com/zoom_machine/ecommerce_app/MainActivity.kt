@@ -5,8 +5,8 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.FROM_NOTIFICATION
-import com.zoom_machine.ecommerce_app.data.MessagingService.Companion.OPEN_CART
+import com.zoom_machine.ecommerce_app.presentation.notifications.MessagingService.Companion.FROM_NOTIFICATION
+import com.zoom_machine.ecommerce_app.presentation.notifications.MessagingService.Companion.OPEN_CART
 import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
 import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreen
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen

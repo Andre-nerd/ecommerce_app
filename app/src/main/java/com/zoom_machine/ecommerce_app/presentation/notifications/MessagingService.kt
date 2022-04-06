@@ -1,9 +1,8 @@
-package com.zoom_machine.ecommerce_app.data
+package com.zoom_machine.ecommerce_app.presentation.notifications
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
-import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
