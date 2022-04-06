@@ -22,13 +22,10 @@ class MainActivity : AppCompatActivity() {
             is App -> appComponent
             else -> this.applicationContext.appComponent
         }
-
     @Inject
     lateinit var sharedPrefMainScreen: SharedPrefMainScreen
-
     @Inject
     lateinit var sharedPrefDetailsScreen: SharedPrefDetailsScreen
-
     @Inject
     lateinit var sharedPrefCartScreen: SharedPrefCartScreen
 

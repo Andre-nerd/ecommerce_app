@@ -128,6 +128,15 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
         }
     }
 
+    private fun handlingFilterBottom() {
+        viewModel.changeFilterVisible()
+        viewModel.statusFilter.value?.let { visible ->
+            binding?.filterBottom?.visibleFilterSetting(
+                visible
+            )
+        }
+    }
+
     private fun handlingThrowableMessage(message: MessageViewModel) {
         when (message) {
             MessageViewModel.CONNECTION_ERROR -> Toast.makeText(
@@ -136,15 +145,6 @@ class MainScreenFragment @Inject constructor() : Fragment(R.layout.fragment_main
                 Toast.LENGTH_LONG
             ).show()
             else -> {}
-        }
-    }
-
-    private fun handlingFilterBottom() {
-        viewModel.changeFilterVisible()
-        viewModel.statusFilter.value?.let { visible ->
-            binding?.filterBottom?.visibleFilterSetting(
-                visible
-            )
         }
     }
 
