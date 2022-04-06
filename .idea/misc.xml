@@ -69,6 +69,9 @@
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/layout/item_best_seller.xml" value="0.72" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/layout/item_hot_sale.xml" value="0.4" />
         <entry key="..\:/Kotlin Work Pojects/ecommerce_app/feature-mainscreen/src/main/res/layout/item_top_menu.xml" value="0.536" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/yandex_mapkit/src/main/res/drawable/ic_back_arrow.xml" value="0.169" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/yandex_mapkit/src/main/res/drawable/ic_geo_mark.xml" value="0.169" />
+        <entry key="..\:/Kotlin Work Pojects/ecommerce_app/yandex_mapkit/src/main/res/layout/fragment_map.xml" value="0.2259963768115942" />
       </map>
     </option>
   </component>

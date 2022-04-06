@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/feature-detailsscreen" />
             <option value="$PROJECT_DIR$/feature-mainscreen" />
             <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/yandex_mapkit" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

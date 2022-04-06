@@ -52,6 +52,7 @@ dependencies {
     implementation project(path: ':feature-detailsscreen')
     implementation project(path: ':navigation')
     implementation project(path: ':feature-cartscreen')
+    implementation project(path: ':yandex_mapkit')
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:28.2.0')
