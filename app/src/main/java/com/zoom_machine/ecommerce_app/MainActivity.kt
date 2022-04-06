@@ -3,11 +3,11 @@ package com.zoom_machine.ecommerce_app
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.yandex.mapkit.MapKitFactory
+import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
 import com.zoom_machine.ecommerce_app.presentation.notifications.MessagingService.Companion.FROM_NOTIFICATION
 import com.zoom_machine.ecommerce_app.presentation.notifications.MessagingService.Companion.OPEN_CART
-import com.zoom_machine.ecommerce_app.presentation.di.AppComponent
 import com.zoom_machine.feature_cartscreen.data.SharedPrefCartScreen
 import com.zoom_machine.feature_detailsscreen.data.SharedPrefDetailsScreen
 import com.zoom_machine.feature_mainscreen.data.SharedPrefMainScreen
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("2LEVEL","Activity = $this")
+        MapKitFactory.setApiKey(this.resources.getString(R.string.api_key_yandex_mapkit))
         setContentView(R.layout.activity_main)
         appComponent.injectToMainActivity(this)
         val launchMode = intent.getIntExtra(FROM_NOTIFICATION, 0)
@@ -57,7 +57,8 @@ class MainActivity : AppCompatActivity() {
         sharedPrefCartScreen.refreshCartScreenToSharedPref()
         super.onPause()
     }
-    companion object{
+
+    companion object {
         const val LAUNCH_CART = "cart"
     }
 }

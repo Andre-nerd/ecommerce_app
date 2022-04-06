@@ -22,9 +22,9 @@
     <string name="filter_options">Filter options</string>
     <string name="brand_filter">Brand</string>
     <string name="price_filter">Price</string>
-
     <string name="name_category">Category name</string>
     <string name="name_right_menu">right menu</string>
+    <string name="zihuatanejo_gro">Zihuatanejo, Gro</string>
 
     <string-array name="brandNames">
         <item>Samsung</item>

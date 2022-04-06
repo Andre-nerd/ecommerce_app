@@ -2,4 +2,5 @@
 <resources>
     <item name="action_mainScreenFragment_to_detailFragment" type="id" />
     <item name="action_mainScreenFragment_to_cartFragment" type="id"/>
+    <item name="action_mainScreenFragment_to_mapFragment" type="id"/>
 </resources>

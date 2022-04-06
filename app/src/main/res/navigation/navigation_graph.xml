@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/mainScreenFragment">
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.zoom_machine.feature_mainscreen.presentation.ui.MainScreenFragment"
@@ -15,6 +15,9 @@
             android:id="@id/action_mainScreenFragment_to_cartFragment"
             app:destination="@id/cartFragment"
             app:popUpTo="@id/navigation_graph"/>
+        <action
+            android:id="@id/action_mainScreenFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -41,5 +44,9 @@
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.zoom_machine.yandex_mapkit.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@id/action_mapFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
 </navigation>

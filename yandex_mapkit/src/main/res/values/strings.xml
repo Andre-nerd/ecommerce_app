@@ -1,5 +1,4 @@
 <resources>
     <string name="need_permission">Need permission to locate</string>
     <string name="find_me">Find me</string>
-    <string name="api_key_yandex_mapkit">"8d2526b1-59e8-40a0-8062-573dfee23dd0"</string>
 </resources>

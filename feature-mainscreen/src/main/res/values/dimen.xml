@@ -32,9 +32,11 @@
     <dimen name="font_medium">16sp</dimen>
     <dimen name="padding_16">16sp</dimen>
     <dimen name="padding_42">42dp</dimen>
+    <dimen name="padding_56">56dp</dimen>
     <dimen name="top_menu_hight">120dp</dimen>
     <dimen name="font_micro">10sp</dimen>
     <dimen name="font_18">18sp</dimen>
+    <dimen name="font_15">15sp</dimen>
     <dimen name="padding_first_spinner">132dp</dimen>
     <dimen name="padding_80">80dp</dimen>
     <dimen name="padding_142">142dp</dimen>

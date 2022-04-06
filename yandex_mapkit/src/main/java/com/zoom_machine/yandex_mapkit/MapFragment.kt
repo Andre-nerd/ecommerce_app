@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.LocationServices
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
@@ -34,10 +35,10 @@ class MapFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        MapKitFactory.setApiKey(resources.getString(R.string.api_key_yandex_mapkit))
         MapKitFactory.initialize(this.requireContext())
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +62,9 @@ class MapFragment : Fragment() {
             }
             buttonFindMe.setOnClickListener {
                 handlingClickButtonFindMe(mark)
+            }
+            buttonBackArrow.setOnClickListener {
+                findNavController().navigate(R.id.action_mapFragment_to_mainScreenFragment)
             }
         }
     }

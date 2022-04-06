@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ecommerce_app</string>
     <string name="base_url" translatable="false">mysite.com</string>
+    <string name="api_key_yandex_mapkit">"8d2526b1-59e8-40a0-8062-573dfee23dd0"</string>
 </resources>

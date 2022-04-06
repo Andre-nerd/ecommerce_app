@@ -13,20 +13,42 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/small_padding">
 
+        <ImageView
+            android:id="@+id/imageLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="122dp"
+            android:src="@drawable/ic_location_empty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zihuatanejo_gro"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/padding_16"
+            android:fontFamily="@font/marc_pro_medium"
+            android:textSize="@dimen/font_15"
+            app:layout_constraintStart_toEndOf="@id/imageLocation"
+            app:layout_constraintTop_toTopOf="@id/imageLocation" />
+
         <com.zoom_machine.feature_mainscreen.presentation.ui.CategoryContainer
             android:id="@+id/selectCategoryBlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageLocation" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topMenuRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/top_menu_hight"
             android:layout_marginStart="@dimen/medium_padding"
-            android:layout_marginTop="@dimen/padding_42"
+            android:layout_marginTop="@dimen/padding_56"
             android:layout_marginEnd="@dimen/medium_padding"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -40,7 +62,7 @@
             android:id="@+id/hotSaleRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_24"
+            android:layout_marginTop="@dimen/padding_34"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
