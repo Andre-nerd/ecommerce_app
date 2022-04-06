@@ -101,13 +101,11 @@ class MapFragment : Fragment() {
     }
 
     private fun getPermission() {
-        if (thereAreNoPermission()) {
-            val permissions = arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-            ActivityCompat.requestPermissions(requireActivity(), permissions, 0)
-        }
+        val permissions = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        )
+        ActivityCompat.requestPermissions(requireActivity(), permissions, 0)
     }
 
     private fun thereAreNoPermission(): Boolean {
