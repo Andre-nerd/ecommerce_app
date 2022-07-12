@@ -83,8 +83,6 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         viewModel.setCountToItem(position, countPurchase)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
+
+    
 }

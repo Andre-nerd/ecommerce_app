@@ -35,9 +35,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -49,7 +49,7 @@ dependencies {
     //ViewModel
     def lifecycleVersion = '2.4.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.fragment:fragment-ktx:1.4.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.0"
 
     //Moshi
     def moshiVersion = '1.13.0'
@@ -65,11 +65,11 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.8.0"
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.1'
-    kapt "com.github.bumptech.glide:compiler:4.13.1"
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    kapt "com.github.bumptech.glide:compiler:4.13.2"
 
     //Dagger 2
-    def daggerVersion = '2.38.1'
+    def daggerVersion = '2.41'
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 }

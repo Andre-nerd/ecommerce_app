@@ -88,6 +88,7 @@ class MapFragment : Fragment() {
 
     private fun handlingUserLocation(mark: View, point: Point) {
         binding?.run {
+            mapView?.map.isIndoorEnabled = true
             mapView?.map?.move(
                 CameraPosition(Point(point.latitude, point.longitude), 11.0f, 0.0f, 0.0f),
                 Animation(Animation.Type.SMOOTH, 5F),

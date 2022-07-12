@@ -10,7 +10,10 @@ import com.zoom_machine.feature_cartscreen.R
 import com.zoom_machine.feature_cartscreen.databinding.ItemPurchasesBinding
 import com.zoom_machine.feature_cartscreen.presentation.utils.formatFloat
 
-class PurchasesAdapter(
+class
+
+
+PurchasesAdapter(
     private val onItemClick: (position: Int, countPurchase: Int) -> Unit
 ) : RecyclerView.Adapter<PurchasesAdapter.ViewHolder>() {
     private var items: List<Purchases> = emptyList()
