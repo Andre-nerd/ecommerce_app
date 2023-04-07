@@ -10,10 +10,7 @@ import com.zoom_machine.feature_cartscreen.R
 import com.zoom_machine.feature_cartscreen.databinding.ItemPurchasesBinding
 import com.zoom_machine.feature_cartscreen.presentation.utils.formatFloat
 
-class
-
-
-PurchasesAdapter(
+class PurchasesAdapter(
     private val onItemClick: (position: Int, countPurchase: Int) -> Unit
 ) : RecyclerView.Adapter<PurchasesAdapter.ViewHolder>() {
     private var items: List<Purchases> = emptyList()
@@ -56,8 +53,8 @@ PurchasesAdapter(
 
         fun bind(item: Purchases) {
             with(binding) {
-                textName.setText(item.title)
-                textPrice.setText("$" + formatFloat(item.price))
+                textName.text = item.title
+                textPrice.text = "$" + formatFloat(item.price)
                 plusMinusContainer.setDigit(item.count)
                 Glide.with(itemView)
                     .load(item.images)
@@ -66,20 +63,9 @@ PurchasesAdapter(
             }
         }
 
-        private fun plusCount(value: Int): Int {
-            return if (value < 10) {
-                value + 1
-            } else {
-                value
-            }
-        }
+        private fun plusCount(value: Int) = if (value < 10) value + 1 else value
 
-        private fun minusCount(value: Int): Int {
-            return if (value > 0) {
-                value - 1
-            } else {
-                value
-            }
-        }
+        private fun minusCount(value: Int) = if (value > 0) value - 1 else value
+
     }
 }
